@@ -48,7 +48,7 @@ read -r SCPHOMEDIR
 echo "SCPUSERNAME=$SCPUSERNAME" >> "$SCPCONFIG"
 echo "SCPPASSWORD=$SCPPASSWORD">> "$SCPCONFIG"
 echo "SCPSERVER=$SCPSERVER">> "$SCPCONFIG"
-echo "SCPFTPHOMEDIR=$SCPFTPHOMEDIR">> "$SCPCONFIG"
+echo "SCPHOMEDIR=$SCPHOMEDIR">> "$SCPCONFIG"
 fi)
 )
 #And if it does we will source it for current values
@@ -81,9 +81,9 @@ echo "CLOBBER=$CLOBBER">> "$CONFIG"
 echo "FTPYN=$FTPYN" >> "$CONFIG"
 echo "SCPYN=$SCPYN" >> "$CONFIG")
 (if [[ "$FTPYN" == "Y" || "$FTPYN" == "y" ]]; then
-(if [ -e $FTPCONFIG ]; then 
+(if [ -e $FTPCONFIG ]; then
 echo "FTP configuration is as follows:"
-cat $FTPCONFIG 
+cat $FTPCONFIG
 echo "If you wish to change these edit/delete ftp-config and run this script again"
 else
 echo -n "Enter FTP USERNAME and press [ENTER]: "
@@ -103,7 +103,7 @@ fi)
 (if [[ "$SCPYN" == "Y" || "$SCPYN" == "y" ]]; then
 (if [ -e $SCPCONFIG ]; then
 echo "SCP configuration is as follows:"
-cat $SCPCONFIG 
+cat $SCPCONFIG
 echo "If you wish to change these edit/delete scp-config and run this script again"
 else
 echo -n "Enter SCP USERNAME and press [ENTER]: "
@@ -117,17 +117,11 @@ read -r SCPHOMEDIR
 echo "SCPUSERNAME=$SCPUSERNAME" >> "$SCPCONFIG"
 echo "SCPPASSWORD=$SCPPASSWORD">> "$SCPCONFIG"
 echo "SCPSERVER=$SCPSERVER">> "$SCPCONFIG"
-echo "SCPFTPHOMEDIR=$SCPHOMEDIR">> "$SCPCONFIG"
+echo "SCPHOMEDIR=$SCPHOMEDIR">> "$SCPCONFIG"
 fi)
 fi)
 fi)
 fi
-
-
-
-
-
-
 DIR1="${BASH_SOURCE[0]}"
 while [ -h "$DIR1" ]; do # resolve $SOURCE until the file is no longer a symlink
   DIR="$( cd -P "$( dirname "$DIR1" )" && pwd )"
@@ -165,10 +159,8 @@ exec < $term
 echo
 echo -n "Enter -j flag sync number and press [ENTER]: "
 read SYNC
-
 echo -n "Enter -j flag brunch number and press [ENTER]: "
 read BRUNCH
-
 echo "SYNC=$SYNC" > "$CRONCONFIG"
 echo "BRUNCH=$BRUNCH">> "$CRONCONFIG"
 echo "Starting with a fresh source"
@@ -216,9 +208,9 @@ echo $REPODIR/$DEVICE
 cd $REPODIR/$DEVICE
 md5sum "$ROMNAME"_"$DEVICE""$DATE".zip > "$ROMNAME"_"$DEVICE""$DATE".zip.md5
 # login to via scp and transfer file
-scp $REPODIR/$DEVICE/"$ROMNAME"_"$DEVICE""$DATE".zip.md5 $USERNAME@$SERVER:$FTPHOMEDIR/$ROMNAME/"$ROMNAME"_"$DEVICE""$DATE".zip.md5
+scp $REPODIR/$DEVICE/"$ROMNAME"_"$DEVICE""$DATE".zip.md5 $USERNAME@$SERVER:$SCPHOMEDIR/$ROMNAME/"$ROMNAME"_"$DEVICE""$DATE".zip.md5
 echo $SCPPASSWORD
-scp $REPODIR/$DEVICE/"$ROMNAME"_"$DEVICE""$DATE".zip $USERNAME@$SERVER:$FTPHOMEDIR/$ROMNAME/"$ROMNAME"_"$DEVICE""$DATE".zip
+scp $REPODIR/$DEVICE/"$ROMNAME"_"$DEVICE""$DATE".zip $USERNAME@$SERVER:$SCPHOMEDIR/$ROMNAME/"$ROMNAME"_"$DEVICE""$DATE".zip
 echo $SCPPASSWORD
 )fi
 cd $REPODIR
