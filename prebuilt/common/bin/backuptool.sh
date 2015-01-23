@@ -26,7 +26,7 @@ restore_addon_d() {
 # Proceed only if /system is the expected major and minor version
 check_prereq() {
   retval=1
-  ver=$(awk "/ro.pac.version=($V)/ {print \"LP\"}" /system/build.prop)
+  ver=$(awk "/ro.cmremix.version=($V)/ {print \"LP\"}" /system/build.prop)
   case "$ver" in
     LP)
       echo "Found compatible version, backing up files."
@@ -101,7 +101,7 @@ case "$1" in
     run_stage post-restore
     restore_addon_d
     rm -rf $C
-    rm -rf /data/data/android.pacstats
+    rm -rf /data/data/android.cmremixstats
     sync
   ;;
   *)

@@ -3,7 +3,7 @@
 # Squish a CM otapackage for distribution
 # cyanogen
 
-. $ANDROID_BUILD_TOP/vendor/pac/tools/colors
+. $ANDROID_BUILD_TOP/vendor/cmremix/tools/colors
 
 OUT_TARGET_HOST=`uname -s`
 if [ x"$OUT_TARGET_HOST" = x"Linux" ]
@@ -24,20 +24,53 @@ if [ -z "$OUT" -o ! -d "$OUT" ]; then
     exit 1
 fi
 
-OPTICHARGER=$ANDROID_BUILD_TOP/vendor/pac/tools/opticharger
+OPTICHARGER=$ANDROID_BUILD_TOP/vendor/cmremix/tools/opticharger
 QUIET=-q
 DELETE_BINS="applypatch applypatch_static check_prereq recovery updater"
 
-# Delete PAC specific files
-if [ -f $ANDROID_BUILD_TOP/vendor/pac/tools/squisher.rm ]; then
-    for RM_FILE in `cat $ANDROID_BUILD_TOP/vendor/pac/tools/squisher.rm`; do
+# Fix LCD Density for cmRemiX
+DEVICELCD=`sed -n -e'/ro\.sf\.lcd_density/s/^.*=//p' $OUT/system/build.prop`
+if [ "$DEVICELCD" = "240" ]; then
+   sed -i 's/ro.sf.lcd_density=240/ro.sf.lcd_density=182/g' $OUT/system/build.prop
+elif [ "$DEVICELCD" = "320" ]; then
+    sed -i 's/ro.sf.lcd_density=320/ro.sf.lcd_density=245/g' $OUT/system/build.prop
+elif [ "$DEVICELCD" = "480" ]; then
+    sed -i 's/ro.sf.lcd_density=480/ro.sf.lcd_density=370/g' $OUT/system/build.prop
+elif [ "$DEVICELCD" = "640" ]; then
+    sed -i 's/ro.sf.lcd_density=640/ro.sf.lcd_density=570/g' $OUT/system/build.prop
+elif [ "$DEVICELCD" = "213" ]; then
+    sed -i 's/ro.sf.lcd_density=213/ro.sf.lcd_density=182/g' $OUT/system/build.prop
+fi
+
+# Device specific LCD Density fix
+DEVICEID=`sed -n -e'/ro\.product\.device/s/^.*=//p' $OUT/system/build.prop`
+if [ "$DEVICEID" = "SGH-I717" ]; then
+   sed -i 's/ro.sf.lcd_density=245/ro.sf.lcd_density=268/g' $OUT/system/build.prop
+elif [ "$DEVICEID" = "GT-N7000" ]; then
+   sed -i 's/ro.sf.lcd_density=245/ro.sf.lcd_density=268/g' $OUT/system/build.prop
+elif [ "$DEVICEID" = "mako" ]; then
+   sed -i 's/ro.sf.lcd_density=245/ro.sf.lcd_density=268/g' $OUT/system/build.prop
+elif [ "$DEVICEID" = "flo" ]; then
+   sed -i 's/ro.sf.lcd_density=245/ro.sf.lcd_density=286/g' $OUT/system/build.prop
+elif [ "$DEVICEID" = "deb" ]; then
+   sed -i 's/ro.sf.lcd_density=245/ro.sf.lcd_density=286/g' $OUT/system/build.prop
+elif [ "$DEVICEID" = "amami" ]; then
+   sed -i 's/ro.sf.lcd_density=245/ro.sf.lcd_density=286/g' $OUT/system/build.prop
+elif [ "$DEVICEID" = "togari" ]; then
+   sed -i 's/ro.sf.lcd_density=245/ro.sf.lcd_density=300/g' $OUT/system/build.prop
+fi
+cp -f $OUT/system/build.prop $REPACK/ota/system/build.prop
+
+# Delete cmRemiX specific files
+if [ -f $ANDROID_BUILD_TOP/vendor/cmremix/tools/squisher.rm ]; then
+    for RM_FILE in `cat $ANDROID_BUILD_TOP/vendor/cmremix/tools/squisher.rm`; do
         rm -rf $OUT/$RM_FILE
     done
 fi
 
 # Delete target product specific files
-if [ -f $ANDROID_BUILD_TOP/vendor/pac/tools/$TARGET_PRODUCT-squisher.rm ]; then
-    for RM_FILE in `cat $ANDROID_BUILD_TOP/vendor/pac/tools/$TARGET_PRODUCT-squisher.rm`; do
+if [ -f $ANDROID_BUILD_TOP/vendor/cmremix/tools/$TARGET_PRODUCT-squisher.rm ]; then
+    for RM_FILE in `cat $ANDROID_BUILD_TOP/vendor/cmremix/tools/$TARGET_PRODUCT-squisher.rm`; do
         rm -rf $OUT/$RM_FILE
     done
 fi

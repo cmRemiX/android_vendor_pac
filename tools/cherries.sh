@@ -1,13 +1,13 @@
 #!/bin/bash
 
-#Preamble: Some repos outside of PAC may have commits we need that take too
+#Preamble: Some repos outside of CMREMIX may have commits we need that take too
 #  long to be merged. Adding these cherry-picks here can automate the process
 #  and makes it possible to add them to the weeklies but not the nightlies.
 #  currently supported gerrit accounts are:
 #    AOKP - Android Open Kang Project
 #    AOSP - Android Open Source Project
 #    CM   - CyanogenMod
-#    PAC  - pac-rom
+#    CMREMIX  - cmremix-rom
 #    PA   - Paranoid Android (AOSPA)
 #
 #  in addition, cherry-pick patch files can be created for commits that aren't
@@ -26,13 +26,13 @@
 #
 #    For gerrit commits, add the cherry-pick(s) in the form:
 #      cherries+=(GERRIT-COMMIT#_GERRIT-ACCOUNT)
-#     e.g. http://review.pac-rom.com/#/c/250/2/tools/cherries.sh would be cherries+=(250_PAC)
+#     e.g. http://review.cmremix-rom.com/#/c/250/2/tools/cherries.sh would be cherries+=(250_CMREMIX)
 #        |
 #      <Repeat for each separate cherry-pick>
 #
 #    For gerrit topics, add the topics(s) in the form:
 #      topics+=(TOPIC_GERRIT-ACCOUNT)
-#     e.g. http://review.pac-rom.com/#/q/topic:CREncoder would be topics+=(CREncoder_PAC)
+#     e.g. http://review.cmremix-rom.com/#/q/topic:CREncoder would be topics+=(CREncoder_CMREMIX)
 #        |
 #      <Repeat for each separate topic>
 #
@@ -40,7 +40,7 @@
 #  On-line patches can be called by specifying a URL as the PATCH variable and calling the
 #  patch_it function with the parameter 'true', i.e., patch_it true
 #
-#  Any patches stored in the vendor/pac/tool/patches folder must have a .patch extension
+#  Any patches stored in the vendor/cmremix/tool/patches folder must have a .patch extension
 #  with a prefix name that exactly matches the PATCH name.  See below for examples.
 #  All patches must be in the git format-patch email format for use by git am
 #  Create a patch for the latest or last n patches with this command
@@ -56,7 +56,7 @@ device=$1
 BASEDIR=$PWD
 
 # colors
-. $BASEDIR/vendor/pac/tools/colors
+. $BASEDIR/vendor/cmremix/tools/colors
 
 function patch_it {
   cd $BASEDIR/${FOLDER}
@@ -73,10 +73,10 @@ function patch_it {
    fi
 
   else
-   THISCOMMIT=$(cat $BASEDIR/vendor/pac/tools/patches/${PATCH}.patch | sed -n '4,4p')
+   THISCOMMIT=$(cat $BASEDIR/vendor/cmremix/tools/patches/${PATCH}.patch | sed -n '4,4p')
 
    if [ "$LASTCOMMIT" != "$THISCOMMIT" ] ; then  #Patch if not already applied
-    git am $BASEDIR/vendor/pac/tools/patches/${PATCH}.patch
+    git am $BASEDIR/vendor/cmremix/tools/patches/${PATCH}.patch
    else
     echo -e "skipped $(echo $THISCOMMIT | sed -r 's/^.{9}//')"
    fi
@@ -99,14 +99,14 @@ case $device in
     anzu | coconut | haida | hallon | iyokan | mango | satsuma | smultron | urushi)
         # build: Add option to disable block-based ota
         cherries+=(78849_CM)
+        # recovery: Always include ext4 stuff
+        cherries+=(79803_CM)
+        # capabilities ERANG error fix
+        cherries+=(78853_CM)
         # Revert "Revert "Reenable support for non-PIE executables""
         cherries+=(79136_CM)
-        # arm: Allow disabling PIE for dynamically linked executables
-        cherries+=(81758_CM)
-        # nl80211: Add unhandled attributes from wpa_supplicant
-        cherries+=(81764_CM)
-        # bcmdhd: workaround for driver compiled as a module
-        cherries+=(82598_CM)
+        # libutils: refbase: jellybean mr1 compat
+        cherries+=(79142_CM)
     ;;
     condor)
         # display patch
@@ -116,25 +116,25 @@ case $device in
     ;;
     s2ve | s2vep)
         # av patch
-        PATCH="https://raw.githubusercontent.com/luk1337/build_tools/pac/0001-FRAMEWORKS-AV-PATCH-for-s2ve-s2vep-device.patch"
+        PATCH="https://raw.githubusercontent.com/luk1337/build_tools/cmremix/0001-FRAMEWORKS-AV-PATCH-for-s2ve-s2vep-device.patch"
         FOLDER=frameworks/av
         patch_it true
         # native patch
-        PATCH="https://raw.githubusercontent.com/luk1337/build_tools/pac/0001-FRAMEWORKS-NATIVE-PATCH-for-s2ve-s2vep-device.patch"
+        PATCH="https://raw.githubusercontent.com/luk1337/build_tools/cmremix/0001-FRAMEWORKS-NATIVE-PATCH-for-s2ve-s2vep-device.patch"
         FOLDER=frameworks/native
         patch_it true
         # bluetooth patch
-        PATCH="https://raw.githubusercontent.com/luk1337/build_tools/pac/0001-Add-BT-support-for-s2ve-s2vep.patch"
+        PATCH="https://raw.githubusercontent.com/luk1337/build_tools/cmremix/0001-Add-BT-support-for-s2ve-s2vep.patch"
         FOLDER=hardware/broadcom/libbt
         patch_it true
         # hwc patch
-        PATCH="https://raw.githubusercontent.com/luk1337/build_tools/pac/0001-Fix-HWC-for-s2ve-s2vep.patch"
+        PATCH="https://raw.githubusercontent.com/luk1337/build_tools/cmremix/0001-Fix-HWC-for-s2ve-s2vep.patch"
         FOLDER=external/chromium_org
         patch_it true
     ;;
     p705)
         #libstagefright: Add support for custom LPA buffer size in legacy LPAPlayer
-        #cherries+=(1343_PAC) : this was lost during a gerrit rebuild, suggest the maintainer make a patch file for it
+        #cherries+=(1343_CMREMIX) : this was lost during a gerrit rebuild, suggest the maintainer make a patch file for it
         # Allow using Classic WebView
         cherries+=(56054_CM)
     ;;
@@ -146,14 +146,14 @@ case $device in
         #Overlay support for legacy camera libs
         cherries+=(58228_CM)
         #sensorservice: Add legacy sensors fusion
-        #cherries+=(1164_PAC) : this was lost during a gerrit rebuild, suggest the maintainer make a patch file for it
+        #cherries+=(1164_CMREMIX) : this was lost during a gerrit rebuild, suggest the maintainer make a patch file for it
         #native: add flag to disable legacy sensors fusion
-        #cherries+=(1165_PAC) : this was lost during a gerrit rebuild, suggest the maintainer make a patch file for it
+        #cherries+=(1165_CMREMIX) : this was lost during a gerrit rebuild, suggest the maintainer make a patch file for it
     ;;
     tenderloin)
         # btservice/AdaperState: handle ENABLED_READY in OffState
         PATCH=tenderloin_13-11-25_btservice-AdaperState-handle-ENABLED_READY
-        FOLDER=packages/apps/Bluetooth
+        FOLDER=cmremixkages/apps/Bluetooth
         patch_it #add this function call for each patch
         # Only-read-next-buffer-if-current-buffer-is-not-empty
         PATCH=tenderloin_Only-read-next-buffer-if-current-buffer-is-not-empty
@@ -183,10 +183,7 @@ case $device in
         cherries+=(71804_CM)
         cherries+=(71802_CM)
     ;;
-    flounder)
-        # Fix build
-        cherries+=(83064_CM)
-    ;;
+
 esac
 
 if [ "$PATCH" != "" ]; then
