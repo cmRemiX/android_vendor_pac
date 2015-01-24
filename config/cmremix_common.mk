@@ -92,5 +92,5 @@ endif
 
 EXTENDED_POST_PROCESS_PROPS := vendor/cmremix/tools/cmremix_process_props.py
 
-# Include sm mk file
+# Include sm.mk file
 -include vendor/cmremix/config/cmremix_sm.mk
