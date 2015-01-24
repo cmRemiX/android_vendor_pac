@@ -24,7 +24,7 @@
     "revision":     "cm-12.0"
   },
   {
-    "account":      "cmRemiX",
+    "account":      "CyanogenMod",
     "repository":   "android_device_samsung_msm8974-common",
     "target_path":  "device/samsung/msm8974-common",
     "revision":     "cm-12.0"
