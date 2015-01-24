@@ -50,7 +50,7 @@ usage()
     exit 1
 }
 
-# colors
+# Colors
 . ./vendor/cmremix/tools/colors
 
 if [ ! -d ".repo" ]; then
@@ -62,7 +62,7 @@ if [ ! -d "vendor/cmremix" ]; then
     exit 1
 fi
 
-# figure out the output directories
+# Figure out the output directories
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 thisDIR="${PWD##*/}"
 
@@ -190,7 +190,7 @@ if [ "$opt_twrp" -eq 1 ]; then
     export RECOVERY_VARIANT=twrp
     echo -e ""
 else
-    export RECOVERY_VARIANT=cwm
+    unset RECOVERY_VARIANT
 fi
 
 # Disable ADB authentication and set root access to Apps and ADB
@@ -246,13 +246,13 @@ rm -f $OUTDIR/target/product/$device/obj/KERNEL_OBJ/.version
 
 # Fetch cherry-picks
 if [ "$opt_fetch" -ne 0 ]; then
-        ./vendor/cmremix/tools/cherries.sh $device
+    ./vendor/cmremix/tools/cherries.sh $device
 fi
 
 # Get time of startup
 t1=$($DATE +%s)
 
-# setup environment
+# Setup environment
 echo -e ${bldblu}"Setting up environment"${txtrst}
 . build/envsetup.sh
 
