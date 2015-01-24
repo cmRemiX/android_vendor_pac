@@ -14,6 +14,12 @@ vendor/cmremix/prebuilt/common/etc/backup.conf:system/etc/backup.conf
 PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/common/etc/00_DEBUG:system/etc/init.d/00_DEBUG
 
+# Prebuilt webview files to fix FCs
+PRODUCT_COPY_FILES += \
+    vendor/cmremix/prebuilt/lib/libwebviewchromium.so:system/lib/libwebviewchromium.so \
+    vendor/cmremix/prebuilt/lib/libwebviewchromium_loader.so:system/lib/libwebviewchromium_loader.so \
+    vendor/cmremix/prebuilt/lib/libwebviewchromium_plat_support.so:system/lib/libwebviewchromium_plat_support.so
+
 # Viper4Android
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/etc/viper/ViPER4Android.apk:system/app/ViPER4Android.apk
@@ -35,12 +41,6 @@ PRODUCT_COPY_FILES += vendor/cmremix/prebuilt/common/etc/init.d/00init:system/et
 PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/common/etc/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
     vendor/cmremix/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
-
-# Prebuilt webview files to fix FCs
-PRODUCT_COPY_FILES += \
-    vendor/cmremix/prebuilt/lib/libwebviewchromium.so:system/lib/libwebviewchromium.so \
-    vendor/cmremix/prebuilt/lib/libwebviewchromium_loader.so:system/lib/libwebviewchromium_loader.so \
-    vendor/cmremix/prebuilt/lib/libwebviewchromium_plat_support.so:system/lib/libwebviewchromium_plat_support.so
 
 # cmRemiX Packages
 PRODUCT_PACKAGES += \
