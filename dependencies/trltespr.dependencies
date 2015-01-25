@@ -42,24 +42,6 @@
     "revision":     "cm-12.0"
   },
   {
-    "account":      "CyanogenMod",
-    "repository":   "android_hardware_qcom_display",
-    "target_path":  "hardware/qcom/display-caf/apq8084",
-    "revision":     "cm-12.0-caf-8084"
-  },
-  {
-    "account":      "CyanogenMod",
-    "repository":   "android_hardware_qcom_audio",
-    "target_path":  "hardware/qcom/audio-caf/apq8084",
-    "revision":     "cm-12.0-caf-8084"
-  },
-  {
-    "account":      "CyanogenMod",
-    "repository":   "android_hardware_qcom_media",
-    "target_path":  "hardware/qcom/media-caf/apq8084",
-    "revision":     "cm-12.0-caf-8084"
-  },
-  {
     "account":      "cmRemiX",
     "repository":   "proprietary_vendor_samsung",
     "target_path":  "vendor/samsung",
