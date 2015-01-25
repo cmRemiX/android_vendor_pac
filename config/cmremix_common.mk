@@ -31,6 +31,9 @@ PRODUCT_COPY_FILES += \
 # cmRemiX Overlays
 PRODUCT_PACKAGE_OVERLAYS += vendor/cmremix/overlay/common
 
+# Bootanimation
+PRODUCT_COPY_FILES += vendor/cmremix/prebuilt/common/bootanimation/$(CMREMIX_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
+
 # Init script file with cmRemiX extras
 PRODUCT_COPY_FILES += vendor/cmremix/prebuilt/common/etc/init.local.rc:root/init.cmremix.rc
 

@@ -10,34 +10,11 @@ TARGET_GCC_VERSION_AND := 4.8
 # Target arch is arm
 TARGET_ARCH := arm
 
-# Enable Strict Aliasing
-#STRICT_ALIASING := true
-
-# Enable -O3 Optimization
-#USE_O3_OPTIMIZATIONS := true
-
-# ENABLE_MODULAR_O3 := true
-
-# Enable graphite flags
-#GRAPHITE_OPTS := true
-
-# Google host GCC
-#USE_HOST_4_8 := true
-
-# ENABLE_GCCONLY := true
-
-# Enable Optimization for Krait
-#KRAIT_TUNINGS := true
-
-# Enable Link Time Optimization
-# LOCAL_LTO := true
-
 # Enable PIPE Optimization
 TARGET_USE_PIPE := true
 
-# Copy bootanimation
-PRODUCT_COPY_FILES += \
-    vendor/cmremix/prebuilt/bootanimation/1080x1920/bootanimation.zip:system/media/bootanimation.zip
+# Set bootanimation Size
+CMREMIX_BOOTANIMATION_NAME := 1600
 
 # Include CM-Remix common configuration
 include vendor/cmremix/config/cmremix_common.mk
