@@ -37,9 +37,6 @@ PRODUCT_COPY_FILES += vendor/cmremix/prebuilt/common/bootanimation/$(CMREMIX_BOO
 # Init script file with cmRemiX extras
 PRODUCT_COPY_FILES += vendor/cmremix/prebuilt/common/etc/init.local.rc:root/init.cmremix.rc
 
-# Permissions for Performance Control
-PRODUCT_COPY_FILES += vendor/cmremix/prebuilt/common/etc/init.d/00init:system/etc/init.d/00init
-
 # SuperSU
 PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/common/etc/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
