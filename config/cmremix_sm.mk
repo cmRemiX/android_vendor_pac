@@ -28,6 +28,8 @@ endif
 # Only use these compilers on linux host.
 ifeq ($(strip $(HOST_OS)),linux)
 
+  LOCAL_FILTER_ARCH_ARM := $(filter arm,$(TARGET_ARCH))
+
   # List arm devices
   DEVICE_ARM := \
     cmremix_hlte \
@@ -121,7 +123,8 @@ ifeq ($(strip $(HOST_OS)),linux)
     libart \
     mdnsd \
     libwebrtc_spl \
-    third_party_WebKit_Source_core_webcore_svg_gyp
+    third_party_WebKit_Source_core_webcore_svg_gyp \
+    libjni_filtershow_filters
   endif
 
   ifeq ($(strip $(TARGET_ARCH)),arm64)
@@ -171,7 +174,8 @@ ifeq ($(strip $(HOST_OS)),linux)
     libart \
     mdnsd \
     libwebrtc_spl \
-    third_party_WebKit_Source_core_webcore_svg_gyp
+    third_party_WebKit_Source_core_webcore_svg_gyp \
+    libjni_filtershow_filters
   endif
 
   ifeq ($(strip $(STRICT_ALIASING)),true)
@@ -251,6 +255,10 @@ ifeq ($(strip $(HOST_OS)),linux)
     LOCAL_DISABLE_O3 := \
       libaudioflinger \
       libwebviewchromium
+
+    # Don't compile -O3 with thumb to reduce code size.
+    LOCAL_DISABLE_O3_FLAGS := \
+      -mthumb
 
     # -O3 flags and friends
     O3_FLAGS := \
