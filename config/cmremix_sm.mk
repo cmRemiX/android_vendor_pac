@@ -28,8 +28,6 @@ endif
 # Only use these compilers on linux host.
 ifeq ($(strip $(HOST_OS)),linux)
 
-  LOCAL_FILTER_ARCH_ARM := $(filter arm,$(TARGET_ARCH))
-
   # List arm devices
   DEVICE_ARM := \
     cmremix_hlte \
