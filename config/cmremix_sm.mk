@@ -80,6 +80,7 @@ ifeq ($(strip $(HOST_OS)),linux)
       SM_AND_STATUS := $(filter (release) (prerelease) (experimental),$(SM_AND))
       SM_AND_VERSION := $(SM_AND_NAME)-$(SM_AND_DATE)-$(SM_AND_STATUS)
 
+      # Write version info to build.prop
       PRODUCT_PROPERTY_OVERRIDES += \
         ro.sm.android=$(SM_AND_VERSION)
     endif
@@ -93,6 +94,8 @@ ifeq ($(strip $(HOST_OS)),linux)
       SM_KERNEL_DATE := $(filter 20140% 20141% 20150% 20151%,$(SM_KERNEL))
       SM_KERNEL_STATUS := $(filter (release) (prerelease) (experimental),$(SM_KERNEL))
       SM_KERNEL_VERSION := $(SM_KERNEL_NAME)-$(SM_KERNEL_DATE)-$(SM_KERNEL_STATUS)
+
+      # Write version info to build.prop
       PRODUCT_PROPERTY_OVERRIDES += \
         ro.sm.kernel=$(SM_KERNEL_VERSION)
     endif
@@ -110,21 +113,6 @@ ifeq ($(strip $(HOST_OS)),linux)
            -floop-strip-mine \
            -floop-block \
            -Wno-error=maybe-uninitialized
-
-  # Force disable some modules that are not compatible with graphite flags
-  LOCAL_DISABLE_GRAPHITE := \
-    libunwind \
-    libFFTEm \
-    libicui18n \
-    libskia \
-    libvpx \
-    libmedia_jni \
-    libstagefright_mp3dec \
-    libart \
-    mdnsd \
-    libwebrtc_spl \
-    third_party_WebKit_Source_core_webcore_svg_gyp \
-    libjni_filtershow_filters
   endif
 
   ifeq ($(strip $(TARGET_ARCH)),arm64)
@@ -144,14 +132,16 @@ ifeq ($(strip $(HOST_OS)),linux)
       SM_AND_DATE := $(filter 20140% 20141% 20150% 20151%,$(SM_AND))
       SM_AND_STATUS := $(filter (release) (prerelease) (experimental),$(SM_AND))
       SM_AND_VERSION := $(SM_AND_NAME)-$(SM_AND_DATE)-$(SM_AND_STATUS)
+
+      # Write version info to build.prop
       PRODUCT_PROPERTY_OVERRIDES += \
         ro.sm.android=$(SM_AND_VERSION)
     endif
 
   OPT1 := (graphite)
 
-  # Graphite flags and friends
-  export GRAPHITE_FLAGS := \
+  # Graphite flags and friends for ROM
+  GRAPHITE_FLAGS := \
            -fgraphite \
            -fgraphite-identity \
            -floop-flatten \
@@ -162,7 +152,21 @@ ifeq ($(strip $(HOST_OS)),linux)
            -floop-block \
            -Wno-error=maybe-uninitialized
 
-  # Force disable some modules that are not compatible with graphite flags
+  # Graphite flags for kernel
+  export GRAPHITE_KERNEL_FLAGS := \
+           -fgraphite \
+           -fgraphite-identity \
+           -floop-flatten \
+           -floop-parallelize-all \
+           -ftree-loop-linear \
+           -floop-interchange \
+           -floop-strip-mine \
+           -floop-block
+  endif
+
+  # Force disable some modules that are not compatible with graphite flags.
+  # Add more modules if needed for devices in BoardConfig.mk
+  # LOCAL_DISABLE_GRAPHITE +=
   LOCAL_DISABLE_GRAPHITE := \
     libunwind \
     libFFTEm \
@@ -175,8 +179,9 @@ ifeq ($(strip $(HOST_OS)),linux)
     mdnsd \
     libwebrtc_spl \
     third_party_WebKit_Source_core_webcore_svg_gyp \
-    libjni_filtershow_filters
-  endif
+    libjni_filtershow_filters \
+    libavformat \
+    libavcodec
 
   ifeq ($(strip $(STRICT_ALIASING)),true)
   OPT2 := (strict)
@@ -252,6 +257,8 @@ ifeq ($(strip $(HOST_OS)),linux)
     OPT3 := (extreme)
 
     # Disable some modules that break with -O3
+    # Add more modules if needed for devices in BoardConfig.mk
+    # LOCAL_DISABLE_O3 +=
     LOCAL_DISABLE_O3 := \
       libaudioflinger \
       libwebviewchromium
