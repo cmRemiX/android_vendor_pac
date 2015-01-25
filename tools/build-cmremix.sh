@@ -2,7 +2,7 @@
 
 # cmRemiX version System
 export CMREMIX_VERSION_MAJOR="LP-5.0.2"
-export CMREMIX_VERSION_MINOR="v5.9"
+export CMREMIX_VERSION_MINOR="v6.4"
 export CMREMIX_VERSION_MAINTENANCE="ZION959"
 # Acceptible maitenance versions are; Stable, Dev, Nightly
 
@@ -114,6 +114,7 @@ export LOCAL_LTO=true
 # export FLOOP_NEST_OPTIMIZE=true
 export USE_PREBUILT_CHROMIUM=1
 export USE_CCACHE=1
+export CMREMIX_CHANGELOG=true
 
 opt_adb=0
 opt_chromium=0
