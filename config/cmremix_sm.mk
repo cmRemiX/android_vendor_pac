@@ -27,6 +27,28 @@ endif
 
 # Only use these compilers on linux host.
 ifeq ($(strip $(HOST_OS)),linux)
+
+  # List arm devices
+  DEVICE_ARM := \
+    cmremix_hlte \
+    cmremix_hltespr \
+    cmremix_hltetmo \
+    cmremix_hltevzw \
+    cmremix_trlte \
+    cmremix_trltetmo \
+    cmremix_trltespr \
+    cmremix_trltevzw
+
+  DEVICE_ARM64 := \
+
+  ifeq (1,$(words $(filter $(DEVICE_ARM),$(TARGET_PRODUCT))))
+    TARGET_ARCH := arm
+  endif
+
+  ifeq (1,$(words $(filter $(DEVICE_ARM64),$(TARGET_PRODUCT))))
+    TARGET_ARCH := arm64
+  endif
+
   ifndef TARGET_ARCH
     $(warning ********************************************************************************)
     $(warning *  TARGET_ARCH not defined.)
