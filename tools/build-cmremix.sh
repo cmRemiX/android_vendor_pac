@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # cmRemiX version System
-export CMREMIX_VERSION_MAJOR="LP-5.0.2"
+export CMREMIX_VERSION_MAJOR="LP"
 export CMREMIX_VERSION_MINOR="v6.4"
 export CMREMIX_VERSION_MAINTENANCE="ZION959"
 # Acceptible maitenance versions are; Stable, Dev, Nightly
