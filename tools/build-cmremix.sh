@@ -105,8 +105,7 @@ fi
 export GRAPHITE_OPTS=true
 export STRICT_ALIASING=true
 export USE_HOST_4_8=true
-export USE_O3_OPTIMIZATIONS=true
-export ENABLE_MODULAR_O3=true
+export O3_OPTIMIZATIONS=true
 export KRAIT_TUNINGS=true
 export ENABLE_GCCONLY=true
 #export TARGET_USE_PIPE=true
