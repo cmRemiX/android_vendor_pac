@@ -15,7 +15,7 @@ TARGET_ARCH := arm
 #TARGET_USE_PIPE := true
 
 # Set bootanimation Size
-CMREMIX_BOOTANIMATION_NAME := 1600
+CMREMIX_BOOTANIMATION_NAME := 1440
 
 # Include CM-Remix common configuration
 include vendor/cmremix/config/cmremix_common.mk
