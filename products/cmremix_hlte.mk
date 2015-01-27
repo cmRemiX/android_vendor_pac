@@ -13,6 +13,9 @@ TARGET_ARCH := arm
 # Enable PIPE Optimization
 TARGET_USE_PIPE := true
 
+#TWRP
+DEVICE_RESOLUTION := 1080x1920
+
 # Set bootanimation Size
 CMREMIX_BOOTANIMATION_NAME := 1080
 
@@ -23,3 +26,5 @@ include vendor/cmremix/config/cmremix_common.mk
 $(call inherit-product, device/samsung/hlte/cm.mk)
 
 PRODUCT_NAME := cmremix_hlte
+
+endif
