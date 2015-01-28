@@ -179,7 +179,8 @@ ifeq ($(strip $(HOST_OS)),linux)
     third_party_WebKit_Source_core_webcore_svg_gyp \
     libjni_filtershow_filters \
     libavformat \
-    libavcodec
+    libavcodec \
+    skia_skia_library_gyp
 
   ifeq ($(strip $(STRICT_ALIASING)),true)
   OPT2 := (strict)
@@ -259,7 +260,8 @@ ifeq ($(strip $(HOST_OS)),linux)
     # LOCAL_DISABLE_O3 +=
     LOCAL_DISABLE_O3 := \
       libaudioflinger \
-      libwebviewchromium
+      libwebviewchromium \
+      skia_skia_library_gyp
 
     # Don't compile -O3 with thumb to reduce code size.
     LOCAL_DISABLE_O3_FLAGS := \
