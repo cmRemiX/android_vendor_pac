@@ -291,7 +291,7 @@ ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
   endif
 
     ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
-      OPT2 := (max)
+      OPT2 := (03)
 
       # Disable some modules that break with -O3
       # Add more modules if needed for devices in BoardConfig.mk
@@ -312,7 +312,16 @@ ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
         -Wno-error=strict-overflow
     endif
 
-    GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)
+  ifeq (true,$(KRAIT_TUNINGS))
+    OPT4 := (krait)
+  endif
+
+  ifeq (true,$(ENABLE_GCCONLY))
+   OPT5 := (gcconly)
+  endif
+
+
+    GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)
     ifneq ($(GCC_OPTIMIZATION_LEVELS),)
       PRODUCT_PROPERTY_OVERRIDES += \
         ro.sm.flags=$(GCC_OPTIMIZATION_LEVELS)
