@@ -21,33 +21,12 @@ export GCC_COLORS := 'error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:
 
 UNAME := $(shell uname -s)
 
-ifeq (Linux,$(UNAME))
+ifeq ($(strip $(UNAME)),Linux)
   HOST_OS := linux
 endif
 
 # Only use these compilers on linux host.
 ifeq ($(strip $(HOST_OS)),linux)
-
-  # List arm devices
-  DEVICE_ARM := \
-    cmremix_hlte \
-    cmremix_hltespr \
-    cmremix_hltetmo \
-    cmremix_hltevzw \
-    cmremix_trlte \
-    cmremix_trltetmo \
-    cmremix_trltespr \
-    cmremix_trltevzw
-
-  DEVICE_ARM64 := \
-
-  ifeq (1,$(words $(filter $(DEVICE_ARM),$(TARGET_PRODUCT))))
-    TARGET_ARCH := arm
-  endif
-
-  ifeq (1,$(words $(filter $(DEVICE_ARM64),$(TARGET_PRODUCT))))
-    TARGET_ARCH := arm64
-  endif
 
   ifndef TARGET_ARCH
     $(warning ********************************************************************************)
@@ -57,18 +36,14 @@ ifeq ($(strip $(HOST_OS)),linux)
     $(warning ********************************************************************************)
   endif
 
-# Add extra libs for the compilers to use
-# Filter by TARGET_ARCH since we're pointing to ARCH specific compilers.
-# To use this on new devices define TARGET_ARCH in device makefile.
   ifeq ($(strip $(TARGET_ARCH)),arm)
 
     # Add extra libs for the compilers to use
-    export LD_LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-4.8/arch-arm/usr/lib
-    export LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-4.8/arch-arm/usr/lib
-
+    export LD_LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)/arch-arm/usr/lib
+    export LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)/arch-arm/usr/lib
 
     # Path to ROM toolchain
-    SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-4.8
+    SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)
     SM_AND := $(shell $(SM_AND_PATH)/bin/arm-linux-androideabi-gcc --version)
 
     # Find strings in version info
@@ -84,7 +59,7 @@ ifeq ($(strip $(HOST_OS)),linux)
     endif
 
     # Path to kernel toolchain
-    SM_KERNEL_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-eabi-4.9
+    SM_KERNEL_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-eabi-$(TARGET_SM_KERNEL)
     SM_KERNEL := $(shell $(SM_KERNEL_PATH)/bin/arm-eabi-gcc --version)
 
     ifneq ($(filter (SaberMod%),$(SM_KERNEL)),)
@@ -101,7 +76,24 @@ ifeq ($(strip $(HOST_OS)),linux)
   OPT1 := (graphite)
 
   # Graphite flags and friends
-  export GRAPHITE_FLAGS := \
+  GRAPHITE_FLAGS := \
+    -fgraphite \
+    -fgraphite-identity \
+    -floop-flatten \
+    -floop-parallelize-all \
+    -ftree-loop-linear \
+    -floop-interchange \
+    -floop-strip-mine \
+    -floop-block
+
+  # Legacy gcc doesn't understand this flag
+  ifneq ($(strip $(USE_LEGACY_GCC)),true)
+    GRAPHITE_FLAGS += \
+      -Wno-error=maybe-uninitialized
+  endif
+
+  # Graphite flags for kernel
+  export GRAPHITE_KERNEL_FLAGS := \
            -fgraphite \
            -fgraphite-identity \
            -floop-flatten \
@@ -109,19 +101,17 @@ ifeq ($(strip $(HOST_OS)),linux)
            -ftree-loop-linear \
            -floop-interchange \
            -floop-strip-mine \
-           -floop-block \
-           -Wno-error=maybe-uninitialized
+           -floop-block
   endif
 
   ifeq ($(strip $(TARGET_ARCH)),arm64)
 
     # Add extra libs for the compilers to use
-    export LD_LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-4.9/arch-arm64/usr/lib
-    export LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-4.9/arch-arm64/usr/lib
-
+    export LD_LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)/arch-arm64/usr/lib
+    export LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)/arch-arm64/usr/lib
 
     # Path to toolchain
-    SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-4.9
+    SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)
     SM_AND := $(shell $(SM_AND_PATH)/bin/aarch64-linux-android-gcc --version)
 
     # Find strings in version info
@@ -136,19 +126,39 @@ ifeq ($(strip $(HOST_OS)),linux)
         ro.sm.android=$(SM_AND_VERSION)
     endif
 
+    # Path to kernel toolchain
+    SM_KERNEL_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_KERNEL)
+    SM_KERNEL := $(shell $(SM_KERNEL_PATH)/bin/aarch64-linux-android-gcc --version)
+
+    ifneq ($(filter (SaberMod%),$(SM_KERNEL)),)
+      SM_KERNEL_NAME := $(filter (SaberMod%),$(SM_KERNEL))
+      SM_KERNEL_DATE := $(filter 20140% 20141% 20150% 20151%,$(SM_KERNEL))
+      SM_KERNEL_STATUS := $(filter (release) (prerelease) (experimental),$(SM_KERNEL))
+      SM_KERNEL_VERSION := $(SM_KERNEL_NAME)-$(SM_KERNEL_DATE)-$(SM_KERNEL_STATUS)
+
+      # Write version info to build.prop
+      PRODUCT_PROPERTY_OVERRIDES += \
+        ro.sm.kernel=$(SM_KERNEL_VERSION)
+    endif
+
   OPT1 := (graphite)
 
   # Graphite flags and friends for ROM
   GRAPHITE_FLAGS := \
-           -fgraphite \
-           -fgraphite-identity \
-           -floop-flatten \
-           -floop-parallelize-all \
-           -ftree-loop-linear \
-           -floop-interchange \
-           -floop-strip-mine \
-           -floop-block \
-           -Wno-error=maybe-uninitialized
+    -fgraphite \
+    -fgraphite-identity \
+    -floop-flatten \
+    -floop-parallelize-all \
+    -ftree-loop-linear \
+    -floop-interchange \
+    -floop-strip-mine \
+    -floop-block
+
+  # Legacy gcc doesn't understand this flag
+  ifneq ($(strip $(USE_LEGACY_GCC)),true)
+    GRAPHITE_FLAGS += \
+      -Wno-error=maybe-uninitialized
+  endif
 
   # Graphite flags for kernel
   export GRAPHITE_KERNEL_FLAGS := \
