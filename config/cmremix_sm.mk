@@ -14,183 +14,211 @@
 #
 
 # Written for SaberMod toolchains
-# Find host os
+# TARGET_SM_AND and TARGET_SM_KERNEL must to be set before this file will work properly.
+# This is to avoid hardcoding the gcc versions for the ROM and kernels
 
-# Set GCC colors
-export GCC_COLORS := 'error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-UNAME := $(shell uname -s)
-
-ifeq ($(strip $(UNAME)),Linux)
-  HOST_OS := linux
+ifdef TARGET_SM_AND
+  TARGET_SM_AND_DEFINED := true
+else
+  $(warning ********************************************************************************)
+  $(warning *  TARGET_SM_AND not defined.)
+  $(warning *  This needs to be set in device trees before common.mk is called.)
+  $(warning *  Define TARGET_SM_AND before common.mk is called.)
+  $(warning *  skipping sm.mk.)
+  $(warning ********************************************************************************)
+  TARGET_SM_AND_DEFINED := false
 endif
 
-# Only use these compilers on linux host.
-ifeq ($(strip $(HOST_OS)),linux)
+ifdef TARGET_SM_KERNEL
+  TARGET_SM_KERNEL_DEFINED := true
+else
+  $(warning ********************************************************************************)
+  $(warning *  TARGET_SM_KERNEL not defined.)
+  $(warning *  This needs to be set in device trees before common.mk is called for inline kernel building.)
+  $(warning *  Skipping kernel bits.)
+  $(warning ********************************************************************************)
+  TARGET_SM_KERNEL_DEFINED := false
+endif
 
-  ifndef TARGET_ARCH
-    $(warning ********************************************************************************)
-    $(warning *  TARGET_ARCH not defined.)
-    $(warning *  This is commonly set in device trees BoardConfig.mk.)
-    $(warning *  Define TARGET_ARCH before including this file sm.mk)
-    $(warning ********************************************************************************)
+# Skip everything if TARGET_SM_AND is not defined.
+ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
+
+  # Set GCC colors
+  export GCC_COLORS := 'error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+  # Find host os
+  UNAME := $(shell uname -s)
+
+  ifeq ($(strip $(UNAME)),Linux)
+    HOST_OS := linux
   endif
 
-  ifeq ($(strip $(TARGET_ARCH)),arm)
+  # Only use these compilers on linux host.
+  ifeq ($(strip $(HOST_OS)),linux)
 
-    # Add extra libs for the compilers to use
-    export LD_LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)/arch-arm/usr/lib
-    export LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)/arch-arm/usr/lib
+    ifeq ($(strip $(TARGET_ARCH)),arm)
 
-    # Path to ROM toolchain
-    SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)
-    SM_AND := $(shell $(SM_AND_PATH)/bin/arm-linux-androideabi-gcc --version)
+      # Add extra libs for the compilers to use
+      export LD_LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)/arch-arm/usr/lib
+      export LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)/arch-arm/usr/lib
 
-    # Find strings in version info
-    ifneq ($(filter (SaberMod%),$(SM_AND)),)
-      SM_AND_NAME := $(filter (SaberMod%),$(SM_AND))
-      SM_AND_DATE := $(filter 20140% 20141% 20150% 20151%,$(SM_AND))
-      SM_AND_STATUS := $(filter (release) (prerelease) (experimental),$(SM_AND))
-      SM_AND_VERSION := $(SM_AND_NAME)-$(SM_AND_DATE)-$(SM_AND_STATUS)
+      # Path to ROM toolchain
+      SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)
+      SM_AND := $(shell $(SM_AND_PATH)/bin/arm-linux-androideabi-gcc --version)
 
-      # Write version info to build.prop
-      PRODUCT_PROPERTY_OVERRIDES += \
-        ro.sm.android=$(SM_AND_VERSION)
+      # Find strings in version info
+      ifneq ($(filter (SaberMod%),$(SM_AND)),)
+        SM_AND_NAME := $(filter (SaberMod%),$(SM_AND))
+        SM_AND_DATE := $(filter 20140% 20141% 20150% 20151%,$(SM_AND))
+        SM_AND_STATUS := $(filter (release) (prerelease) (experimental),$(SM_AND))
+        SM_AND_VERSION := $(SM_AND_NAME)-$(SM_AND_DATE)-$(SM_AND_STATUS)
+
+        # Write version info to build.prop
+        PRODUCT_PROPERTY_OVERRIDES += \
+          ro.sm.android=$(SM_AND_VERSION)
+      endif
+
+      # Skip kernel bits if TARGET_SM_KERNEL is not defined.
+      ifeq ($(strip $(TARGET_SM_KERNEL_DEFINED)),true)
+
+        # Path to kernel toolchain
+        SM_KERNEL_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-eabi-$(TARGET_SM_KERNEL)
+        SM_KERNEL := $(shell $(SM_KERNEL_PATH)/bin/arm-eabi-gcc --version)
+
+        ifneq ($(filter (SaberMod%),$(SM_KERNEL)),)
+          SM_KERNEL_NAME := $(filter (SaberMod%),$(SM_KERNEL))
+          SM_KERNEL_DATE := $(filter 20140% 20141% 20150% 20151%,$(SM_KERNEL))
+          SM_KERNEL_STATUS := $(filter (release) (prerelease) (experimental),$(SM_KERNEL))
+          SM_KERNEL_VERSION := $(SM_KERNEL_NAME)-$(SM_KERNEL_DATE)-$(SM_KERNEL_STATUS)
+
+          # Write version info to build.prop
+          PRODUCT_PROPERTY_OVERRIDES += \
+            ro.sm.kernel=$(SM_KERNEL_VERSION)
+        endif
+      endif
+
+    OPT1 := (graphite)
+
+    # Graphite flags and friends
+    GRAPHITE_FLAGS := \
+      -fgraphite \
+      -fgraphite-identity \
+      -floop-flatten \
+      -floop-parallelize-all \
+      -ftree-loop-linear \
+      -floop-interchange \
+      -floop-strip-mine \
+      -floop-block
+
+    # Legacy gcc doesn't understand this flag
+    ifneq ($(strip $(USE_LEGACY_GCC)),true)
+      GRAPHITE_FLAGS += \
+        -Wno-error=maybe-uninitialized
     endif
 
-    # Path to kernel toolchain
-    SM_KERNEL_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-eabi-$(TARGET_SM_KERNEL)
-    SM_KERNEL := $(shell $(SM_KERNEL_PATH)/bin/arm-eabi-gcc --version)
-
-    ifneq ($(filter (SaberMod%),$(SM_KERNEL)),)
-      SM_KERNEL_NAME := $(filter (SaberMod%),$(SM_KERNEL))
-      SM_KERNEL_DATE := $(filter 20140% 20141% 20150% 20151%,$(SM_KERNEL))
-      SM_KERNEL_STATUS := $(filter (release) (prerelease) (experimental),$(SM_KERNEL))
-      SM_KERNEL_VERSION := $(SM_KERNEL_NAME)-$(SM_KERNEL_DATE)-$(SM_KERNEL_STATUS)
-
-      # Write version info to build.prop
-      PRODUCT_PROPERTY_OVERRIDES += \
-        ro.sm.kernel=$(SM_KERNEL_VERSION)
+    # Graphite flags for kernel
+    export GRAPHITE_KERNEL_FLAGS := \
+             -fgraphite \
+             -fgraphite-identity \
+             -floop-flatten \
+             -floop-parallelize-all \
+             -ftree-loop-linear \
+             -floop-interchange \
+             -floop-strip-mine \
+             -floop-block
     endif
 
-  OPT1 := (graphite)
+    ifeq ($(strip $(TARGET_ARCH)),arm64)
 
-  # Graphite flags and friends
-  GRAPHITE_FLAGS := \
-    -fgraphite \
-    -fgraphite-identity \
-    -floop-flatten \
-    -floop-parallelize-all \
-    -ftree-loop-linear \
-    -floop-interchange \
-    -floop-strip-mine \
-    -floop-block
+      # Add extra libs for the compilers to use
+      export LD_LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)/arch-arm64/usr/lib
+      export LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)/arch-arm64/usr/lib
 
-  # Legacy gcc doesn't understand this flag
-  ifneq ($(strip $(USE_LEGACY_GCC)),true)
-    GRAPHITE_FLAGS += \
-      -Wno-error=maybe-uninitialized
-  endif
+      # Path to toolchain
+      SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)
+      SM_AND := $(shell $(SM_AND_PATH)/bin/aarch64-linux-android-gcc --version)
 
-  # Graphite flags for kernel
-  export GRAPHITE_KERNEL_FLAGS := \
-           -fgraphite \
-           -fgraphite-identity \
-           -floop-flatten \
-           -floop-parallelize-all \
-           -ftree-loop-linear \
-           -floop-interchange \
-           -floop-strip-mine \
-           -floop-block
-  endif
+      # Find strings in version info
+      ifneq ($(filter (SaberMod%),$(SM_AND)),)
+        SM_AND_NAME := $(filter (SaberMod%),$(SM_AND))
+        SM_AND_DATE := $(filter 20140% 20141% 20150% 20151%,$(SM_AND))
+        SM_AND_STATUS := $(filter (release) (prerelease) (experimental),$(SM_AND))
+        SM_AND_VERSION := $(SM_AND_NAME)-$(SM_AND_DATE)-$(SM_AND_STATUS)
 
-  ifeq ($(strip $(TARGET_ARCH)),arm64)
+        # Write version info to build.prop
+        PRODUCT_PROPERTY_OVERRIDES += \
+          ro.sm.android=$(SM_AND_VERSION)
+      endif
 
-    # Add extra libs for the compilers to use
-    export LD_LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)/arch-arm64/usr/lib
-    export LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)/arch-arm64/usr/lib
+      # Skip kernel bits if TARGET_SM_KERNEL is not defined.
+      ifeq ($(strip $(TARGET_SM_KERNEL_DEFINED)),true)
 
-    # Path to toolchain
-    SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)
-    SM_AND := $(shell $(SM_AND_PATH)/bin/aarch64-linux-android-gcc --version)
+        # Path to kernel toolchain
+        SM_KERNEL_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_KERNEL)
+        SM_KERNEL := $(shell $(SM_KERNEL_PATH)/bin/aarch64-linux-android-gcc --version)
 
-    # Find strings in version info
-    ifneq ($(filter (SaberMod%),$(SM_AND)),)
-      SM_AND_NAME := $(filter (SaberMod%),$(SM_AND))
-      SM_AND_DATE := $(filter 20140% 20141% 20150% 20151%,$(SM_AND))
-      SM_AND_STATUS := $(filter (release) (prerelease) (experimental),$(SM_AND))
-      SM_AND_VERSION := $(SM_AND_NAME)-$(SM_AND_DATE)-$(SM_AND_STATUS)
+        ifneq ($(filter (SaberMod%),$(SM_KERNEL)),)
+          SM_KERNEL_NAME := $(filter (SaberMod%),$(SM_KERNEL))
+          SM_KERNEL_DATE := $(filter 20140% 20141% 20150% 20151%,$(SM_KERNEL))
+          SM_KERNEL_STATUS := $(filter (release) (prerelease) (experimental),$(SM_KERNEL))
+          SM_KERNEL_VERSION := $(SM_KERNEL_NAME)-$(SM_KERNEL_DATE)-$(SM_KERNEL_STATUS)
 
-      # Write version info to build.prop
-      PRODUCT_PROPERTY_OVERRIDES += \
-        ro.sm.android=$(SM_AND_VERSION)
+          # Write version info to build.prop
+          PRODUCT_PROPERTY_OVERRIDES += \
+            ro.sm.kernel=$(SM_KERNEL_VERSION)
+        endif
+      endif
+
+    OPT1 := (graphite)
+
+    # Graphite flags and friends for ROM
+    GRAPHITE_FLAGS := \
+      -fgraphite \
+      -fgraphite-identity \
+      -floop-flatten \
+      -floop-parallelize-all \
+      -ftree-loop-linear \
+      -floop-interchange \
+      -floop-strip-mine \
+      -floop-block
+
+    # Legacy gcc doesn't understand this flag
+    ifneq ($(strip $(USE_LEGACY_GCC)),true)
+      GRAPHITE_FLAGS += \
+        -Wno-error=maybe-uninitialized
     endif
 
-    # Path to kernel toolchain
-    SM_KERNEL_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_KERNEL)
-    SM_KERNEL := $(shell $(SM_KERNEL_PATH)/bin/aarch64-linux-android-gcc --version)
-
-    ifneq ($(filter (SaberMod%),$(SM_KERNEL)),)
-      SM_KERNEL_NAME := $(filter (SaberMod%),$(SM_KERNEL))
-      SM_KERNEL_DATE := $(filter 20140% 20141% 20150% 20151%,$(SM_KERNEL))
-      SM_KERNEL_STATUS := $(filter (release) (prerelease) (experimental),$(SM_KERNEL))
-      SM_KERNEL_VERSION := $(SM_KERNEL_NAME)-$(SM_KERNEL_DATE)-$(SM_KERNEL_STATUS)
-
-      # Write version info to build.prop
-      PRODUCT_PROPERTY_OVERRIDES += \
-        ro.sm.kernel=$(SM_KERNEL_VERSION)
+    # Graphite flags for kernel
+    export GRAPHITE_KERNEL_FLAGS := \
+             -fgraphite \
+             -fgraphite-identity \
+             -floop-flatten \
+             -floop-parallelize-all \
+             -ftree-loop-linear \
+             -floop-interchange \
+             -floop-strip-mine \
+             -floop-block
     endif
 
-  OPT1 := (graphite)
-
-  # Graphite flags and friends for ROM
-  GRAPHITE_FLAGS := \
-    -fgraphite \
-    -fgraphite-identity \
-    -floop-flatten \
-    -floop-parallelize-all \
-    -ftree-loop-linear \
-    -floop-interchange \
-    -floop-strip-mine \
-    -floop-block
-
-  # Legacy gcc doesn't understand this flag
-  ifneq ($(strip $(USE_LEGACY_GCC)),true)
-    GRAPHITE_FLAGS += \
-      -Wno-error=maybe-uninitialized
-  endif
-
-  # Graphite flags for kernel
-  export GRAPHITE_KERNEL_FLAGS := \
-           -fgraphite \
-           -fgraphite-identity \
-           -floop-flatten \
-           -floop-parallelize-all \
-           -ftree-loop-linear \
-           -floop-interchange \
-           -floop-strip-mine \
-           -floop-block
-  endif
-
-  # Force disable some modules that are not compatible with graphite flags.
-  # Add more modules if needed for devices in BoardConfig.mk
-  # LOCAL_DISABLE_GRAPHITE +=
-  LOCAL_DISABLE_GRAPHITE := \
-    libunwind \
-    libFFTEm \
-    libicui18n \
-    libskia \
-    libvpx \
-    libmedia_jni \
-    libstagefright_mp3dec \
-    libart \
-    mdnsd \
-    libwebrtc_spl \
-    third_party_WebKit_Source_core_webcore_svg_gyp \
-    libjni_filtershow_filters \
-    libavformat \
-    libavcodec \
-    skia_skia_library_gyp
+    # Force disable some modules that are not compatible with graphite flags.
+    # Add more modules if needed for devices in BoardConfig.mk
+    # LOCAL_DISABLE_GRAPHITE +=
+    LOCAL_DISABLE_GRAPHITE := \
+      libunwind \
+      libFFTEm \
+      libicui18n \
+      libskia \
+      libvpx \
+      libmedia_jni \
+      libstagefright_mp3dec \
+      libart \
+      mdnsd \
+      libwebrtc_spl \
+      third_party_WebKit_Source_core_webcore_svg_gyp \
+      libjni_filtershow_filters \
+      libavformat \
+      libavcodec \
+      skia_skia_library_gyp
 
   ifeq ($(strip $(STRICT_ALIASING)),true)
   OPT2 := (strict)
@@ -262,36 +290,36 @@ ifeq ($(strip $(HOST_OS)),linux)
 	libOmxVenc
   endif
 
-  ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
-    OPT3 := (extreme)
+    ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
+      OPT2 := (max)
 
-    # Disable some modules that break with -O3
-    # Add more modules if needed for devices in BoardConfig.mk
-    # LOCAL_DISABLE_O3 +=
-    LOCAL_DISABLE_O3 := \
-      libaudioflinger \
-      libwebviewchromium \
-      skia_skia_library_gyp
+      # Disable some modules that break with -O3
+      # Add more modules if needed for devices in BoardConfig.mk
+      # LOCAL_DISABLE_O3 +=
+      LOCAL_DISABLE_O3 := \
+        libaudioflinger \
+        libwebviewchromium \
+        skia_skia_library_gyp
 
-    # Don't compile -O3 with thumb to reduce code size.
-    LOCAL_DISABLE_O3_FLAGS := \
-      -mthumb
+      # Don't compile -O3 with thumb to reduce code size.
+      LOCAL_DISABLE_O3_FLAGS := \
+        -mthumb
 
-    # -O3 flags and friends
-    O3_FLAGS := \
-      -O3 \
-      -Wno-error=array-bounds \
-      -Wno-error=strict-overflow
+      # -O3 flags and friends
+      O3_FLAGS := \
+        -O3 \
+        -Wno-error=array-bounds \
+        -Wno-error=strict-overflow
+    endif
+
+    GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)
+    ifneq ($(GCC_OPTIMIZATION_LEVELS),)
+      PRODUCT_PROPERTY_OVERRIDES += \
+        ro.sm.flags=$(GCC_OPTIMIZATION_LEVELS)
+    endif
+  else
+    $(warning ********************************************************************************)
+    $(warning *  SaberMod currently only works on linux host systems.)
+    $(warning ********************************************************************************)
   endif
-
-GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)
-ifneq (,$(GCC_OPTIMIZATION_LEVELS))
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sm.flags=$(GCC_OPTIMIZATION_LEVELS)
-endif
-
-else
-  $(warning ********************************************************************************)
-  $(warning *  SaberMod currently only works on linux host systems.)
-  $(warning ********************************************************************************)
 endif

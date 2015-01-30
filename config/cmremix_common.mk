@@ -92,5 +92,12 @@ EXTENDED_POST_PROCESS_PROPS := vendor/cmremix/tools/cmremix_process_props.py
 
 # Inherit sabermod configs.  Don't include if TARGET_ARCH isn't defined
 ifndef TARGET_ARCH
-include vendor/cmremix/config/cmremix_sm.mk
+  include vendor/cmremix/config/cmremix_sm.mk
+else
+    $(warning ********************************************************************************)
+    $(warning *  TARGET_ARCH not defined.)
+    $(warning *  This needs to be set in device trees before common.mk is called.)
+    $(warning *  Define TARGET_ARCH before common.mk is called.)
+    $(warning *  skipping sm.mk.)
+    $(warning ********************************************************************************)
 endif
