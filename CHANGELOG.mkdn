@@ -1,0 +1,548 @@
+====================
+     01-29-2015
+====================
+
+
+   * bootable/recovery-twrp/
+f8194e2 gui: fix IsInRegion
+ecd8918 Use macro to add actions to the action map
+
+   * build/
+2319183 dumpvar: remove unused flags
+ccefd1b build: instroduce GNU11 Modular (Pbeeler) and fixed LTO
+52928f9 USE_O3_OPTIMIZATIONS flag reintroduction
+033e21d Remove crappy O3 Implementation
+6bf640e Clang -O3
+105fa5b kernel: Add custom toolchain for kernel build again after rebase
+
+   * external/bluetooth/bluedroid/
+5e78adc bluedroid: Fix warning caused by commit f9f2dbcca4263188df5efe28b1a5bcb0ce906b6f
+
+   * frameworks/base/
+7fc60cf SystemUI: add left and right virtual buttons while typing
+83cce7b Add SMS Middleware layer.
+0af7f85 Add ACTION_NEW_OUTGOING_SMS
+6dbcf7b SystemUI: Visualizer tile improvements
+0ba3e31 base: Add theme support to Ringtone and Profile pickers activities
+73ab127 Revert "[ActivityManager] Set appropriate relation of task to home"
+b0fa2f8 SystemUI : NavigationBar Customization
+69e6c04 Quick Settings: Auto collapse panel (1/2)
+cc34549 Wifi: add option to show quick settings detail view (1/2)
+6e7b948  Allow disabling of FC dialogs [1/2]
+fd38d5f fixed build
+
+   * frameworks/opt/telephony/
+65fd4f8 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0-2
+
+   * kernel/samsung/trlte/
+b51b22d Enable pstore/ramoops dump for kernel panics.
+f9b53eb Fix vibrator, and wakelocks with fingerprint scanner/hrm/uv driver for USC
+
+   * packages/apps/DeskClock/
+5658fd5 DeskClock: consolidate Alarm picker to one dialog
+
+   * packages/apps/Mms/
+72d96cb Mms: Use tel mimetype for call button on notification
+b919b51 Mms: Improve ui for sms compose with chips
+2433bfe Fix a ui bugs where an overrided layout shows white on white
+
+   * packages/apps/Settings/
+fbca6c2 Settings: Fix inflate exception on search. Dynamically replace nested fragment.
+bec67aa Settings: Clarify where weather status appears.
+e78c019 Settings: add navigation bar arrow keys toggle
+ee4e57e Settings: Re-add whisperpush settings.
+b8f5917 Settings : Add back navigation bar customization.
+8faaf22 Expose hardcoded and @android colors from layouts
+d702369 Quick Settings: Auto collapse panel (2/2)
+1349640 Wifi: add option to show quick settings detail view (2/2) (FusionSP)
+
+   * packages/apps/Trebuchet/
+edbea0a DynamicGrid: tuning the icon size for some device
+b5f816d Make workspace during preview larger
+
+   * packages/providers/MediaProvider/
+0714ad9 mediaprovider: Add theme support to Ringtone activity
+
+   * vendor/cm/
+650acb2 Add Luxembourgish spellchecking dictionary
+
+   * vendor/cmremix/
+60ad005 add change log
+81ca1fe fixed O3_OPTIMIZATIONS
+8534f7c Revert: Add Prebuilt libwebviewchromium libs
+d04ffa7 Krait and GCCOnly to About Menu
+0ddfe2e UPDATE-SuperSU-v2.45
+00a267b CM: Introduce new default wallpaper.
+6fe1729 remove pac review
+61856a3 Tools: Removed unused and correct O3 Optimization
+71c94e5 update dependencies
+ea06d7a fixed bootanimation to 1440 for trlte varients
+9d7a41d Add 2048x1536 boot animation
+703c962 Tools: remove unused version
+
+   * vendor/samsung/
+ca417c8 Merge remote-tracking branch 'TheMuppets/cm-12.0' into cm-12.0
+e84663d Merge pull request #567 from solk2/cm-12.0
+6d9eff3 jf-common update mpdecision from mako
+db186ca ks01lte: Update blobs:
+
+====================
+     01-28-2015
+====================
+
+
+   * cmRemiX/
+cd98c56 track sqlite
+f56441c Remove VoiceDialer from manifest
+
+   * device/samsung/trlte-common/
+eaf10a3 Add Enforcing video-snapshot-supported = true
+2c7f1b6 enabled hardware keys
+a922091 1/2 3GB dalvik heap and hwui memory (Originally 2GB)
+e718637 use twrp for default recovery
+
+   * external/sqlite/
+a713b53 Upgrade to SQLite 3.8.8.1
+49f4590 Upgrade to SQLite 3.8.7.4
+
+   * frameworks/base/
+de783a7 SlimSeekBarPreference: clean up a wee bit
+cff48b6 Base: add more drawables to Slim LockScreen Shortcuts (2/2)
+000b9b6 SystemUI : Add screen timeout tile
+4fbe21b Fix bad exclude region in landscape
+6cf69f7 Avoid overwriting EGL14.EGL_NO_SURFACE
+9f64174 [ActivityManager] Fix activity always visible.
+0774ac8 Prevent system server dump stuck by pipe buffer full.
+f8a639f [ActivityManager] Prevent application holding AMS lock
+fa067b1 [ActivityManager] Set appropriate relation of task to home
+3417366 [ActivityManager] Fix adjust to wrong focused stack
+f604e70 [AppOps] Fix lost op state when upgrading to L.
+9561e71 Avoid deadlock between ActivityManagerService and ProcessStatsService.
+601dcc3 [ActivityManager] Reduce report wrong anr activity
+04b46f9 [ActivityManager] Avoid orphan ContentProviderRecord.
+d58c3c2 [ActivityManager] Fix index out of bounds when updating next pss time.
+2c9eb6f [ActivityManager] Improve task order of getRunningTasks.
+a8780ec Don't enable screen until keyguard is ready
+db2af29 Correct the bitmap copy to preserve already drawn area
+ed833aa Fix for half blank screen during App resume
+d759fa7 Prevent calling GL functions with an invalid surface
+de3219a [HWUI] fix texture cache can't be removed for recycled bitmap
+1bd3af4 SystemUI: clean up Location tile
+
+   * frameworks/native/
+9f8d01d Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
+e0d7c63 Fix for corruption when numFds or numInts is too large.
+3250a13 Surface: Ensure synchronisation of copyBlt
+e7e6006 Surface: Always consume fence fd in queueBuffer
+
+   * frameworks/opt/chips/
+9677961 Chips: Add more logic to dismiss selection dialog
+
+   * packages/apps/Settings/
+5813154 Allow disabling of FC dialogs [2/2]
+14e062a Settings: add more drawables to Slim LockScreen Shortcuts (1/2)
+5fd4f6b DeviceInfo: correctly grab the processor info from /proc/cpuinfo
+054c41e DeviceInfo: remove unused variable in getMemInfo()
+a9cf585 Skip Misc/Overcounted battery stats in builds
+c16bb06 Settings: Add new gesture vector drawable.
+471a5f1 Settings : Add screen timeout
+55a3806 Settings: Fix off-by-one SectionIndexer in PrivacyGuard.
+2200584 Settings: Fix off-by-one SectionIndexer in Expanded Desktop.
+3b567d7 Settings: Only save settings on destroy if we're user configurable.
+
+   * packages/apps/ThemeChooser/
+feb1890 Update notification icon to new paint bucket
+
+   * system/core/
+a7626dd Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
+13d53a4 fs_mgr: Allow ext2/3/4 to mount as ext4
+
+====================
+     01-27-2015
+====================
+
+
+   * bootable/recovery-cwm/
+1fc30d3 recovery: fix another misspelling of "file_blocks" as "block_size"
+
+   * bootable/recovery-twrp/
+1b67fff Use TWAtomicInt in MTPStorage
+0453695 Use TWAtomicInt in gui.cpp to make it thread safe
+7abc5fe Add cancel backup capability.
+
+   * build/
+110d054 SM Modular:  Fix wrong indef's
+bbff60c Add changelog generator (2/2)
+c531c96 various fixed and update
+0ce9fac Do not remove recovery resources for twrp
+d08f201 dumpvar: add FLOOP_NEST_OPTIMIZE info
+b6d0b95 Introduce FLOOP_NEST_OPTIMIZE
+33cd448 Introduce Modular Link Time Optimization This is the codes from @MWisbest, Get the idea to for modular from Chet Kener & Pbeeler
+c3ee8a9 graphite: one more module for new SM 1-14-2015
+b925844 strict : disabled more module for cmRemiX Rom
+62eb3d4 dumpvar: fixed sabermod kernel version
+9db702c add missing endif
+c71c44d show info of Optimization flags being used
+a01fccb Show Custom Toolchain being used
+1ff63d8 Shrink the codes
+a98dd26 Introduce Modular TARGET_USE_PIPE
+fdfafe5 Update graphite again
+5cdc280 O3: Ignore Annoying warnings that crop up with -O3
+3c9ca1b Missing Separator
+b4dec19 Update Copyright Year to 2015
+b633e7e Order Matters
+268b786 libwebviewchromium: Haters Gonna Hate
+a46a345 Clang doesn't support -mfpu=neon-vfpv4
+faa5121 Remove webview related files from -O3 and GCC Only Optimizations
+75c9fb6 armv7-a-neon: Apply Correct mfpu and mfloat tunings per arch
+f60e766 Bluetooth: The Most poorly written code in Android
+a058301 Update the Krait Ignore List
+bc15f14 GCCONLY: Add -mvectorize-with-neon-quad
+448a6be -mvectorize-with-neon-quad not supported by clang
+d73a61b Keep Krait Tunings off the Host Modules
+88111fc Return some GCCONLY flags used in Kitkat
+1cf3a0b Attempt to tune for Krait Modularly
+3e06eb9 Initial Modular O3 Implementation
+7369813 strict-aliasing:  update module list
+a90daff strict-aliasing: Fix warning levels for clang or not clang
+9d5fb7d TWRP Strict Aliasing Violations
+623c2db build: clang: use swift and VFP4 flags for krait
+3e6901c Update Strict.mk with more violations
+157874b WIP: clang supports cortex-a15 now
+5f90c8d Introduce USE_HOST_4_8 Flag
+50cd60c Use Universal True instead of Yes
+c8162f0 Updates/Fixes for modular graphite/strict implementation
+8ac60ad Initial Disable Strict Option
+2821f85 Update Graphite and Strict Aliasing
+c6b9e40 Update modular:  add strict-aliasing and make flags default instead of using a string
+7b6f3fd Cleanup armv7a neon
+37506c7 Build: Add Custom Toolchain Support
+74ee5ce Remove 2nd cpu nonsense
+52fd57f Add graphite flags
+adaeb37 Use New 4.8 Host Toolchain from Google
+9ca0016 Add Toolchain Version to Lunch Menu
+0146b92 Update host linux toolchain to gcc 4.8
+fa4da01 Move definition of -D__ARM_FEATURE_LPAE=1 cflag to top-level.
+8e35f8e Remove libdvm dex preopt support.
+5cf022d ccache: Use system version over prebuilt
+317c9cb build: remove all stops if using different make/openjdk-java version
+7eeb88d Kill some log spam
+6827f54 Add Make Dirty Option
+16a1d30 Add a Whole bunch of Clean Options
+db171b0 Block Building
+963931e Add SuperSU to releasetools
+939728c core: Set ro.adb.secure=0 for recovery default.prop
+a28dd74 core/config.mk: Add SED_INPLACE
+290fede Remove recovery resources for cwm
+67727d6 build: Do not remove recovery resources, so TWRP can build
+0eaa7cb build: Show more hardware information about the device [3/3]
+7633c7d JDK8: JDK check should succeed with OpenJDK 8
+1041be0 build: change style console output of prebuilt chromium
+a9adb11 build: Fix PreBuilt Chromium refs
+c8c6ffe Prebuilt chromium: Run a check for target device directory
+34556b1 build: Add chromium prebuilt support to envsetup.sh && The core Makefile
+e018acf Do not use mkf2fsuserimg.sh if we have two fs in fstab, for example:
+33ab2c5 Introduce New Squisher/Opticharger for Lollipop (2/2)
+4b44b8d cmRemiX Version
+
+   * frameworks/base/
+31f673e Themes: properly dispatch calls to all connected listeners
+b5386b0 core: Add support for Luxembourgish
+4e7b988 core: Add support for Asturian
+7d939c3 SystemUI: Lte -> LTE.
+
+   * frameworks/native/
+60d6d7c Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
+
+   * hardware/samsung/
+ca1a0ee macloader: Fix log output and return value.
+c7212d0 macloader: Use a variable for device type.
+3a73bd3 macloader: Close file when we don't need it anymore.
+7558b9d macloader: Use fchown() to change owner of the cidfile.
+7f517d7 macloader: Use fchmod() to change permissions.
+2b60179 macloader: Fix build warning with LOG defines.
+60f13f2 macloader: Make macloader a C file.
+
+   * packages/apps/CMFileManager/
+cdb7c09 Add chinese translations
+
+   * packages/apps/ContactsCommon/
+8478fc2 Quick Call: do not show quick call next to profile contact
+
+   * packages/apps/InCallUI/
+774eb34 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
+
+   * packages/apps/Settings/
+81b082f fixed gesture anywhere derp
+57c93ec Move toast animation to cmremix display & animation settings
+
+   * packages/inputmethods/LatinIME/
+ddcadf3 LatinIME: Add Luxembourgish keyboard & spellchecking dictionary
+dd0eaab LatinIME: Add support for Australian English
+
+   * packages/services/Telephony/
+ee09ee5 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
+883b4b2 MSIM Network Settings update
+
+   * prebuilts/gcc/linux-x86/arm/arm-eabi-4.9/
+dbd9a0b GCC SaberMod Toolchain arm-eabi update 1-27-2015
+
+   * prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8/
+fa1eeb7 GCC SaberMod arm-linux-androideabi-4.8 (Graphite) Update 1-27-2015
+
+   * system/core/
+4ee610e Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
+b08cf09 android_reboot: execute recovery pre command while rw mounted
+
+   * vendor/cm/
+9d782d9 Remove TMobile themes permission
+2fe8b51 Don't build VoiceDialer
+8c356e8 Remove deprecated VideoEditor packages
+54559e9 CM: Introduce new default wallpaper.
+06d1847 Tap & Pay - Give 'learn more' a URL
+9e20a0e apn: Changes for LT apn's
+
+   * vendor/samsung/
+e259d00 Merge remote-tracking branch 'TheMuppets/cm-12.0' into cm-12.0
+49f638d Merge pull request #561 from drcrimzon/cm-12.0
+fec0ba8 Merge branch 'cm-12.0' of https://github.com/drcrimzon/proprietary_vendor_samsung into cm-12.0
+83f1d14 more files
+9765313 Merge pull request #2 from TheMuppets/cm-12.0
+48365ee re-update blobs
+
+====================
+     01-26-2015
+====================
+
+
+   * build/
+7bd1648 build: Add support for Luxembourgish
+b9e53c6 build: Add support for Asturian
+
+   * cmRemiX/
+577371b track recovery and omniswitch on branch cm12.0
+cc78e33 remove cmaccount
+bc23a4a Rever: Enable new SetupWizard and re-enable CMAccount
+5141f2f Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
+
+   * device/samsung/trlte-common/
+3a37481 Clean up device names, remove mobisave, cleanup services
+
+   * external/icu/
+dc29137 Updated ICU stub data file
+cec6820 icu: Add Luxembourgish ICU files
+8384da6 icu: Add Asturian ICU files
+
+   * external/sepolicy/
+4760048 Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
+
+   * frameworks/av/
+93edb1a Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
+a6ab7f8 Fix id3 parser crash
+1d44178 Fix bugs don't remove track of DirectOutputThread
+3ed4ff8 Fix bugs regarding looping play issue with sharedBuffer
+
+   * frameworks/base/
+4d4bd77 SystemUI: add AudioFX/visualizer tile
+3123fe3 SystemUI: Create LteTile
+b41ee25 PowerWidget: Re-enable LTE button.
+d0cb7f5 Telephony: Add getLteOnGsmMode() method (1/2)
+74ac9bb Framework: Fix typos in audio files includes
+fd1fb07 Fix layout of MultiWaveView and GlowPadView.
+644c285 More cleanup on QS tiles
+d5c540d fixed build
+
+   * frameworks/native/
+ebbdb55 Revert "SurfaceFlinger: Make secure display ifdefs more narrow."
+c81b05e Revert "SurfaceFlinger: Make secure display ifdefs more narrow."
+684d9a7 Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
+
+   * frameworks/opt/chips/
+49d58be Chips: Fix some crashes and missing default icon scenario
+
+   * frameworks/opt/telephony/
+3553227 Merge remote-tracking branch 'cm/cm-12.0' into cm-12.0-2
+089b5fa Telephony: Trim callingUid from a synthetic sms for default sms app matching.
+5c16927 Telephony: Implement and override new Sms methods.
+a1f8499 SMSDispatcher: Fix determining the defaultSmsApp for proxied messages
+16ccb5c Voice+, Whisperpush: Need to send SMS_RECEIVED_ACTION for all apps.
+555eaa6 IccSmsInterfaceManager: Don't intercept short-code premium messages
+cfdb9a0 Fix Whisperpush and Voice+ when using the new Hangouts.
+434c865 Add SMS Middleware layer.
+549c941 Telephony: Add getLteOnGsmMode() method (2/2)
+5039e74 Merge remote-tracking branch 'cm/cm-12.0' into cm-12.0-2
+
+   * hardware/libhardware_legacy/
+f7d1831 wifi: add semco for Samsung BCM43569
+
+   * hardware/qcom/display-caf/apq8084/
+f679e33 hwc: Add secure display attribute
+
+   * hardware/samsung/
+0ed5670 macloader: Add SEMCO for BCM43569
+
+   * kernel/samsung/trlte/
+b755bf2 Add variant detection
+9ea37ee Enable last_kmsg and increase log buffer shift plus add pr_alert when last_kmsg is not initialized
+f8814b4 mdss: implement panel color control
+6887a9b Disable heart beat, and UV sensor due to wakelocks
+
+   * packages/apps/CMFileManager/
+98459f8 CMFileManager: Hide cmcc "easy mode" behind overlay config.
+b2f362f CM File Manager - Enable Thumbnail previews by default
+
+   * packages/apps/InCallUI/
+dd23823 InCallUI: Improve CAF strings
+
+   * packages/apps/Mms/
+f0d411a Set notification color.
+
+   * packages/apps/Settings/
+3b7f542 Settings: add AudioFX tile
+91cc45f Settings: Add LteTile.
+995f600 Settings : Sort QSTiles in picker
+870b8ac Settings: Update the notification drawer icon again
+79fc672 Added SaberMod Android banner in About Phone
+44185c1 add icon for recent and lock misc features
+fc98300 add gestureanywhere and wakelock blocker icon from PAC
+96c8ee6 Properly name string resources.
+75b284a Settings: Fix build error after 70f60fa685b1eae960fe3bb25cc85bef9361e288
+d941fbd Settings:Fix Settings BT UI no return arrow
+01b989f Bluetooth: Add PBAP Profile to preference list in special case
+734cbf4 Bluetooth: Add Manifest configure to fix settings crash issue.
+86b3aed QS: some corrections on location tile code (2/2)
+332fc90 Settings : Add hooks for device specific features
+3ff35f8 Settings: Update voice wakeup icon
+5c31524 appops: Load the app list asynchronously
+bfbc441 Revert :Settings: remove  system updates
+2e8ee2a House keeping, organized and combined all setting to cmremix settings
+
+   * packages/services/Telephony/
+1a99994 Merge remote-tracking branch 'github/cm-12.0' into cm-12.0
+bc54a49 toggleLTE: switch to Global mode on devices that default to it
+e125cb9 Implement toggleLte
+564d6ff Phone: Enable LTE for GSM LTE phones (part I)
+5f0560e Merge remote-tracking branch 'cm/cm-12.0' into cm-12.0
+
+   * system/core/
+f8d8c0e Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
+74b61dd healthd: remove useless gotos in set_backlight_on
+f9394b9 Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
+
+   * vendor/cm/
+6a43f7d vendor:cm: Australian English dictionary
+4c7d260 Update Cellcom Israel
+5af639d Add 2048x1536 boot animation
+b95001f apn: New Tuenti (Spain) APN.
+
+   * vendor/samsung/
+42d40e3 Merge remote-tracking branch 'Muppets/cm-12.0' into cm-12.0
+85c513b Merge pull request #563 from niv71/jfltespr
+c0eb052 jfltespr: update RIL blobs to fix SMS not sent error
+9e295c6 Merge pull request #541 from solk2/cm-12.0
+
+====================
+     01-25-2015
+====================
+
+
+   * build/
+0f211cf build: fix ccache preprocessor errors for clang
+21f1c32 repopick: Catch errors on url load failure
+
+   * cmRemiX/
+412cbe0 manifest: Fix qemu-kernel clone depth
+
+   * device/samsung/trlte-common/
+39f8d3d trlte-common: Update perms and power hal for changes in input devices.
+
+   * external/bluetooth/bluedroid/
+4aad8dc bluedroid: Fix CAF commit 25c965cdcd99f1e495284802785cfb104b19b05c
+
+   * frameworks/av/
+0b97100 stagefright: add Samsung S3D support
+6195593 nuplayer: Add cached lookup of track duration
+918ae2c audio: Support for compress offload recovery
+644eec2 Revert "Track volume should be maintained even if track is restored."
+
+   * frameworks/base/
+9a41dd2 Themes: Check common resource paths at java layer
+843116d Themes: Allow setting a default theme
+13e0a18 Themes: Watch all app crashes for problematic themes
+ed90d80 Move non-AOSP symbols to cm_symbols.xml
+267ee40 Ringtones: Remove the old ones with same name so material is used
+1394253 Fix build error after 3f73f5d724f5e58f2280711c478bd4e476fe0ef5
+9b68098 QS: some corrections on location tile code (1/2)
+6c928d1 lowmemorykiller: Overwrite LMK parameters for low-tier devices
+f0d0e58 Themes: System theme should clear wallpaper
+f56a68b SettingsProvider: add default overlay entry for SEND_ACTION_APP_ERROR
+8294f25 Restore ProfileGroup notification override functionality
+f082195 SystemUI: unbreak accesibility longpress Overview to unpin
+4dcf83f Include material ringtones and notification sounds
+80c00f7 Stop thread before deleting object reference
+a34671c Privacy guard: option to disable notification (1/2)
+e5bad09 core: update default app icon to material
+c06f1a4 Add config_hasRemovableLid
+a1f6d91 Telecomm: Fix typo in toString call
+
+   * hardware/ril/
+a28b67c rild: enable tombstone on RIL crash
+
+   * hardware/ril-caf/
+e43a8f1 rild: enable tombstone on RIL crash
+
+   * packages/apps/Bluetooth/
+9b33598 Handle change from boolean to int preference
+
+   * packages/apps/Browser/
+e0fa5dd User agent as advanced setting
+
+   * packages/apps/Calculator/
+69d885e Calculator: Add missing hdpi drawable
+
+   * packages/apps/Dialer/
+bbcc7c5 Fix animation glitch
+
+   * packages/apps/Settings/
+b88b7bc derp fixed
+d0b5afc Privacy guard: option to disable notification (2/2)
+089aa71 QSTile: Prevent FC if drawable tile does not exist
+bb6d300 Settings: Tint Black drawables
+ecd1ee3 [Lockscreen shortcuts] centralize all option in our custom settings
+92f80de Settings: remove  system updates
+a049476 Settings: Gesture lockscreen: add lockscreen shortcuts settings (cm)
+
+   * packages/inputmethods/LatinIME/
+227f0b7 LatinIME: fix action bar theme issue
+
+   * packages/services/Telecomm/
+e945528 Add back phone notification LED settings backend (1/2)
+
+   * packages/services/Telephony/
+db645e1 Add back phone notification LED settings backend (2/2)
+
+   * system/core/
+e978018 healthd: fix LED color on 100%
+210b74a healthd: more descriptive LED path opening error message
+9942c54 healthd: remove useless goto in charger mode
+
+   * system/extras/
+f0f66cd mkimage for OMAP
+
+   * vendor/cm/
+998f536 sepolicy: Let drmserver scan themes
+77cabf5 sepolicy: Fix policy for keyhandler
+ec8841c Add Movistar APN
+f3550d1 Remove obsolete Superuser configuration
+
+   * vendor/cmremix/
+a4b8a84 fixed copy and paste
+2aa5ba0 add back old needed files
+4bb0cdd bootanimation: New boot animation for lollipop (CM )
+81b9d80 export CMREMIX_CHANGELOG=true
+7e9e08d Add changelog generator (1/2)
+08e185d update dependencies for all support devices trlte & hlte varients
+
+   * vendor/samsung/
+fdc80c3 Merge remote-tracking branch 'origin/cm-12.0' into cm-12.0
+
