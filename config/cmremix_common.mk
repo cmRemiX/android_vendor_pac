@@ -97,7 +97,7 @@ endif
 EXTENDED_POST_PROCESS_PROPS := vendor/cmremix/tools/cmremix_process_props.py
 
 # Inherit sabermod configs.  Don't include if TARGET_ARCH isn't defined
-ifndef TARGET_ARCH
+ifdef TARGET_ARCH
   include vendor/cmremix/config/cmremix_sm.mk
 else
     $(warning ********************************************************************************)
