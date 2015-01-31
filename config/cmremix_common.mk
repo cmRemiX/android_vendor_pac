@@ -24,10 +24,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/etc/viper/ViPER4Android.apk:system/app/ViPER4Android.apk
 
-# AdAway
-PRODUCT_COPY_FILES += \
-    vendor/cmremix/prebuilt/common/app/Adaway/org.adaway.apk:system/app/Adaway/org.adaway.apk
-
 # cmRemiX Overlays
 PRODUCT_PACKAGE_OVERLAYS += vendor/cmremix/overlay/common
 
@@ -45,6 +41,11 @@ PRODUCT_COPY_FILES += \
 # Copy over the changelog to the device
 PRODUCT_COPY_FILES += \
 vendor/cmremix/CHANGELOG.mkdn:system/etc/CHANGELOG-cmR.txt
+
+# AdBlocker Files
+PRODUCT_COPY_FILES += \
+    vendor/cmremix/prebuilt/common/etc/hosts.alt:system/etc/hosts.alt \
+    vendor/cmremix/prebuilt/common/etc/hosts.og:system/etc/hosts.og
 
 # cmRemiX Packages
 PRODUCT_PACKAGES += \
