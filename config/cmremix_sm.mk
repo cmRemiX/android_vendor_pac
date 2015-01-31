@@ -214,6 +214,9 @@ ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
       libart \
       mdnsd \
       libwebrtc_spl \
+      libwebviewchromium \
+      libwebviewchromium_loader \
+      libwebviewchromium_plat_support \
       third_party_WebKit_Source_core_webcore_svg_gyp \
       libjni_filtershow_filters \
       libavformat \
