@@ -291,7 +291,7 @@ ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
   endif
 
     ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
-      OPT2 := (03)
+      OPT3 := (03)
 
       # Disable some modules that break with -O3
       # Add more modules if needed for devices in BoardConfig.mk
@@ -320,8 +320,19 @@ ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
    OPT5 := (gcconly)
   endif
 
+  ifeq (true,$(LOCAL_LTO))
+   OPT6 := (lto)
+  endif
 
-    GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)
+  ifeq (true,$(GNU11_OPTIMIZATIONS))
+   OPT7 := (gnu11++)
+  endif
+
+  ifeq (true,$(FLOOP_NEST_OPTIMIZE))
+   OPT8 := (floop-nest)
+  endif
+
+    GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)$(OPT7)$(OPT8)
     ifneq ($(GCC_OPTIMIZATION_LEVELS),)
       PRODUCT_PROPERTY_OVERRIDES += \
         ro.sm.flags=$(GCC_OPTIMIZATION_LEVELS)
