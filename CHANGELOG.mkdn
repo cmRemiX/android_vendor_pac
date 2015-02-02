@@ -1,12 +1,115 @@
 ====================
-     01-30-2015
+     02-02-2015
 ====================
 
 
    * bootable/recovery-twrp/
-73a5295 gui: run cancel action in another thread
-9fa5153 gui: move input handling into a class
-e13fa63 Move input handling into the main thread
+f4cc7e4 variables: append "-nameless" to version string (Evisceration)
+
+   * build/
+d6cca21 Build: generate Changelog.txt before system/zip & OTA
+
+   * cmRemiX/
+273a3e5 Add OpenSSH
+
+   * frameworks/av/
+ca1e770 Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
+
+   * frameworks/base/
+81f3a50 Revert "SystemUI: Add task manager"
+7e8125a Themes: Let garbage collector free up native instances
+2c90dcb SystemUI: code clean up and reformat
+78089f5 QS: reduce TILE_ASPECT when using 4 tiles per row
+e796b16 QS: fix random missing tiles when leaving detailed view
+e9a1af7 QS: Option to show four tiles per row (1/2)
+a7d854e QS: add Sync tile (1/2)
+f783474 QS: add Screenshot tile (1/2)
+5801f33 SystemUI: fix unpinning locked apps
+42be06d Keyguard: Move CAF string
+68d96f9 core: Add support for Kurdish
+c4e4bf7 Boot up optimization for phoneprocess
+0c6e2ee systemui: Only enable visualizer if a session is active
+bf21344 SystemUI/Keyguard: Improve strings
+41505d0 IMS: Definition of error code for answered elsewhere
+c4ea16a core: String improvements from cm-11.0
+
+   * frameworks/native/
+9e7efaf Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
+
+   * frameworks/opt/telephony/
+a7fce4e Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0-2
+
+   * kernel/samsung/trlte/
+68623ff Makefile: Add -floop-nest-optimize everywhere and organized flags (Chet Kener)
+
+   * packages/apps/InCallUI/
+7312f50 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
+
+   * packages/apps/Settings/
+85b1300 New settings profiles icon
+645530e Fix SeekbarPreference padding
+3eb018a QS: Option to show four tiles per row (2/2)
+0a79a68 QS: add Screenshot & Sync tile (2/2)
+f5fa1b5 Move & improve CAF strings
+c17e929 Settings: Fix expanded desktop string
+8b3620a Profiles: remove unused code
+8616181 Profiles: add triggers only for connections supported.
+521326a Settings: String consistency
+885c5f2 Settings: Set untranslatable
+
+   * packages/providers/MediaProvider/
+cd771bd MediaProvider: MediaScanner behavior on boot (2/3)
+
+   * packages/services/Telephony/
+ec16cb3 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
+
+   * vendor/cmremix/
+0e0d288 Vendor: Copy changelog.txt into zip due to changelog entry in cmRemiX  Settings
+
+====================
+     02-01-2015
+====================
+
+
+   * external/openssh/
+05e7ec3 Disable ripemd
+
+   * frameworks/av/
+134f9f6 nuplayer: Fix CTS issues in NuPlayer
+9b7c146 Wrong format used in seamless check
+33a4c90 Flush the audio sink if NuPlayerRenderer is paused during a flush
+3aad113 RTSP: Continue setupTrack even if the other track creation fails
+97e2c88 RTSP: Add NULL check before accessing mHandler
+e77455d ATSParser: Don't discard TS packet if payloadstartindicator is set
+3450ac3 rtsp: improvement for rtsp connection
+78456cd Nuplayer: Fix no image or image will be delay issue
+525c59e nuplayer: Synchronize video and audio decoders configuration
+6efd740 nuplayer: Fix incorrect audio resume time during seek
+43e0c55  audio: Fix ringtone mute issue
+9942a56 libstagefright: Explicitly disconnect HTTP connection
+9e666a5 libmedia: Fix mismatched state
+
+   * frameworks/native/
+f1a5742 surfaceflinger: Fix the "Fix the opaque check"
+
+   * frameworks/opt/net/ims/
+9612e33 IMS : UT Service Capability
+
+   * frameworks/opt/telephony/
+bf5f25a SIMRecords: If there's no EF_SPN record, fallback to EF_PNN
+
+   * packages/apps/Terminal/
+bb02e26 Terminal: Fix build by pointing to the correct string
+d5b0d9b Terminal: Convert CheckBoxPreference to SwitchPreference
+dbc907d Terminal: Cleanup duplicate strings
+
+   * packages/services/Telephony/
+42f46ab Telephony: Fix string
+
+====================
+     01-31-2015
+====================
+
 
    * build/
 8f0cc61 build: instroduce GNU11 Modular (Pbeeler) and fixed LTO
@@ -97,6 +200,13 @@ a36acec Do not use mkf2fsuserimg.sh if we have two fs in fstab, for example:
 aaac37f Introduce New Squisher/Opticharger for Lollipop (2/2)
 89d1a6b cmRemiX Version
 
+   * cmRemiX/
+5078c74 track MediaProvider
+
+   * device/samsung/trlte-common/
+6ca6711 Revert : trlte-common: Update sepolicy and set to enforce.
+ffe76c7 trlte-common: Address denial for gyro_cal
+
    * external/sepolicy/
 1638cc3  Vendor: Sepolicy: Allow AdBlocker perform su shell commands
 
@@ -108,9 +218,12 @@ beb3454 Automatic translation import
 671dc50 Automatic translation import
 fa18dca WhisperPush: Add all possible variants of WP registration number.
 6e77418 Automatic translation import
-3bd3745 WhisperPush: Utilize RECEIVE_PROTECTED_SMS for authing.
+
+   * frameworks/av/
+4d7023d Revert "Fix id3 parser crash"
 
    * frameworks/base/
+49673e7 WindowManager: Upper level changes to expose blur effect
 4ddbb4d SystemUI: Fix screen timeout tile title
 d7958a1 SystemUI: make AudioFX tile not translatable
 d81411e SystemUI : NavigationBar fixes
@@ -122,6 +235,11 @@ da7ddec Make people lookup default overlay
 1eff8ce Revert "Revert "[ActivityManager] Set appropriate relation of task to home""
 6823485 Base: AdBlocker [1/3]
 
+   * frameworks/native/
+9d0c579 Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
+50a66fd SurfaceFlinger: Native changes to add blur effect
+be46a59 surfaceflinger: Fix the opaque check
+
    * frameworks/opt/telephony/
 d1b0f60 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0-2
 fb9b369 Telephony: If no wrapped message, originating address is null
@@ -130,12 +248,19 @@ a545a57 Telephony: Always allow ignored sms packages for premium sms.
 ffd7847 Telephony: Fall back on deprecated createFromPdu.
 93251ef Telephony: Hide new helper method.
 f5f5e1a protected SMS [4/4]
-5fddf7c Generate transaction Ids for RetrieveConf - This is required to be able to backup and restore received MMS
-a615da7 Ignore certain sms-sending packages [2/2]
 
-   * hardware/qcom/audio-caf/msm8916/
-8159c34 audio: implement backend platform parser
-3881734 audio: add fm playback to usecase map
+   * kernel/samsung/trlte/
+ec8aca7 build beta-0.5
+cfaac53 update optimization flags
+643f927 sound/soc/codecs: add TOMTOM_A_CDC_RX8
+a659392 Sound Control: 3.6
+6fc5b30 sound/soc/codecs: add sound_control_locked
+7b407c2 sound/soc/codecs: fix speaker gain and mic gain for the Note 4
+eb38b3b sound/soc/codecs: Faux Sound control for WCD9330 TomTom codec driver
+518be17 Revert : Sound Control: initial bring up for Nexus 6 Linux 3.10 kernel driver
+
+   * packages/apps/Calculator/
+f4c9b0b Calculator: Set untranslatables
 
    * packages/apps/Camera2/
 4dd433b Camera2: Add support for qcom camcorder resolutions
@@ -143,11 +268,11 @@ a615da7 Ignore certain sms-sending packages [2/2]
 e6c2f9c Camera2:  Don't just check the back camera
 52b3992 Launch the app with the camera button
 
-   * packages/apps/DeskClock/
-3191a91 DeskClock: add playlist CN translation
-
    * packages/apps/Gallery2/
 49750ed Camera: Disable Camera Launcher when both Front and Back sensors are not detected
+
+   * packages/apps/InCallUI/
+028e39a InCallUI: Fix untranslatable
 
    * packages/apps/Settings/
 509263d add Viper4Android to main settings again
@@ -159,39 +284,43 @@ e7b61ee Settings: Update Doze Timeout
 de7c4ce Settings: Brings SuperUser permission due to AdBlocker feature
 26d0d8a Settings: AdBlocker [2/3]
 19f5fb1 Skip Misc/Overcounted battery stats in builds
-d5bc44e add changelog to cmRemiX Settings
 
    * packages/services/Telephony/
 10aaf9d Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
 
    * vendor/cmremix/
+e95f6e2 1-30-2015 cmRemiX Update Changelog
 89957fd build-pac.sh: add extra build output options (Credit PAC)
 56a85a7 bootanimation: Update boot animation for lollipop
 c1dae00 add prebuit chromium to graphite modular
 b380e2e Vendor: AdBlocker [3/3]
 b353647 add LTO,GNU11,Floop Nest to About Menu
 2bb01d6 update dependencies Add more checks and warnings for cmremix_sm.mk
-2303b41 Add Prebuilt libwebviewchromium libs
+
+   * vendor/samsung/
+7b136e7 Revert "re-update blobs"
+7dec847 klte-common: Add QC TimeService
+f9b4419 klte-common: update to newest Adreno blobs from 5.0 update
+f5d8f09 klte: Regenerate makefiles
+0d608ca klte-common: kill gsiff_daemon
 
 ====================
-     01-29-2015
+     01-30-2015
 ====================
 
 
    * bootable/recovery-twrp/
+73a5295 gui: run cancel action in another thread
+9fa5153 gui: move input handling into a class
+e13fa63 Move input handling into the main thread
 d1372f7 Fixed screen flipping for devices where xres_virtual > xres
-f8194e2 gui: fix IsInRegion
-ecd8918 Use macro to add actions to the action map
 
    * cmRemiX/
 09f45fc Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
 b310e32 Add whisperpush.
 
-   * device/samsung/trltetmo/
-8b6442d More sabermod variables: Set toolchains versions
-
-   * external/bluetooth/bluedroid/
-5e78adc bluedroid: Fix warning caused by commit f9f2dbcca4263188df5efe28b1a5bcb0ce906b6f
+   * external/whispersystems/WhisperPush/
+3bd3745 WhisperPush: Utilize RECEIVE_PROTECTED_SMS for authing.
 
    * frameworks/base/
 7fc60cf SystemUI: add left and right virtual buttons while typing
@@ -203,29 +332,25 @@ b310e32 Add whisperpush.
 b0fa2f8 SystemUI : NavigationBar Customization
 
    * frameworks/opt/telephony/
+5fddf7c Generate transaction Ids for RetrieveConf - This is required to be able to backup and restore received MMS
+a615da7 Ignore certain sms-sending packages [2/2]
 65fd4f8 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0-2
 
    * hardware/qcom/audio-caf/msm8916/
-0072fbf audio: implement additional platform info xml tags
-5f8e880 audio: Extend platform parser to allow device name aliasing
-
-   * kernel/samsung/trlte/
-f850a96 Set kernel to XZ compression
-9639720 Optimized Overhaul Thanks (chet kl3kner & Paul Beeler)
+8159c34 audio: implement backend platform parser
+3881734 audio: add fm playback to usecase map
 
    * packages/apps/CMFileManager/
 25e803b CM File Manager : Populate results as they are found while searching
 
    * packages/apps/DeskClock/
-5658fd5 DeskClock: consolidate Alarm picker to one dialog
+3191a91 DeskClock: add playlist CN translation
 
    * packages/apps/Mms/
 4fa8c38 Mms: Adding backup MMS feature with existing backup SMS
-72d96cb Mms: Use tel mimetype for call button on notification
-b919b51 Mms: Improve ui for sms compose with chips
-2433bfe Fix a ui bugs where an overrided layout shows white on white
 
    * packages/apps/Settings/
+d5bc44e add changelog to cmRemiX Settings
 fbca6c2 Settings: Fix inflate exception on search. Dynamically replace nested fragment.
 bec67aa Settings: Clarify where weather status appears.
 e78c019 Settings: add navigation bar arrow keys toggle
@@ -235,16 +360,12 @@ b8f5917 Settings : Add back navigation bar customization.
 
    * packages/apps/Trebuchet/
 edbea0a DynamicGrid: tuning the icon size for some device
-b5f816d Make workspace during preview larger
-
-   * packages/providers/MediaProvider/
-0714ad9 mediaprovider: Add theme support to Ringtone activity
 
    * vendor/cm/
 8024ea8 bootanimation: Update boot animation for lollipop
-650acb2 Add Luxembourgish spellchecking dictionary
 
    * vendor/cmremix/
+2303b41 Add Prebuilt libwebviewchromium libs
 a82fc48 Krait and GCCOnly to About Menu
 fe9b40f Add more checks and warnings
 cc27828 common:  Don't include sm.mk if TARGET_ARCH isn't defined
@@ -255,22 +376,20 @@ a4c82bf Some minor improvements: Move some variables to device trees.
 0eae499 UPDATE-SuperSU-v2.45
 
 ====================
-     01-28-2015
+     01-29-2015
 ====================
 
 
-   * build/
-fc7ae19 build: Remove OpenWnn IME from target config
+   * bootable/recovery-twrp/
+f8194e2 gui: fix IsInRegion
+ecd8918 Use macro to add actions to the action map
 
    * cmRemiX/
 cd98c56 track sqlite
 f56441c Remove VoiceDialer from manifest
 
-   * device/samsung/trlte-common/
-eaf10a3 Add Enforcing video-snapshot-supported = true
-2c7f1b6 enabled hardware keys
-a922091 1/2 3GB dalvik heap and hwui memory (Originally 2GB)
-e718637 use twrp for default recovery
+   * external/bluetooth/bluedroid/
+5e78adc bluedroid: Fix warning caused by commit f9f2dbcca4263188df5efe28b1a5bcb0ce906b6f
 
    * external/sqlite/
 a713b53 Upgrade to SQLite 3.8.8.1
@@ -306,12 +425,18 @@ de3219a [HWUI] fix texture cache can't be removed for recycled bitmap
 
    * frameworks/native/
 9f8d01d Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
-e0d7c63 Fix for corruption when numFds or numInts is too large.
-3250a13 Surface: Ensure synchronisation of copyBlt
-e7e6006 Surface: Always consume fence fd in queueBuffer
 
-   * frameworks/opt/chips/
-9677961 Chips: Add more logic to dismiss selection dialog
+   * hardware/qcom/audio-caf/msm8916/
+0072fbf audio: implement additional platform info xml tags
+5f8e880 audio: Extend platform parser to allow device name aliasing
+
+   * packages/apps/DeskClock/
+5658fd5 DeskClock: consolidate Alarm picker to one dialog
+
+   * packages/apps/Mms/
+72d96cb Mms: Use tel mimetype for call button on notification
+b919b51 Mms: Improve ui for sms compose with chips
+2433bfe Fix a ui bugs where an overrided layout shows white on white
 
    * packages/apps/Settings/
 d702369 Quick Settings: Auto collapse panel (2/2)
@@ -327,194 +452,20 @@ c16bb06 Settings: Add new gesture vector drawable.
 2200584 Settings: Fix off-by-one SectionIndexer in Expanded Desktop.
 3b567d7 Settings: Only save settings on destroy if we're user configurable.
 
-   * packages/apps/ThemeChooser/
-feb1890 Update notification icon to new paint bucket
+   * packages/apps/Trebuchet/
+b5f816d Make workspace during preview larger
 
-   * packages/services/Telephony/
-792ea8e protected SMS [2/4]
+   * packages/providers/MediaProvider/
+0714ad9 mediaprovider: Add theme support to Ringtone activity
 
    * system/core/
 a7626dd Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
-13d53a4 fs_mgr: Allow ext2/3/4 to mount as ext4
-
-   * vendor/cmremix/
-f712b1e CM: Introduce new default wallpaper.
-
-====================
-     01-27-2015
-====================
-
-
-   * bootable/recovery-cwm/
-1fc30d3 recovery: fix another misspelling of "file_blocks" as "block_size"
-
-   * bootable/recovery-twrp/
-1b67fff Use TWAtomicInt in MTPStorage
-0453695 Use TWAtomicInt in gui.cpp to make it thread safe
-7abc5fe Add cancel backup capability.
-
-   * cmRemiX/
-88d3d92 Remove VoiceDialer from manifest
-
-   * frameworks/base/
-31f673e Themes: properly dispatch calls to all connected listeners
-b5386b0 core: Add support for Luxembourgish
-4e7b988 core: Add support for Asturian
-7d939c3 SystemUI: Lte -> LTE.
-
-   * frameworks/native/
-60d6d7c Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
-
-   * hardware/samsung/
-ca1a0ee macloader: Fix log output and return value.
-c7212d0 macloader: Use a variable for device type.
-3a73bd3 macloader: Close file when we don't need it anymore.
-7558b9d macloader: Use fchown() to change owner of the cidfile.
-7f517d7 macloader: Use fchmod() to change permissions.
-2b60179 macloader: Fix build warning with LOG defines.
-60f13f2 macloader: Make macloader a C file.
-
-   * kernel/samsung/trlte/
-17a8ee5 Enable pstore/ramoops dump for kernel panics.
-
-   * packages/apps/CMFileManager/
-cdb7c09 Add chinese translations
-
-   * packages/apps/ContactsCommon/
-8478fc2 Quick Call: do not show quick call next to profile contact
-
-   * packages/apps/InCallUI/
-774eb34 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
-
-   * packages/apps/Settings/
-81b082f fixed gesture anywhere derp
-57c93ec Move toast animation to cmremix display & animation settings
-
-   * packages/inputmethods/LatinIME/
-ddcadf3 LatinIME: Add Luxembourgish keyboard & spellchecking dictionary
-dd0eaab LatinIME: Add support for Australian English
-
-   * packages/services/Telephony/
-ee09ee5 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
-883b4b2 MSIM Network Settings update
-
-   * prebuilts/gcc/linux-x86/arm/arm-eabi-4.9/
-dbd9a0b GCC SaberMod Toolchain arm-eabi update 1-27-2015
-
-   * prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8/
-fa1eeb7 GCC SaberMod arm-linux-androideabi-4.8 (Graphite) Update 1-27-2015
-
-   * system/core/
-4ee610e Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
-b08cf09 android_reboot: execute recovery pre command while rw mounted
 
    * vendor/cm/
-9d782d9 Remove TMobile themes permission
-2fe8b51 Don't build VoiceDialer
-8c356e8 Remove deprecated VideoEditor packages
-54559e9 CM: Introduce new default wallpaper.
-06d1847 Tap & Pay - Give 'learn more' a URL
-9e20a0e apn: Changes for LT apn's
+650acb2 Add Luxembourgish spellchecking dictionary
 
-   * vendor/cmremix/
-2518560 remove pac review
-8e880ac Tools: Removed unused and correct O3 Optimization
-
-====================
-     01-26-2015
-====================
-
-
-   * build/
-7bd1648 build: Add support for Luxembourgish
-b9e53c6 build: Add support for Asturian
-
-   * cmRemiX/
-577371b track recovery and omniswitch on branch cm12.0
-cc78e33 remove cmaccount
-
-   * device/samsung/trlte-common/
-3a37481 Clean up device names, remove mobisave, cleanup services
-
-   * external/icu/
-dc29137 Updated ICU stub data file
-cec6820 icu: Add Luxembourgish ICU files
-8384da6 icu: Add Asturian ICU files
-
-   * frameworks/base/
-4d4bd77 SystemUI: add AudioFX/visualizer tile
-3123fe3 SystemUI: Create LteTile
-b41ee25 PowerWidget: Re-enable LTE button.
-d0cb7f5 Telephony: Add getLteOnGsmMode() method (1/2)
-74ac9bb Framework: Fix typos in audio files includes
-fd1fb07 Fix layout of MultiWaveView and GlowPadView.
-644c285 More cleanup on QS tiles
-
-   * frameworks/native/
-ebbdb55 Revert "SurfaceFlinger: Make secure display ifdefs more narrow."
-c81b05e Revert "SurfaceFlinger: Make secure display ifdefs more narrow."
-684d9a7 Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
-
-   * frameworks/opt/chips/
-49d58be Chips: Fix some crashes and missing default icon scenario
-
-   * frameworks/opt/telephony/
-3553227 Merge remote-tracking branch 'cm/cm-12.0' into cm-12.0-2
-089b5fa Telephony: Trim callingUid from a synthetic sms for default sms app matching.
-5c16927 Telephony: Implement and override new Sms methods.
-a1f8499 SMSDispatcher: Fix determining the defaultSmsApp for proxied messages
-16ccb5c Voice+, Whisperpush: Need to send SMS_RECEIVED_ACTION for all apps.
-555eaa6 IccSmsInterfaceManager: Don't intercept short-code premium messages
-cfdb9a0 Fix Whisperpush and Voice+ when using the new Hangouts.
-434c865 Add SMS Middleware layer.
-549c941 Telephony: Add getLteOnGsmMode() method (2/2)
-
-   * hardware/libhardware_legacy/
-f7d1831 wifi: add semco for Samsung BCM43569
-
-   * hardware/qcom/display-caf/apq8084/
-f679e33 hwc: Add secure display attribute
-
-   * hardware/samsung/
-0ed5670 macloader: Add SEMCO for BCM43569
-
-   * packages/apps/CMFileManager/
-98459f8 CMFileManager: Hide cmcc "easy mode" behind overlay config.
-b2f362f CM File Manager - Enable Thumbnail previews by default
-
-   * packages/apps/InCallUI/
-dd23823 InCallUI: Improve CAF strings
-
-   * packages/apps/Mms/
-f0d411a Set notification color.
-
-   * packages/apps/Settings/
-3b7f542 Settings: add AudioFX tile
-91cc45f Settings: Add LteTile.
-995f600 Settings : Sort QSTiles in picker
-870b8ac Settings: Update the notification drawer icon again
-79fc672 Added SaberMod Android banner in About Phone
-44185c1 add icon for recent and lock misc features
-fc98300 add gestureanywhere and wakelock blocker icon from PAC
-
-   * packages/services/Telephony/
-1a99994 Merge remote-tracking branch 'github/cm-12.0' into cm-12.0
-bc54a49 toggleLTE: switch to Global mode on devices that default to it
-e125cb9 Implement toggleLte
-564d6ff Phone: Enable LTE for GSM LTE phones (part I)
-
-   * system/core/
-f8d8c0e Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
-74b61dd healthd: remove useless gotos in set_backlight_on
-
-   * vendor/cm/
-6a43f7d vendor:cm: Australian English dictionary
-4c7d260 Update Cellcom Israel
-5af639d Add 2048x1536 boot animation
-b95001f apn: New Tuenti (Spain) APN.
-
-   * vendor/cmremix/
-db1fad3 update dependencies
-c2991d7 fixed bootanimation to 1440 for trlte varients
-7360d44 Add 2048x1536 boot animation
+   * vendor/samsung/
+e84663d Merge pull request #567 from solk2/cm-12.0
+6d9eff3 jf-common update mpdecision from mako
+db186ca ks01lte: Update blobs:
 
