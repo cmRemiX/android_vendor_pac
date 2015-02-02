@@ -290,7 +290,9 @@ ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
 	gatt_testtool \
 	libfuse \
 	lsof \
-	libOmxVenc
+	libOmxVenc \
+	libssh \
+	ssh
   endif
 
     ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
