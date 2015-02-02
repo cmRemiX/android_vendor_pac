@@ -38,10 +38,6 @@ PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/common/etc/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
     vendor/cmremix/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
 
-# Copy over the changelog to the device
-PRODUCT_COPY_FILES += \
-vendor/cmremix/CHANGELOG.mkdn:system/etc/CHANGELOG-cmR.txt
-
 # AdBlocker Files
 PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/common/etc/hosts.alt:system/etc/hosts.alt \

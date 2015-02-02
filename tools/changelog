@@ -35,6 +35,6 @@ done
 
 sed -i 's/project/   */g' $Changelog
 
-cp $Changelog $OUT/
+cp $Changelog $OUT/system/etc/CHANGELOG-cmR.txt
 cp $Changelog vendor/cmremix/CHANGELOG.mkdn
 rm $Changelog
