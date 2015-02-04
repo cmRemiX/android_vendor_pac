@@ -2,7 +2,7 @@
 
 # cmRemiX version System
 export CMREMIX_VERSION_MAJOR="LP"
-export CMREMIX_VERSION_MINOR="v6.9"
+export CMREMIX_VERSION_MINOR="v7.1"
 export CMREMIX_VERSION_MAINTENANCE="ZION959"
 # Acceptible maitenance versions are; Stable, Dev, Nightly
 
@@ -112,9 +112,11 @@ export KRAIT_TUNINGS=true
 export ENABLE_GCCONLY=true
 #export TARGET_USE_PIPE=true
 export LOCAL_LTO=true
-# export FLOOP_NEST_OPTIMIZE=true
+#export GNU11_OPTIMIZATIONS=true
+export FLOOP_NEST_OPTIMIZE=true
 export USE_PREBUILT_CHROMIUM=1
 export USE_CCACHE=1
+export CMREMIX_CHANGELOG=true
 
 opt_adb=0
 opt_chromium=0
