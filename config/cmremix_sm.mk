@@ -292,7 +292,9 @@ ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
 	lsof \
 	libOmxVenc \
 	libssh \
-	ssh
+	ssh \
+	libcrypto_static \
+	libbusybox
   endif
 
     ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
