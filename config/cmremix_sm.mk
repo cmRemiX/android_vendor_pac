@@ -59,8 +59,8 @@ ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
     ifeq ($(strip $(TARGET_ARCH)),arm)
 
       # Add extra libs for the compilers to use
-      export LD_LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)/arch-arm/usr/lib
-      export LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)/arch-arm/usr/lib
+      export LD_LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)/arch-arm/usr/lib:$(LD_LIBRARY_PATH)
+      export LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)/arch-arm/usr/lib:$(LIBRARY_PATH)
 
       # Path to ROM toolchain
       SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_SM_AND)
@@ -131,8 +131,8 @@ ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
     ifeq ($(strip $(TARGET_ARCH)),arm64)
 
       # Add extra libs for the compilers to use
-      export LD_LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)/arch-arm64/usr/lib
-      export LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)/arch-arm64/usr/lib
+      export LD_LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)/arch-arm64/usr/lib:$(LD_LIBRARY_PATH)
+      export LIBRARY_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)/arch-arm64/usr/lib:$(LIBRARY_PATH)
 
       # Path to toolchain
       SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/aarch64/aarch64-linux-android-$(TARGET_SM_AND)
