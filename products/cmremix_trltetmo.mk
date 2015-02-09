@@ -14,8 +14,17 @@ TARGET_GCC_VERSION_ARM := 4.9
 # Set Custom GCC Rom Version 
 TARGET_GCC_VERSION_AND := 4.8
 
-# Enable PIPE Optimization
+# Enabled Optimization Options Here : 
+GRAPHITE_OPTS := true
+STRICT_ALIASING := true
+USE_HOST_4_8 := true
+O3_OPTIMIZATIONS := true
+KRAIT_TUNINGS := true
+ENABLE_GCCONLY := true
 #TARGET_USE_PIPE := true
+export LOCAL_LTO := true
+#GNU11_OPTIMIZATIONS := true
+FLOOP_NEST_OPTIMIZE := true
 
 # Set bootanimation Size
 CMREMIX_BOOTANIMATION_NAME := 1440

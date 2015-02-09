@@ -104,19 +104,8 @@ else
     DATE=date
 fi
 
-export GRAPHITE_OPTS=true
-export STRICT_ALIASING=true
-export USE_HOST_4_8=true
-export O3_OPTIMIZATIONS=true
-export KRAIT_TUNINGS=true
-export ENABLE_GCCONLY=true
-#export TARGET_USE_PIPE=true
-export LOCAL_LTO=true
-#export GNU11_OPTIMIZATIONS=true
-#export FLOOP_NEST_OPTIMIZE=true
 export USE_PREBUILT_CHROMIUM=1
 export USE_CCACHE=1
-export CMREMIX_CHANGELOG=true
 
 opt_adb=0
 opt_chromium=0
