@@ -1,4 +1,77 @@
 ====================
+     02-09-2015
+====================
+
+
+   * frameworks/base/
+a308419 QS: clean up tiles
+b6cc911 SystemUI: use normal timeout delay for media volume panel
+2f0eede QS: move all options into a SettingsObserver in QSPanel
+a5c4910 SystemUI: rework battery saver bar color feature
+07372ea Fix make updateapi for custom density setting
+f5bfcb3 bootanimation: Allow devices to avoid loading many textures
+1169dc1 bootanimation: allow using RGB565
+162b6bc bootanimation: allow preload the bootanimation
+00f67af QS: don't resize dual tiles when using 4 per row
+0ef1b10 SystemUI : PerfTile start vector animation on main thread
+dec1f7d SystemUI: improve blur layer behavior on lockscreen
+15e4441 SystemUI: Fix back button drawable (Height & Width NavBar feature)
+2d44244 [WIP] QS: Forward port a number of tiles (1/2)
+ac3b789 SystemUI: Update 'Materialize volume panel in/out animation'
+8d2f312 Theming Immersive mode confirmation dialog
+5b07b05 Make proper power menu qs icon
+cd63c2d FWB - Add PowerMenu QS Tile (Reboot on longpress) [1/2]
+fadad6b [1/2] Frameworks: let InCallUI handle proximity sensor for incoming calls
+9cc6957 Remove fall through for KEYCODE_VOICE_ASSIST
+b2a666b Fix ANR caused by hwuiTask thread
+2ec3f14 SystemUI: option to disable search panel (navrings) (1/2)
+f853ace Fix heads up dismiss not working
+ae3ea2f HeadsUp: Don't reset Y coordinate and improve edge swipe readability
+98656bc [Heads up] Don't show heads up while IME is showing
+9779225 HeadsUp: fix headsup for incoming calls
+075623f [Heads up] Touch outside to hide (1/2)
+244be5a [Heads up] Add touch outside event
+1f8cb14 [Squash] Remove Framework: StatusBar Ticker (1/2)
+4a51597 [Heads up swipe] Disable by default
+8e490b8 HeadsUp: check if headsup is attached and not null when adding view
+5b13b25 HeadsUp: add timeout option (1/2)
+8edcceb Frameworks: Actually start to use HEADS_UP_REQUESTED extra
+a1e0572  Base: HeadsUp options [1/2]
+9615059 [squash] Remove Slim Headsup
+cb61679 AppOps: fix deadlock issue when showing dialog
+731cad2 VolumePanel : Check if StreamControl is null
+fd7e2b3 Themes: Add tm command line tool
+cfced16 Msim: Use SIM display name
+bcaf052 SystemUI: improve lockscreen tile behavior
+8a082ac lowmemorykiller: Fix high min-free values
+2bb4a15 Themes: Pass themePackageName to createApplicationContext()
+68b4fce SystemUI : Move navring app loading to background tasks
+6d9921a Revert : SystemUI : Move navring app loading to background tasks
+3a86a78 AlarmManager: Reschedule the date changed event if time changed.
+bdf3767 Don't broadcast before boot is completed.
+
+   * frameworks/native/
+69e4576 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
+
+   * packages/apps/Settings/
+a9a5ec2 [WIP] QS: Forward port a number of tiles (2/2)
+95e0f64 Settings - Add PowerMenu QS Tile (Reboot on longpress) [2/2]
+67979dd Nav ring: Update dependency
+6f11b35 Settings: option to disable search panel (navrings) (2/2) Change-Id: I573fd6fab4c24866f58b4062c5eb516719c0855b
+cf7c9d5 Add toggle for captive portal check
+36b11b8 [Heads up] Touch to hide (2/2)
+462ded9 Remove Settings: StatusBar Ticker (2/2)
+7a70ead [Heads up Swipe] A more user friendly summary
+9257bce HeadsUp: add timeout option (2/2)
+6c14050 Settings: HeadsUp options [2/2]
+28a3f3c [squash] Remove Slim Headsup
+
+   * vendor/cmremix/
+df3a089  sm.mk: library path's:
+66df872 move optimization flags from build script to specific products.mk
+c8e0677 change log 2-8-2015
+
+====================
      02-08-2015
 ====================
 
@@ -19,23 +92,6 @@ b9e7513 trlte-common: add perfd dirs during init.
 7aca4f3 Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
 
    * frameworks/base/
-400d2d7 SystemUI : Add ability to disable lockscreen targets
-349bc05 Frameworks: Actually start to use HEADS_UP_REQUESTED extra
-1de0124 Revert : Frameworks: Slim heads up customizations for LP (1/2)
-f9d6529 Frameworks: Only set package name on user heads ups
-29c57ef Frameworks: Be sure heads up view is attached before removing it
-cbee0af AppOps: fix deadlock issue when showing dialog
-63cf937 VolumePanel : Check if StreamControl is null
-7e4c32a Themes: Add tm command line tool
-64586f7 Msim: Use SIM display name
-2babfe3 SystemUI: improve lockscreen tile behavior
-600348f lowmemorykiller: Fix high min-free values
-8f16220 Themes: Pass themePackageName to createApplicationContext()
-95da422 SystemUI : Move navring app loading to background tasks
-03cf122 Revert : SystemUI : Move navring app loading to background tasks
-b58a0cf AlarmManager: Reschedule the date changed event if time changed.
-72850c6 Don't broadcast before boot is completed.
-9fabd1a SystemUI : Add ability to disable lockscreen targets
 1c4f1ec SystemUI : Improve nav ring swipe behavior
 ff9748b SystemUI : Make navbar back,recent not re-assignable
 
@@ -46,8 +102,6 @@ e798445 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
 7f3b0e0 trltespr: disable fingerprint, hrm, uv and new vibrator for Sprint
 
    * packages/apps/Settings/
-f8ca64a Settings: : Slim heads up customizations for LP (2/2) Basically it follows the same idea like we had on SlimKat....see here SlimRoms/frameworks_base@323ed77
-15a941e Settings: add headsup manifest permission
 3574038 LanguageInputSettings : Ensure current spell checker is valid
 136b6a7 Settings : Fix profiles crash
 8628a4b Settings: merge sim enabler and sim cards preference
@@ -84,6 +138,9 @@ e706603 update EUR config with Slayher's changes
 e22874e InCallUI: clean up prox speaker code and improve usability
 67fd75a [3/3] InCallUI: Proximity speaker (Updated to PS9 - FINAL)
 
+   * packages/apps/OmniSwitch/
+90a10b9 OmniSwitch: fix invalid swipe dismiss
+
 ====================
      02-06-2015
 ====================
@@ -103,6 +160,7 @@ fdb6548 WhisperPush: Protect against possible NPE on TextWatcher.
 0b0d9e3 WhisperPush : Fix crash when going in background
 
    * frameworks/native/
+0b3b93d surfaceflinger: Fix for non-qcom devices
 a6315fa Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
 
    * frameworks/opt/telephony/
@@ -111,6 +169,9 @@ b336d11 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0-2
 
    * packages/apps/InCallUI/
 6efa5d8 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
+
+   * packages/apps/OmniSwitch/
+899140a OmniSwitch: cast some shadows in solid mode
 
    * packages/providers/MediaProvider/
 bd08d7f Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
@@ -270,14 +331,8 @@ f383909 CMFileManager: Don't show unmounted volumes in PickerActivity
    * packages/apps/Contacts/
 4fe0b5d Contacts: Update dialog with the correct selected count
 
-   * packages/apps/DeskClock/
-f58422e DeskClock: Handle alarm playback when the uri is not valid
-
    * packages/apps/InCallUI/
 5193400 Add new features for layout-land
-
-   * packages/apps/Mms/
-22dcc08 Apply zoom scale to all items in ListView.
 
    * packages/apps/Settings/
 4c6e63f Settings : Disable edit mode for navring if pause/destroy
@@ -300,79 +355,4 @@ ef36f65 Revert "audio_route: Support BYTE type controls"
    * vendor/cmremix/
 8132792 change sto Changelog.sh
 78a957f add more modules for strict
-
-====================
-     02-04-2015
-====================
-
-
-   * cmRemiX/
-1eb397f Credits
-1c3979f update build cmRemiX readme
-78306ed track packages_apps_Camera2
-3abaaeb track packages_apps_Dialer
-
-   * device/samsung/trlte-common/
-b0d2873 hlte: add L1/L2 cache size parameters optimizations
-
-   * external/bluetooth/bluedroid/
-ed43ee1 bluedroid: Make the dynamic samplerate for A2DP optional
-
-   * frameworks/av/
-42d068e audioflinger: Fix glitches and volume ramp issue
-
-   * frameworks/base/
-49e4988 input: Add option to toggle pointer icon when using stylus(2/3)
-ca2c8e1 Stylus gestures features (1/2)
-7479cda GlobalActions: Use circular user avatars
-a63194b SlimSeekBarPreference: Fix broken link
-391154f Update API
-2b46163 Themes: Allow notification shadows to be rounded
-c82e03f Themes: Clear bag cache when removing overlay assets
-7e3a05f Themes: Use mRealPackage, when available, for idmapping
-9dab4f5  Themes: Handle case when keyguard is showing during theme change
-7923493 Mms: Fix FC issue that when tapping contact icon many times
-99b8dff Navigation bar button color (1/2)
-
-   * frameworks/native/
-efaad8e input: Add option to toggle pointer icon when using stylus(3/3)
-
-   * hardware/qcom/audio-caf/msm8974/
-65e1b92 hal: Fix glitch in audio playback during device switch
-
-   * kernel/samsung/trlte/
-a494e76 L1/L2 cache size parameters by @JustArchi @Arter7
-
-   * packages/apps/AudioFX/
-ac94fca audiofx: Listen for new USB audio broadcasts
-
-   * packages/apps/CMFileManager/
-890171c CM File Manager : Add Application category to Easy Mode List
-
-   * packages/apps/Camera2/
-d8aa4be Fix Power Shutter Exception 1 of 2
-4160876 Camera: Powerkey shutter (2/2)
-4fdf3fe Camera: Disable Camera Launcher when both Front and Back sensors are not detected
-5d77869 Camera2: Add support for qcom camcorder resolutions
-094708a Camera2:  Don't just check the back camera
-6d6f64c Launch the app with the camera button
-
-   * packages/apps/Mms/
-d918fc0 QuickMessagePopup: pager fix on multiple messages.
-f00f4b1 Mms: Prevent popup window from closing
-a5f03d8 Mms: Tweak code to make mms compose more performant
-
-   * packages/apps/Settings/
-142701f settings: Add option to toggle the pointer icon when using stylus(1/3)
-1e0498b Stylus gestures features (2/2)
-3c48b56 Settings: apply default profile after resetting them
-029aa26 Navigation bar button color (2/2)
-
-   * vendor/cm/
-7b865eb sepolicy: actually include mediaserver.te
-
-   * vendor/cmremix/
-a0a3b9b disabled FLOOP_NEST_OPTIMIZE
-7f37f38 build cmremix v7.1
-4899f11 cmRemiX update 02-03-2015
 
