@@ -13,8 +13,8 @@
   },
   {
     "account":      "cmRemiX",
-    "repository":   "android_device_samsung_trlte",
-    "target_path":  "device/samsung/trlte",
+    "repository":   "android_device_samsung_trlteeur",
+    "target_path":  "device/samsung/trlteeur",
     "revision":     "cm-12.0"
   },
   {

@@ -5,7 +5,7 @@ add_lunch_combo cmremix_hltespr-userdebug
 add_lunch_combo cmremix_hltevzw-userdebug
 add_lunch_combo cmremix_hlteusc-userdebug
 # Samsung Galaxy Note4
-add_lunch_combo cmremix_trlte-userdebug
+add_lunch_combo cmremix_trlteeur-userdebug
 add_lunch_combo cmremix_trltetmo-userdebug
 add_lunch_combo cmremix_trltespr-userdebug
-add_lunch_combo cmremix_trltecan-userdebug
+add_lunch_combo cmremix_trlteusc-userdebug

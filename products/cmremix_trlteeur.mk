@@ -1,5 +1,5 @@
 # Check for target product
-ifeq (cmremix_trltecan,$(TARGET_PRODUCT))
+ifeq (cmremix_trlteeur,$(TARGET_PRODUCT))
 
 # Target arch is arm
 TARGET_ARCH := arm
@@ -33,8 +33,8 @@ CMREMIX_BOOTANIMATION_NAME := 1440
 include vendor/cmremix/config/cmremix_common.mk
 
 # Inherit CM device configuration
-$(call inherit-product, device/samsung/trltecan/cm.mk)
+$(call inherit-product, device/samsung/trlteeur/cm.mk)
 
-PRODUCT_NAME := cmremix_trltecan
+PRODUCT_NAME := cmremix_trlteeur
 
 endif
