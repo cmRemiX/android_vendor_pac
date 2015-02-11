@@ -7,11 +7,22 @@
 12a7443 Fix various TWRP segfaults when compiled with better optimization level
 2a6bb11 Merge remote-tracking branch 'upstream/android-5.0' into cm-12.0
 
+   * build/
+0e640c6 Revert "Add handheld_core_hardware.xml to telephony base"
+d1d3022 releasetools: fix cleaning up /tmp/
+
+   * cmRemiX/
+3c57b4f Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
+373a34f track SlimLauncher
+
    * device/samsung/trlte-common/
 a1a89c4 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
 
-   * frameworks/av/
-534cfe9 Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
+   * external/chromium_org/
+6502fd5 Workaround for crowdin
+
+   * external/whispersystems/WhisperPush/
+90e65cf Automatic translation import
 
    * frameworks/base/
 6af2ff1 Remove CAF Chinese translations
@@ -37,6 +48,88 @@ fa4fb57 QS: clean up tiles
 cda47af SystemUI : PerfTile start vector animation on main thread
 b2130b1 SystemUI: improve blur layer behavior on lockscreen
 
+   * packages/apps/AudioFX/
+4bdfda9 Automatic translation import
+
+   * packages/apps/BasicSmsReceiver/
+097ce72 Automatic translation import
+
+   * packages/apps/Bluetooth/
+b85f85b Automatic translation import
+
+   * packages/apps/BluetoothExt/
+fbba921 Automatic translation import
+
+   * packages/apps/Browser/
+85b88b1 Automatic translation import
+
+   * packages/apps/CMFileManager/
+5d7137a Automatic translation import
+
+   * packages/apps/Calculator/
+88e4146 Add missing string
+c3345cf Automatic translation import
+
+   * packages/apps/Calendar/
+dd98f51 Remove mistakenly added DE strings
+43774bf Automatic translation import
+
+   * packages/apps/CellBroadcastReceiver/
+ca46032 Automatic translation import
+
+   * packages/apps/CertInstaller/
+7d11386 Automatic translation import
+
+   * packages/apps/Contacts/
+adeaeba Automatic translation import
+
+   * packages/apps/ContactsCommon/
+18038fc Automatic translation import
+
+   * packages/apps/DeskClock/
+19fef93 Automatic translation import
+6a34451 DeskClock: Protected against possible NPE from null uri.
+
+   * packages/apps/Dialer/
+61c5541 Automatic translation import
+
+   * packages/apps/Eleven/
+1532c47 Automatic translation import
+
+   * packages/apps/Email/
+b155adc Automatic translation import
+
+   * packages/apps/Exchange/
+ae4efdc Automatic translation import
+
+   * packages/apps/Gallery2/
+c20088e Automatic translation import
+
+   * packages/apps/HTMLViewer/
+884b1b1 Automatic translation import
+
+   * packages/apps/InCallUI/
+9b73234 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
+85d0380 Automatic translation import
+
+   * packages/apps/KeyChain/
+04a139d Automatic translation import
+
+   * packages/apps/LockClock/
+fd0c4fd Automatic translation import
+
+   * packages/apps/Mms/
+c592896 Automatic translation import
+
+   * packages/apps/Nfc/
+a29f6b5 Automatic translation import
+
+   * packages/apps/PackageInstaller/
+3b6d791 Automatic translation import
+
+   * packages/apps/PhoneCommon/
+4c9d743 Automatic translation import
+
    * packages/apps/Settings/
 64c91e0 Make phone status string translatable.
 1476bdc Settings: set profile name as title when editing
@@ -44,12 +137,98 @@ b2130b1 SystemUI: improve blur layer behavior on lockscreen
 67f26eb Settings: Create default expanded desktop style fragment.
 58f4438 QS: add newly added tiles
 
+   * packages/apps/SoundRecorder/
+e78f8a3 Automatic translation import
+
+   * packages/apps/Stk/
+b42cdbb Remove CAF Chinese translations
+04a77df Automatic translation import
+
+   * packages/apps/Tag/
+35cd1a8 Automatic translation import
+
+   * packages/apps/Terminal/
+68a467f Automatic translation import
+
+   * packages/apps/ThemeChooser/
+0296cfa Automatic translation import
+
+   * packages/apps/UnifiedEmail/
+45eae36 Automatic translation import
+
+   * packages/inputmethods/LatinIME/
+ffa2ca5 Automatic translation import
+
+   * packages/providers/CalendarProvider/
+51fc3fa Automatic translation import
+
+   * packages/providers/ContactsProvider/
+3bb16cc Automatic translation import
+
+   * packages/providers/DownloadProvider/
+daf33df Automatic translation import
+
+   * packages/providers/TelephonyProvider/
+27ddcf0 Automatic translation import
+
+   * packages/providers/ThemesProvider/
+9fe7972 Automatic translation import
+
+   * packages/providers/UserDictionaryProvider/
+f0cfb19 Automatic translation import
+
+   * packages/screensavers/Basic/
+c12e265 Automatic translation import
+
+   * packages/screensavers/PhotoTable/
+2394c54 Automatic translation import
+
+   * packages/services/Mms/
+aeb609d Automatic translation import
+
+   * packages/services/Telecomm/
+79ead46 Automatic translation import
+
+   * packages/wallpapers/Basic/
+c2d95bb Automatic translation import
+
+   * packages/wallpapers/Galaxy4/
+1bbd801 Automatic translation import
+
+   * packages/wallpapers/HoloSpiral/
+e787101 Automatic translation import
+
+   * packages/wallpapers/LivePicker/
+a5bfa69 Automatic translation import
+
+   * packages/wallpapers/MagicSmoke/
+d42afcd Automatic translation import
+
+   * packages/wallpapers/MusicVisualization/
+512eaa9 Automatic translation import
+
+   * packages/wallpapers/NoiseField/
+3b4c1c5 Automatic translation import
+
+   * packages/wallpapers/PhaseBeam/
+39e893a Automatic translation import
+
+   * packages/wallpapers/PhotoPhase/
+b3cbe56 Automatic translation import
+
+   * prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8/
+83a69f8 02-10-2015
+
    * vendor/cmremix/
-f937b93 Change Log: 2-10-2015
+ea4eb3c Change Log: 2-10-2015
+895443b add extra product.mk
 bb715d2 Products: add support for trlteeur & trlteusc
-34e15d1 disable some Optimization for further testing
 
    * vendor/samsung/
+58ce910 Merge remote-tracking branch 'TheMuppets/cm-12.0' into cm-12.0
+801d81d Merge pull request #578 from slayher/cm-12.0
+8049641 Merge pull request #577 from solk2/cm-12.0
+3ce120d ks01lte: Update to I9506XXUDOA6.
 9cbb927 change trltexx into trlteeur (official samsung name)
 033f644 trltexx
 5f6cc66 use TRLTEEUR (official samsung name) instead of TRLTEXX
@@ -69,6 +248,7 @@ de72b6d gui: avoid high CPU usage while waiting for input
 a500f38 Load Modem Host interface module for 910F
 
    * frameworks/av/
+534cfe9 Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
 9a32659 audio: Fixed Audio Source in Voice Call
 dc830fc audiopolicy: Add DEVICE_IN_COMMUNICATION for VOIP
 50286b8 audio: Added support for USB AOA connect/disconnect events
@@ -138,6 +318,9 @@ cf7c9d5 Add toggle for captive portal check
 6c14050 Settings: HeadsUp options [2/2]
 28a3f3c [squash] Remove Slim Headsup
 
+   * prebuilts/gcc/linux-x86/arm/arm-eabi-4.9/
+5eb394b tiny bump/ I was already updating arm-eabi-4.8 so I figured why not :)
+
    * system/media/
 2a6f71b audio_route: Support BYTE type controls
 
@@ -146,7 +329,11 @@ cf7c9d5 Add toggle for captive portal check
 5e9d050 init: remove logwrapper
 
    * vendor/cmremix/
+34e15d1 disable some Optimization for further testing
 60dae58 change log 02-09-2015
+
+   * vendor/samsung/
+c0134f8 trlte-common: Update blobs
 
 ====================
      02-08-2015
@@ -192,6 +379,12 @@ fb99c0d Settings: Performance: move cpu info refresh off of main thread
 e47d751 settings: Fix the custom screen color controls
 ea0f511 Improve navigation settings help messages
 
+   * prebuilts/gcc/linux-x86/arm/arm-eabi-4.9/
+27fa9a1 Bump build date 02-08-2015
+
+   * prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8/
+2fa5d0a Bump build date 02-08-2015
+
    * vendor/cmremix/
 df3a089  sm.mk: library path's:
 66df872 move optimization flags from build script to specific products.mk
@@ -232,9 +425,6 @@ e22874e InCallUI: clean up prox speaker code and improve usability
 ====================
 
 
-   * bootable/recovery-twrp/
-eb9bf42 Merge remote-tracking branch 'omni/android-5.0' into cm-12.0
-
    * build/
 f7ebd0d arm: add support for BoardConfig to append CFLAG Defining BOARD_GLOBAL_CFLAGS from BoardConfig will add a global CFLAG to be used with the entire ROM compilation
 ab0574e Add Bionic to Nest Optimization List
@@ -244,7 +434,7 @@ dfc55af Fix up the recovery.fstab for adv recovery
 1514e09 Remove the recovery resources
 
    * cmRemiX/
-63327f2 Add default revision for AOSP remote
+73792b9 Add hardware bits for Intel CPUs
 
    * external/whispersystems/WhisperPush/
 fdb6548 WhisperPush: Protect against possible NPE on TextWatcher.
@@ -256,26 +446,15 @@ be9d7d9 nuplayer: Modify seek and resume latency calculation
 
    * frameworks/native/
 0b3b93d surfaceflinger: Fix for non-qcom devices
-a6315fa Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
 
    * frameworks/opt/telephony/
 84e5a23 Telephony: Leverage UiccSmsController.
-b336d11 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0-2
-
-   * packages/apps/InCallUI/
-6efa5d8 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
 
    * packages/apps/OmniSwitch/
 899140a OmniSwitch: cast some shadows in solid mode
 
-   * packages/providers/MediaProvider/
-bd08d7f Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
-
-   * packages/services/Telephony/
-c2de793 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
-
-   * prebuilts/gcc/linux-x86/arm/arm-eabi-4.9/
-4e190e3 02-05-2014
+   * packages/apps/UnifiedEmail/
+2a50ddb UnifiedEmail : Set subject before setFolders
 
    * system/core/
 d326c4a core: add our init file [1/2]
