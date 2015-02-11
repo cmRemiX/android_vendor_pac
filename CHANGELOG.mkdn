@@ -5,7 +5,6 @@
 
    * bootable/recovery-twrp/
 12a7443 Fix various TWRP segfaults when compiled with better optimization level
-2a6bb11 Merge remote-tracking branch 'upstream/android-5.0' into cm-12.0
 
    * build/
 0e640c6 Revert "Add handheld_core_hardware.xml to telephony base"
@@ -14,9 +13,6 @@ d1d3022 releasetools: fix cleaning up /tmp/
    * cmRemiX/
 3c57b4f Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
 373a34f track SlimLauncher
-
-   * device/samsung/trlte-common/
-a1a89c4 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
 
    * external/chromium_org/
 6502fd5 Workaround for crowdin
@@ -220,6 +216,7 @@ b3cbe56 Automatic translation import
 83a69f8 02-10-2015
 
    * vendor/cmremix/
+836b70b build cmRemiX v7.7
 ea4eb3c Change Log: 2-10-2015
 895443b add extra product.mk
 bb715d2 Products: add support for trlteeur & trlteusc
@@ -240,11 +237,13 @@ bb715d2 Products: add support for trlteeur & trlteusc
 
 
    * bootable/recovery-twrp/
+2a6bb11 Merge remote-tracking branch 'upstream/android-5.0' into cm-12.0
 de72b6d gui: avoid high CPU usage while waiting for input
 3f15be4 Reset data manager variables before running runPages
 13f7ae9 Fix erroneous infinite loop in MTP inotify_t
 
    * device/samsung/trlte-common/
+a1a89c4 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
 a500f38 Load Modem Host interface module for 910F
 
    * frameworks/av/
