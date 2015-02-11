@@ -43,12 +43,8 @@ PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/common/etc/hosts.alt:system/etc/hosts.alt \
     vendor/cmremix/prebuilt/common/etc/hosts.og:system/etc/hosts.og
 
-# cmRemiX Packages
-PRODUCT_PACKAGES += \
-    OmniSwitch \
-    PerformanceControl \
-    ScreenRecorder \
-    libscreenrecorder
+# easy way to extend to add more packages
+-include vendor/cmremix/extra/product.mk
 
 # Chromium Prebuilt
 ifeq ($(PRODUCT_PREBUILT_WEBVIEWCHROMIUM),yes)
