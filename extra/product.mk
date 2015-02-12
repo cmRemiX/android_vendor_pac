@@ -5,7 +5,3 @@ PRODUCT_PACKAGES += \
     PerformanceControl \
     ScreenRecorder \
     libscreenrecorder
-
-## SlimLauncher LP
-PRODUCT_PACKAGES += \
-       SlimLauncher
