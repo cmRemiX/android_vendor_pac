@@ -1,10 +1,124 @@
 ====================
+     02-12-2015
+====================
+
+
+   * bootable/recovery-twrp/
+5186e24 Merge remote-tracking branch 'upstream/android-5.0' into cm-12.0
+
+   * build/
+7ecd1a3 Revert "Add phone directory to frameworks/base."
+8d611a4 build: Only mount /system if not mounted
+b1abda1 Revert: Do not use mkf2fsuserimg.sh if we have two fs in fstab, for example:
+
+   * cmRemiX/
+0811f84 Revert : track SlimLauncher (reverted from commit 373a34f327e9fc4c47cee21d5fbc924cf437bbb8)
+2801e36 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
+
+   * external/sepolicy/
+4442e2e Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
+
+   * frameworks/av/
+8a512b1 Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
+
+   * frameworks/base/
+fb06a9d core: Materialize text select handle
+b635420 RRO: prevent doze notifications from inverting
+8febe7e Powermenu screenshot delay [1/2]
+e33555c Hide msim 'no-sim' icons
+2bb9575 FWB: Add Volume Key Answer (1/2)
+2a17156 Base: CM Power Menu: Remove Bugreport
+8169b7e New DocumentsUI icon
+ca95a7f [2/2] Framework: doze triggered by motion sensor(s) preference Change-Id: I2a1be925ac58721f12da04a6164641ffa1c4a654
+21a8806 Improve layout of MSIM SIM PIN/PUK keyguard views.
+c245388 SystemUI: fix performance profile not showing up
+fbbb1ba SystemUI: fix profiles tile disappearing after profile selection.
+2ba0078 systemui: Underp blur effect after theme change
+dc6b65b navigation bar derp fixed
+
+   * packages/apps/Browser/
+d475d74 Show JS alerts over their origin tab
+
+   * packages/apps/CMFileManager/
+3c4f362 CM File Manager - Make AsyncResultExecutable's cancel() and end() innocuous
+
+   * packages/apps/Calendar/
+2128f1f Calendar: Set untranslatable
+
+   * packages/apps/InCallUI/
+304f947 Fix up in-call overflow button.
+
+   * packages/apps/Settings/
+b5088d6 Heads Up: Clean up code after ScreenType FWB commit
+1a42146 Settings: Add touchscreen hovering support
+10e6024 Settings: LT translations
+1f3292b Clean up MultiSimEnablerPreference.
+757a7a2 Settings: Set untranslatable
+c8eab66 Powermenu screenshot delay [2/2]
+7a7a8d7 Settings: Add Volume Key Answer (2/2)
+547c1c1 PowerMenu: Use SwitchPreference
+8e63c78 Settings: CM Power Menu: Remove BugReport
+b787b01 Clean up code after ScreenType FWB commit
+db644e4 add vavious icons from DU (credit Alex Cruz)
+a233f92 [1/2] Settings: doze trigger options
+
+   * packages/services/Telephony/
+5c6050c TelephonyService: Only add VideoCall settings if supported.
+ae8425c Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
+
+   * vendor/cmremix/
+38cd16b change log 2-12-2015
+
+====================
+     02-11-2015
+====================
+
+
+   * bootable/recovery-twrp/
+f892d05 2.8.5.0
+aee144c Fix handling of mapped zip files for OTA updates
+
+   * cmRemiX/
+ef724a5 Remove OpenWnn from manifest
+
+   * device/qcom/sepolicy/
+23a1492 Revert "SEAndroid: Updated vold domain related policy"
+
+   * external/busybox/
+dff5f3a mount: use blkid to determine fstype
+
+   * external/sepolicy/
+077da1c SEAndroid: Updated vold domain related policy
+
+   * hardware/qcom/audio-caf/msm8974/
+113a06c hal: Correctly set backend to best available parameters
+
+   * hardware/qcom/wlan/
+76d7437 wcnss_service: Retry qmi client init with port RMNET_0
+
+   * packages/apps/Email/
+179416c Fix crash issue when trying to setup an IMAP/POP3 account
+
+   * packages/services/Telephony/
+68c097c TelephonyService: Only add VideoCall settings if supported.
+
+   * vendor/cmremix/
+8d641ce remove slimlauncher
+e98eb9e tools: enabled ENABLE_GCCONLY := true TARGET_USE_PIPE := true LOCAL_LTO := true
+c2749f8 cmRemix v7.7 changelog
+836b70b build cmRemiX v7.7
+
+====================
      02-10-2015
 ====================
 
 
    * bootable/recovery-twrp/
 12a7443 Fix various TWRP segfaults when compiled with better optimization level
+727aeb8 Fix handling of GGLContext in res_scale_surface
+63e414f Scale the GUI to fit the screen
+1b6199f Remove deletes for images from scroll list GUI Elements
+2a6bb11 Merge remote-tracking branch 'upstream/android-5.0' into cm-12.0
 
    * build/
 0e640c6 Revert "Add handheld_core_hardware.xml to telephony base"
@@ -14,11 +128,18 @@ d1d3022 releasetools: fix cleaning up /tmp/
 3c57b4f Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
 373a34f track SlimLauncher
 
+   * device/samsung/trlte-common/
+a1a89c4 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
+
    * external/chromium_org/
 6502fd5 Workaround for crowdin
 
    * external/whispersystems/WhisperPush/
 90e65cf Automatic translation import
+
+   * frameworks/av/
+9236fc5 audioflinger: Power hints for audio activity
+534cfe9 Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
 
    * frameworks/base/
 6af2ff1 Remove CAF Chinese translations
@@ -63,12 +184,17 @@ fbba921 Automatic translation import
 5d7137a Automatic translation import
 
    * packages/apps/Calculator/
+c72d1a3 Sync translations with AOSP 5.0.2_r1
 88e4146 Add missing string
 c3345cf Automatic translation import
 
    * packages/apps/Calendar/
 dd98f51 Remove mistakenly added DE strings
 43774bf Automatic translation import
+
+   * packages/apps/Camera2/
+191fe1e Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
+8f20055 Automatic translation import
 
    * packages/apps/CellBroadcastReceiver/
 ca46032 Automatic translation import
@@ -149,6 +275,11 @@ b42cdbb Remove CAF Chinese translations
    * packages/apps/ThemeChooser/
 0296cfa Automatic translation import
 
+   * packages/apps/Trebuchet/
+dc8bfe7 Remove CAF Chinese translations
+7d0112a Automatic translation import
+2ac97c4 Trebuchet: Catch SQLiteReadOnlyException.
+
    * packages/apps/UnifiedEmail/
 45eae36 Automatic translation import
 
@@ -185,6 +316,10 @@ aeb609d Automatic translation import
    * packages/services/Telecomm/
 79ead46 Automatic translation import
 
+   * packages/services/Telephony/
+c743b7c Automatic translation import
+1b6c4ed Fix regression on incoming calls due to null Call.getHandle()
+
    * packages/wallpapers/Basic/
 c2d95bb Automatic translation import
 
@@ -212,14 +347,17 @@ d42afcd Automatic translation import
    * packages/wallpapers/PhotoPhase/
 b3cbe56 Automatic translation import
 
+   * prebuilts/gcc/linux-x86/arm/arm-eabi-4.9/
+5eb394b tiny bump/ I was already updating arm-eabi-4.8 so I figured why not :)
+
    * prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8/
 83a69f8 02-10-2015
 
    * vendor/cmremix/
-836b70b build cmRemiX v7.7
 ea4eb3c Change Log: 2-10-2015
 895443b add extra product.mk
 bb715d2 Products: add support for trlteeur & trlteusc
+34e15d1 disable some Optimization for further testing
 
    * vendor/samsung/
 58ce910 Merge remote-tracking branch 'TheMuppets/cm-12.0' into cm-12.0
@@ -237,17 +375,14 @@ bb715d2 Products: add support for trlteeur & trlteusc
 
 
    * bootable/recovery-twrp/
-2a6bb11 Merge remote-tracking branch 'upstream/android-5.0' into cm-12.0
 de72b6d gui: avoid high CPU usage while waiting for input
 3f15be4 Reset data manager variables before running runPages
 13f7ae9 Fix erroneous infinite loop in MTP inotify_t
 
    * device/samsung/trlte-common/
-a1a89c4 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
 a500f38 Load Modem Host interface module for 910F
 
    * frameworks/av/
-534cfe9 Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
 9a32659 audio: Fixed Audio Source in Voice Call
 dc830fc audiopolicy: Add DEVICE_IN_COMMUNICATION for VOIP
 50286b8 audio: Added support for USB AOA connect/disconnect events
@@ -317,8 +452,11 @@ cf7c9d5 Add toggle for captive portal check
 6c14050 Settings: HeadsUp options [2/2]
 28a3f3c [squash] Remove Slim Headsup
 
-   * prebuilts/gcc/linux-x86/arm/arm-eabi-4.9/
-5eb394b tiny bump/ I was already updating arm-eabi-4.8 so I figured why not :)
+   * packages/apps/Trebuchet/
+1fcd6e3 Filter apps for app drawer only after mApps is completely populated.
+
+   * packages/services/Telephony/
+6958a24 Listen for supplementary service notifications from IMS
 
    * system/media/
 2a6f71b audio_route: Support BYTE type controls
@@ -328,7 +466,6 @@ cf7c9d5 Add toggle for captive portal check
 5e9d050 init: remove logwrapper
 
    * vendor/cmremix/
-34e15d1 disable some Optimization for further testing
 60dae58 change log 02-09-2015
 
    * vendor/samsung/
@@ -369,6 +506,9 @@ c6b883e hal: Fix use of channel mask APIs
    * kernel/samsung/trlte/
 7f3b0e0 trltespr: disable fingerprint, hrm, uv and new vibrator for Sprint
 
+   * packages/apps/OmniSwitch/
+27932ae OmniSwitch: protect startup sequence
+
    * packages/apps/Settings/
 3574038 LanguageInputSettings : Ensure current spell checker is valid
 136b6a7 Settings : Fix profiles crash
@@ -388,77 +528,4 @@ ea0f511 Improve navigation settings help messages
 df3a089  sm.mk: library path's:
 66df872 move optimization flags from build script to specific products.mk
 c8e0677 change log 2-8-2015
-
-====================
-     02-07-2015
-====================
-
-
-   * build/
-e162d73 no need this settings
-
-   * device/samsung/trlte-common/
-4ed660e trlte-common enable stylus gestures.
-77ef353 add support TRLTEEUR
-6caa5b9 trlte: Add stylus support
-
-   * device/samsung/trltespr/
-da227bb trltespr: Update RIL to resolve dialEmergency issue The phone would lock up after appending the / to the dial address. This RIL was sourced from hlte, but trlte does not respond to the / in the dial address as hlte does, causing the phone to not dial.
-
-   * kernel/samsung/trlte/
-e706603 update EUR config with Slayher's changes
-
-   * packages/apps/InCallUI/
-1ddeed7 [2/2] InCallUI: let InCallUI handle proximity sensor for incoming calls
-e22874e InCallUI: clean up prox speaker code and improve usability
-67fd75a [3/3] InCallUI: Proximity speaker (Updated to PS9 - FINAL)
-
-   * packages/apps/OmniSwitch/
-90a10b9 OmniSwitch: fix invalid swipe dismiss
-
-   * vendor/cm/
-4e3886c common.mk: remove unused openvpn    *
-
-====================
-     02-06-2015
-====================
-
-
-   * build/
-f7ebd0d arm: add support for BoardConfig to append CFLAG Defining BOARD_GLOBAL_CFLAGS from BoardConfig will add a global CFLAG to be used with the entire ROM compilation
-ab0574e Add Bionic to Nest Optimization List
-d54a008 List Art Modules in nest optimization
-5e159dd gcconly: Change -floop-nest-optimize to enable by module
-dfc55af Fix up the recovery.fstab for adv recovery
-1514e09 Remove the recovery resources
-
-   * cmRemiX/
-73792b9 Add hardware bits for Intel CPUs
-
-   * external/whispersystems/WhisperPush/
-fdb6548 WhisperPush: Protect against possible NPE on TextWatcher.
-0b0d9e3 WhisperPush : Fix crash when going in background
-
-   * frameworks/av/
-af1e08e libmediaplayerservice: Use default buffer size for Audiocache with Awesomplayer
-be9d7d9 nuplayer: Modify seek and resume latency calculation
-
-   * frameworks/native/
-0b3b93d surfaceflinger: Fix for non-qcom devices
-
-   * frameworks/opt/telephony/
-84e5a23 Telephony: Leverage UiccSmsController.
-
-   * packages/apps/OmniSwitch/
-899140a OmniSwitch: cast some shadows in solid mode
-
-   * packages/apps/UnifiedEmail/
-2a50ddb UnifiedEmail : Set subject before setFolders
-
-   * system/core/
-d326c4a core: add our init file [1/2]
-a8102b8 core: This is cmRemiX
-
-   * vendor/cm/
-edac440 APN: Changes for MT:S Serbia APNs
 
