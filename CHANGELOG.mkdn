@@ -1,14 +1,155 @@
 ====================
+     02-15-2015
+====================
+
+
+   * bootable/recovery-twrp/
+77d889b Merge remote-tracking branch 'upstream/android-5.0' into cm-12.0
+
+   * cmRemiX/
+8e8cf12 track android_system_vold
+
+   * device/samsung/trlte-common/
+441e8a4 trlte-common: Update service classes for encrpytion
+795aef6 trlte-common: separate mixer_paths for 910F.
+cf48414 trlte: Enable apps2sd (temasek)
+
+   * frameworks/base/
+8071d52 Revert "Storage: Fix moving apps to external storage"
+b6db0d2 Navbar: Fixed NAVBAR_POWER behavior
+2681d94 Navbar: add power button
+f09836e NavBar: Fix little BackLand drawable
+8d09879 SystemUI: Fix back button drawable (Height & Width NavBar feature)
+84529fa bootanimation: fallback to outer loop on repeating the middle sequence
+cc9d3cd Revert "bootanimation: performance/speedup enhancements (squashed from CM11)"
+4b52f3a [1/2]move Nav bar tweaks & HW keys tweaks & Navigation bar button color  from CMREMiX to System Settings
+
+   * frameworks/native/
+137fe41 Calculate application sizes correctly
+
+   * kernel/samsung/trlte/
+ab0217c uapi: lsm_params: Add API to explicitly set LSM params
+e565c5c ASoC : msm: Add IOCTL for Listen LookAhead Buffering
+d150cef ASoC: msm: qdspv2: Fix junk characters in session name
+56bfa0f ASoC: msm-lsm-client: Add contraints for hardware params
+6baff03 ASoC: qdsp6v2: Add support for LSM_SET_PARAMS
+bc10cc3 ASoC: msm: qdsp6v2: Change client names for ion alloc
+ab1ca9b ASoC: msm: qdsp6v2: check proxy port is open when closing
+d26437c ASoC: msm-lsm-client: Handle close gracefully
+b04bfab ASoC: msm: Add bounds checking to ADM get params
+6a0f197 ASoC: msm: update min buffer count and size
+1d83fe9 ASoC: msm: Fix ADM GET PARAM callback
+
+   * packages/apps/InCallUI/
+0903102 [2/2] InCallUI: let InCallUI handle proximity sensor for incoming calls
+
+   * packages/apps/Settings/
+bd97a56 [2/2]move Nav bar tweaks & HW keys tweaks & Navigation bar button color  from CMREMiX to System Settings
+
+   * system/vold/
+af5a6d1 vold: Allow ASEC containers on an external volume when internal is emulated
+
+====================
+     02-14-2015
+====================
+
+
+   * bootable/recovery-twrp/
+cfd6509 Retain and display previous selection for image flashing
+
+   * device/samsung/trlte-common/
+80ce2c6 trlte: Enable tethering without provisioning app
+
+   * external/skia/
+bf4617b Revert "NEON optimized blitter S32_Opaque_D32_filter_DX"
+
+   * frameworks/base/
+fb6f243 Revert "QS: fix random missing tiles when leaving detailed view"
+6385d6d Increase available volume levels
+7a6e8c3 QsTiles : Brightness point to ic_qs_brightness_auto_on_alpha
+08fb64d SystemUI: fix lock screen phone shortcut showing when target is set to none
+
+   * packages/apps/InCallUI/
+acad21a InCallUI: Fix string typo
+
+   * packages/apps/Settings/
+f63e748 Navbar Dimen: Clean up code after ScreenType FWB commit
+7f7c02a house keeping
+
+   * packages/apps/Terminal/
+4538377 TerminalKeys: Disable debug
+
+   * vendor/cmremix/
+be806af cmRemiX changelog v7.9
+
+====================
+     02-13-2015
+====================
+
+
+   * build/
+0e97557 Revert "Add phone directory to frameworks/base."
+
+   * external/busybox/
+d9ce728 mount: use blkid to determine fstype
+
+   * frameworks/base/
+099b17a Prevent power key capture when screen is off
+34fb551 Removing some more FloatMath references
+a4b9398 Switch from FloatMath -> Math and Math.hypot where possible
+f39a432 Call startInput on return from sleep mode
+0d54aa7 Storage: Fix moving apps to external storage
+073dd9a Revert "Fixes large number of thumbnails leads to low memory"
+eab7308 Store compiled code in Context.getCodeCacheDir()
+7b8b954 Remove usages of FloatMath
+c81367f DeviceUtils: Clean up code after ScreenType FWB commit
+
+   * frameworks/opt/net/ims/
+607bb1e IMS: Add an extra for ims phantom MO call.
+
+   * kernel/samsung/trlte/
+cc0b78d build base v1.0
+11bd780 Set kernel to XZ compression
+07ae070 Makefile: Add -floop-nest-optimize everywhere and organized flags (Chet Kener)
+ec5498b Optimized Overhaul Thanks (chet kl3kner & Paul Beeler)
+
+   * packages/apps/AudioFX/
+451a68b Add missing translations from 5.0.2_r1
+
+   * packages/apps/Bluetooth/
+16bc583 bluetooth: Tone down the logspam
+
+   * packages/apps/Gallery2/
+ca0bead Moar materialize changes
+
+   * packages/apps/InCallUI/
+9d67326 InCallUi: Update string for call on hold.
+
+   * system/core/
+32afb83 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
+bbdc54a logd: fix persistent blocking reader performance
+7c92abf healthd: Disable the RTC wakeup timer
+
+   * system/vold/
+0274d51 Vold: Reset mPartMinors array when handling disk removal
+1951d59 vold: Fix compilation
+f9efab5 Fix Ext4 sdcard permissions on mount
+
+   * vendor/cm/
+e0d34c1 vendor:cm: Update CONTRIBUTORS.mkdn
+8f310be vendor:cm: cleanup contributors
+
+====================
      02-12-2015
 ====================
 
 
    * bootable/recovery-twrp/
 5186e24 Merge remote-tracking branch 'upstream/android-5.0' into cm-12.0
+fa30aca gui: fix condition handling for lists
+c26ba0d minuitwrp: fix file descriptor leak in open_png
 
    * build/
-7ecd1a3 Revert "Add phone directory to frameworks/base."
-8d611a4 build: Only mount /system if not mounted
 b1abda1 Revert: Do not use mkf2fsuserimg.sh if we have two fs in fstab, for example:
 
    * cmRemiX/
@@ -30,11 +171,12 @@ e33555c Hide msim 'no-sim' icons
 2a17156 Base: CM Power Menu: Remove Bugreport
 8169b7e New DocumentsUI icon
 ca95a7f [2/2] Framework: doze triggered by motion sensor(s) preference Change-Id: I2a1be925ac58721f12da04a6164641ffa1c4a654
-21a8806 Improve layout of MSIM SIM PIN/PUK keyguard views.
-c245388 SystemUI: fix performance profile not showing up
-fbbb1ba SystemUI: fix profiles tile disappearing after profile selection.
-2ba0078 systemui: Underp blur effect after theme change
-dc6b65b navigation bar derp fixed
+
+   * frameworks/minikin/
+4e4ab1a Move coverage bitmap from FontCollection to FontFamily
+
+   * hardware/qcom/audio-caf/msm8916/
+9b812ef hal: Featureize FLAC offload support
 
    * packages/apps/Browser/
 d475d74 Show JS alerts over their origin tab
@@ -47,6 +189,7 @@ d475d74 Show JS alerts over their origin tab
 
    * packages/apps/InCallUI/
 304f947 Fix up in-call overflow button.
+d2c5fc2 Fix up in-call overflow button.
 
    * packages/apps/Settings/
 b5088d6 Heads Up: Clean up code after ScreenType FWB commit
@@ -67,7 +210,7 @@ a233f92 [1/2] Settings: doze trigger options
 ae8425c Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
 
    * vendor/cmremix/
-38cd16b change log 2-12-2015
+21b879a change log 2-12-2015
 
 ====================
      02-11-2015
@@ -84,11 +227,15 @@ ef724a5 Remove OpenWnn from manifest
    * device/qcom/sepolicy/
 23a1492 Revert "SEAndroid: Updated vold domain related policy"
 
-   * external/busybox/
-dff5f3a mount: use blkid to determine fstype
-
    * external/sepolicy/
 077da1c SEAndroid: Updated vold domain related policy
+
+   * frameworks/base/
+21a8806 Improve layout of MSIM SIM PIN/PUK keyguard views.
+c245388 SystemUI: fix performance profile not showing up
+fbbb1ba SystemUI: fix profiles tile disappearing after profile selection.
+2ba0078 systemui: Underp blur effect after theme change
+dc6b65b navigation bar derp fixed
 
    * hardware/qcom/audio-caf/msm8974/
 113a06c hal: Correctly set backend to best available parameters
@@ -99,433 +246,18 @@ dff5f3a mount: use blkid to determine fstype
    * packages/apps/Email/
 179416c Fix crash issue when trying to setup an IMAP/POP3 account
 
+   * packages/apps/InCallUI/
+012e415 [2/2] InCallUI: let InCallUI handle proximity sensor for incoming calls
+
    * packages/services/Telephony/
 68c097c TelephonyService: Only add VideoCall settings if supported.
+
+   * vendor/cm/
+c75446d sepolicy: Split off /cache/recovery's permissions
 
    * vendor/cmremix/
 8d641ce remove slimlauncher
 e98eb9e tools: enabled ENABLE_GCCONLY := true TARGET_USE_PIPE := true LOCAL_LTO := true
 c2749f8 cmRemix v7.7 changelog
 836b70b build cmRemiX v7.7
-
-====================
-     02-10-2015
-====================
-
-
-   * bootable/recovery-twrp/
-12a7443 Fix various TWRP segfaults when compiled with better optimization level
-727aeb8 Fix handling of GGLContext in res_scale_surface
-63e414f Scale the GUI to fit the screen
-1b6199f Remove deletes for images from scroll list GUI Elements
-2a6bb11 Merge remote-tracking branch 'upstream/android-5.0' into cm-12.0
-
-   * build/
-0e640c6 Revert "Add handheld_core_hardware.xml to telephony base"
-d1d3022 releasetools: fix cleaning up /tmp/
-
-   * cmRemiX/
-3c57b4f Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
-373a34f track SlimLauncher
-
-   * device/samsung/trlte-common/
-a1a89c4 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
-
-   * external/chromium_org/
-6502fd5 Workaround for crowdin
-
-   * external/whispersystems/WhisperPush/
-90e65cf Automatic translation import
-
-   * frameworks/av/
-9236fc5 audioflinger: Power hints for audio activity
-534cfe9 Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
-
-   * frameworks/base/
-6af2ff1 Remove CAF Chinese translations
-9b5f86f Automatic translation import
-cbc486f Quick Settings: Auto collapse panel derp fixed
-48dadca ActivityManager: Fix monkey tests
-b23d705 systemui: Fix NPE in ExpandHelper
-35bd5ec SystemUI: Allow showing data type with roaming indicator on MSIM.
-4c621fe Create configurable default expanded desktop style.
-3e0c38b Lock screen notifications: fix "Disallowed call for uid <system uid>" security exception.
-5f268a6 Hide privacyguard notifications on keyguard
-8cacd92 Don't lookup application keyguard notification visibility unnecessarily
-d98d2f9 bootanimation: performance/speedup enhancements (squashed from CM11)
-985d5a7 SystemUI: use normal timeout delay for media volume panel
-fa4fb57 QS: clean up tiles
-88d1a04 QS: add Expanded desktop tile
-4384dee QS: add Screen off tile
-2a5ce0d QS: add Battery saver tile
-490ccc6 QS: add Brightness tile
-3fe437d QS: move all options into a SettingsObserver in QSPanel
-368b064 SystemUI: rework battery saver bar color feature
-28ddd17 Fix make updateapi for custom density setting
-cda47af SystemUI : PerfTile start vector animation on main thread
-b2130b1 SystemUI: improve blur layer behavior on lockscreen
-
-   * packages/apps/AudioFX/
-4bdfda9 Automatic translation import
-
-   * packages/apps/BasicSmsReceiver/
-097ce72 Automatic translation import
-
-   * packages/apps/Bluetooth/
-b85f85b Automatic translation import
-
-   * packages/apps/BluetoothExt/
-fbba921 Automatic translation import
-
-   * packages/apps/Browser/
-85b88b1 Automatic translation import
-
-   * packages/apps/CMFileManager/
-5d7137a Automatic translation import
-
-   * packages/apps/Calculator/
-c72d1a3 Sync translations with AOSP 5.0.2_r1
-88e4146 Add missing string
-c3345cf Automatic translation import
-
-   * packages/apps/Calendar/
-dd98f51 Remove mistakenly added DE strings
-43774bf Automatic translation import
-
-   * packages/apps/Camera2/
-191fe1e Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
-8f20055 Automatic translation import
-
-   * packages/apps/CellBroadcastReceiver/
-ca46032 Automatic translation import
-
-   * packages/apps/CertInstaller/
-7d11386 Automatic translation import
-
-   * packages/apps/Contacts/
-adeaeba Automatic translation import
-
-   * packages/apps/ContactsCommon/
-18038fc Automatic translation import
-
-   * packages/apps/DeskClock/
-19fef93 Automatic translation import
-6a34451 DeskClock: Protected against possible NPE from null uri.
-
-   * packages/apps/Dialer/
-61c5541 Automatic translation import
-
-   * packages/apps/Eleven/
-1532c47 Automatic translation import
-
-   * packages/apps/Email/
-b155adc Automatic translation import
-
-   * packages/apps/Exchange/
-ae4efdc Automatic translation import
-
-   * packages/apps/Gallery2/
-c20088e Automatic translation import
-
-   * packages/apps/HTMLViewer/
-884b1b1 Automatic translation import
-
-   * packages/apps/InCallUI/
-9b73234 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
-85d0380 Automatic translation import
-
-   * packages/apps/KeyChain/
-04a139d Automatic translation import
-
-   * packages/apps/LockClock/
-fd0c4fd Automatic translation import
-
-   * packages/apps/Mms/
-c592896 Automatic translation import
-
-   * packages/apps/Nfc/
-a29f6b5 Automatic translation import
-
-   * packages/apps/PackageInstaller/
-3b6d791 Automatic translation import
-
-   * packages/apps/PhoneCommon/
-4c9d743 Automatic translation import
-
-   * packages/apps/Settings/
-64c91e0 Make phone status string translatable.
-1476bdc Settings: set profile name as title when editing
-2aefed4 Automatic translation import
-67f26eb Settings: Create default expanded desktop style fragment.
-58f4438 QS: add newly added tiles
-
-   * packages/apps/SoundRecorder/
-e78f8a3 Automatic translation import
-
-   * packages/apps/Stk/
-b42cdbb Remove CAF Chinese translations
-04a77df Automatic translation import
-
-   * packages/apps/Tag/
-35cd1a8 Automatic translation import
-
-   * packages/apps/Terminal/
-68a467f Automatic translation import
-
-   * packages/apps/ThemeChooser/
-0296cfa Automatic translation import
-
-   * packages/apps/Trebuchet/
-dc8bfe7 Remove CAF Chinese translations
-7d0112a Automatic translation import
-2ac97c4 Trebuchet: Catch SQLiteReadOnlyException.
-
-   * packages/apps/UnifiedEmail/
-45eae36 Automatic translation import
-
-   * packages/inputmethods/LatinIME/
-ffa2ca5 Automatic translation import
-
-   * packages/providers/CalendarProvider/
-51fc3fa Automatic translation import
-
-   * packages/providers/ContactsProvider/
-3bb16cc Automatic translation import
-
-   * packages/providers/DownloadProvider/
-daf33df Automatic translation import
-
-   * packages/providers/TelephonyProvider/
-27ddcf0 Automatic translation import
-
-   * packages/providers/ThemesProvider/
-9fe7972 Automatic translation import
-
-   * packages/providers/UserDictionaryProvider/
-f0cfb19 Automatic translation import
-
-   * packages/screensavers/Basic/
-c12e265 Automatic translation import
-
-   * packages/screensavers/PhotoTable/
-2394c54 Automatic translation import
-
-   * packages/services/Mms/
-aeb609d Automatic translation import
-
-   * packages/services/Telecomm/
-79ead46 Automatic translation import
-
-   * packages/services/Telephony/
-c743b7c Automatic translation import
-1b6c4ed Fix regression on incoming calls due to null Call.getHandle()
-
-   * packages/wallpapers/Basic/
-c2d95bb Automatic translation import
-
-   * packages/wallpapers/Galaxy4/
-1bbd801 Automatic translation import
-
-   * packages/wallpapers/HoloSpiral/
-e787101 Automatic translation import
-
-   * packages/wallpapers/LivePicker/
-a5bfa69 Automatic translation import
-
-   * packages/wallpapers/MagicSmoke/
-d42afcd Automatic translation import
-
-   * packages/wallpapers/MusicVisualization/
-512eaa9 Automatic translation import
-
-   * packages/wallpapers/NoiseField/
-3b4c1c5 Automatic translation import
-
-   * packages/wallpapers/PhaseBeam/
-39e893a Automatic translation import
-
-   * packages/wallpapers/PhotoPhase/
-b3cbe56 Automatic translation import
-
-   * prebuilts/gcc/linux-x86/arm/arm-eabi-4.9/
-5eb394b tiny bump/ I was already updating arm-eabi-4.8 so I figured why not :)
-
-   * prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8/
-83a69f8 02-10-2015
-
-   * vendor/cmremix/
-ea4eb3c Change Log: 2-10-2015
-895443b add extra product.mk
-bb715d2 Products: add support for trlteeur & trlteusc
-34e15d1 disable some Optimization for further testing
-
-   * vendor/samsung/
-58ce910 Merge remote-tracking branch 'TheMuppets/cm-12.0' into cm-12.0
-801d81d Merge pull request #578 from slayher/cm-12.0
-8049641 Merge pull request #577 from solk2/cm-12.0
-3ce120d ks01lte: Update to I9506XXUDOA6.
-9cbb927 change trltexx into trlteeur (official samsung name)
-033f644 trltexx
-5f6cc66 use TRLTEEUR (official samsung name) instead of TRLTEXX
-01b5099 initial TRLTEEUR vendor dir
-
-====================
-     02-09-2015
-====================
-
-
-   * bootable/recovery-twrp/
-de72b6d gui: avoid high CPU usage while waiting for input
-3f15be4 Reset data manager variables before running runPages
-13f7ae9 Fix erroneous infinite loop in MTP inotify_t
-
-   * device/samsung/trlte-common/
-a500f38 Load Modem Host interface module for 910F
-
-   * frameworks/av/
-9a32659 audio: Fixed Audio Source in Voice Call
-dc830fc audiopolicy: Add DEVICE_IN_COMMUNICATION for VOIP
-50286b8 audio: Added support for USB AOA connect/disconnect events
-80626ad audio: Set proper AAC audio format
-e6b9af4 Camera: Added null check for memory reference
-53b672b libstagefright: Add support for HW AAC decoder
-4cc8f7e audiopolicy: Update DeviceNametoEnumTable
-
-   * frameworks/base/
-ac3b789 SystemUI: Update 'Materialize volume panel in/out animation'
-8d2f312 Theming Immersive mode confirmation dialog
-5b07b05 Make proper power menu qs icon
-cd63c2d FWB - Add PowerMenu QS Tile (Reboot on longpress) [1/2]
-fadad6b [1/2] Frameworks: let InCallUI handle proximity sensor for incoming calls
-9cc6957 Remove fall through for KEYCODE_VOICE_ASSIST
-b2a666b Fix ANR caused by hwuiTask thread
-2ec3f14 SystemUI: option to disable search panel (navrings) (1/2)
-f853ace Fix heads up dismiss not working
-ae3ea2f HeadsUp: Don't reset Y coordinate and improve edge swipe readability
-98656bc [Heads up] Don't show heads up while IME is showing
-9779225 HeadsUp: fix headsup for incoming calls
-075623f [Heads up] Touch outside to hide (1/2)
-244be5a [Heads up] Add touch outside event
-1f8cb14 [Squash] Remove Framework: StatusBar Ticker (1/2)
-4a51597 [Heads up swipe] Disable by default
-8e490b8 HeadsUp: check if headsup is attached and not null when adding view
-5b13b25 HeadsUp: add timeout option (1/2)
-8edcceb Frameworks: Actually start to use HEADS_UP_REQUESTED extra
-a1e0572  Base: HeadsUp options [1/2]
-9615059 [squash] Remove Slim Headsup
-cb61679 AppOps: fix deadlock issue when showing dialog
-731cad2 VolumePanel : Check if StreamControl is null
-fd7e2b3 Themes: Add tm command line tool
-cfced16 Msim: Use SIM display name
-bcaf052 SystemUI: improve lockscreen tile behavior
-8a082ac lowmemorykiller: Fix high min-free values
-2bb4a15 Themes: Pass themePackageName to createApplicationContext()
-68b4fce SystemUI : Move navring app loading to background tasks
-6d9921a Revert : SystemUI : Move navring app loading to background tasks
-3a86a78 AlarmManager: Reschedule the date changed event if time changed.
-bdf3767 Don't broadcast before boot is completed.
-
-   * hardware/libhardware_legacy/
-b6caca5 audio: Add getPresentationPosition for AudioStreamOut
-
-   * hardware/qcom/audio-caf/msm8960/
-3e06149 audio: Changing usb device from ANALOG to USB_IN
-ec9588a audio: Implement getPresentationPosition for AudioStreamOut
-77242d0 alsa_sound: Fix CSD client check
-
-   * packages/apps/LockClock/
-bc4e4bd LockClock: Materialize the UI and update for Lollipop
-
-   * packages/apps/Mms/
-92d8519 Mms - Modify slideshow play icon's appearance
-cee690f Fix QM popup avatar view.
-
-   * packages/apps/Settings/
-95e0f64 Settings - Add PowerMenu QS Tile (Reboot on longpress) [2/2]
-67979dd Nav ring: Update dependency
-6f11b35 Settings: option to disable search panel (navrings) (2/2) Change-Id: I573fd6fab4c24866f58b4062c5eb516719c0855b
-cf7c9d5 Add toggle for captive portal check
-36b11b8 [Heads up] Touch to hide (2/2)
-462ded9 Remove Settings: StatusBar Ticker (2/2)
-7a70ead [Heads up Swipe] A more user friendly summary
-9257bce HeadsUp: add timeout option (2/2)
-6c14050 Settings: HeadsUp options [2/2]
-28a3f3c [squash] Remove Slim Headsup
-
-   * packages/apps/Trebuchet/
-1fcd6e3 Filter apps for app drawer only after mApps is completely populated.
-
-   * packages/services/Telephony/
-6958a24 Listen for supplementary service notifications from IMS
-
-   * system/media/
-2a6f71b audio_route: Support BYTE type controls
-
-   * vendor/cm/
-2ccd36c sepolicy: allow userinit to set its property
-5e9d050 init: remove logwrapper
-
-   * vendor/cmremix/
-60dae58 change log 02-09-2015
-
-   * vendor/samsung/
-c0134f8 trlte-common: Update blobs
-
-====================
-     02-08-2015
-====================
-
-
-   * build/
-91f45a1 repopick: Allow the github fetch to fail
-1f8191c repopick: Allow using a custom query
-
-   * device/samsung/trlte-common/
-0126df8 trlte-common enable stylus gestures.
-68705e5 add support TRLTEEUR
-9b726a9 trlte-common: Setup selinux/perms for spen events.
-276b8ab trlte-common: Update nfc conf
-b9e7513 trlte-common: add perfd dirs during init.
-
-   * frameworks/av/
-7aca4f3 Merge remote-tracking branch 'Upstream/cm-12.0' into cm-12.0
-
-   * frameworks/base/
-1c4f1ec SystemUI : Improve nav ring swipe behavior
-ff9748b SystemUI : Make navbar back,recent not re-assignable
-
-   * frameworks/native/
-69e4576 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
-
-   * frameworks/opt/telephony/
-e798445 Merge remote-tracking branch 'upstream/cm-12.0' into cm-12.0
-
-   * hardware/qcom/audio-caf/msm8974/
-c6b883e hal: Fix use of channel mask APIs
-
-   * kernel/samsung/trlte/
-7f3b0e0 trltespr: disable fingerprint, hrm, uv and new vibrator for Sprint
-
-   * packages/apps/OmniSwitch/
-27932ae OmniSwitch: protect startup sequence
-
-   * packages/apps/Settings/
-3574038 LanguageInputSettings : Ensure current spell checker is valid
-136b6a7 Settings : Fix profiles crash
-8628a4b Settings: merge sim enabler and sim cards preference
-f5036be Settings: Performance: fix mix/max cpu frequency
-fb99c0d Settings: Performance: move cpu info refresh off of main thread
-e47d751 settings: Fix the custom screen color controls
-ea0f511 Improve navigation settings help messages
-
-   * prebuilts/gcc/linux-x86/arm/arm-eabi-4.9/
-27fa9a1 Bump build date 02-08-2015
-
-   * prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8/
-2fa5d0a Bump build date 02-08-2015
-
-   * vendor/cmremix/
-df3a089  sm.mk: library path's:
-66df872 move optimization flags from build script to specific products.mk
-c8e0677 change log 2-8-2015
 
