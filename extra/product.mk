@@ -5,3 +5,7 @@ PRODUCT_PACKAGES += \
     PerformanceControl \
     ScreenRecorder \
     libscreenrecorder
+
+# cmRemiX OTA
+PRODUCT_PACKAGES += \
+    cmRemiXUpdater
