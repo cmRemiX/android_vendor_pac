@@ -2,7 +2,7 @@
 
 # cmRemiX version System
 export CMREMIX_VERSION_MAJOR="LP"
-export CMREMIX_VERSION_MINOR="v7.7"
+export CMREMIX_VERSION_MINOR="v8.5"
 export CMREMIX_VERSION_MAINTENANCE="Nightly"
 # Acceptible maitenance versions are; Stable, Dev, Nightly
 
