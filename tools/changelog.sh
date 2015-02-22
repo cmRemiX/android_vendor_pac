@@ -64,3 +64,4 @@ fi
 done
 
 cp $ANDROID_BUILD_TOP/CHANGELOGS/cmremix_$logd $OUT/system/etc/CHANGELOG-cmR.txt
+cp $ANDROID_BUILD_TOP/CHANGELOGS/cmremix_$logd $OUT/Changelog.txt
