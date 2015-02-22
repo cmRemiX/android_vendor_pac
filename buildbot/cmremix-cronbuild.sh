@@ -17,7 +17,7 @@ lunch "$ROMNAME"_"$DEVICE"-userdebug -j$BRUNCH
 mka bacon -j$BRUNCH
 mkdir -p $REPODIR/$DEVICE
 cp $TARGET_DIR$FILE $REPODIR/$DEVICE/"$ROMNAME"_"$DEVICE""$DATE".zip
-echo "Done building "$ROMNAME" "$DEVICE" "$Vanir_Version$DATE""
+echo "Done building "$ROMNAME" "$DEVICE" "$cmRemiX_Version$DATE""
 echo "Your local copy is in $REPODIR/$DEVICE"
 if [[ "$FTPYN" == "Y" || "$FTPYN" == "y" ]]; then(
 . ftp-config
