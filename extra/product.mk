@@ -8,4 +8,5 @@ PRODUCT_PACKAGES += \
 
 # cmRemiX OTA
 PRODUCT_PACKAGES += \
-    cmRemiXUpdater
+    cmRemiXUpdater \
+    SlimCenter
