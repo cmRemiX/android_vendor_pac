@@ -48,6 +48,9 @@ PRODUCT_COPY_FILES += \
 # easy way to extend to add more packages
 -include vendor/cmremix/extra/product.mk
 
+# Debugs Script
+-include vendor/cmremix/products/debug.mk
+
 # Chromium Prebuilt
 ifeq ($(PRODUCT_PREBUILT_WEBVIEWCHROMIUM),yes)
 -include prebuilts/chromium/$(TARGET_DEVICE)/chromium_prebuilt.mk
