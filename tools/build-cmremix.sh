@@ -2,9 +2,9 @@
 
 # cmRemiX version System
 export CMREMIX_VERSION_MAJOR="LP"
-export CMREMIX_VERSION_MINOR="9.5"
-export CMREMIX_VERSION_MAINTENANCE="Stable"
-# Acceptible maitenance versions are; Stable, Dev, Nightly
+export CMREMIX_VERSION_MINOR="9.6"
+export CMREMIX_VERSION_MAINTENANCE="Unofficial"
+# Acceptible maintenance versions are; Stable, Official, Nightly or Unofficial
 
 # cmremix Version Logic
 if [ -s ~/CMREMIXname ]; then
