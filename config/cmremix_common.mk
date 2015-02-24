@@ -64,15 +64,13 @@ BOARD_SEPOLICY_UNION += \
     system_app.te \
     system_server.te
 
-BOARD := $(subst cmremix_,,$(TARGET_PRODUCT))
-
-# Add CM release version
-CM_RELEASE := true
-CM_BUILD := $(BOARD)
-
 # cmRemiX version
 CMREMIXVERSION := $(shell echo $(CMREMIX_VERSION) | sed -e 's/^[ \t]*//;s/[ \t]*$$//;s/ /./g')
+BOARD := $(subst cmremix_,,$(TARGET_PRODUCT))
 CMREMIX_BUILD_VERSION := cmRemiX_$(BOARD)_$(CMREMIXVERSION)_$(shell date +%Y%m%d-%H%M%S)
+
+# Set the board version
+CM_BUILD := $(BOARD)
 
 # ROMStats Properties
 PRODUCT_PROPERTY_OVERRIDES += \
