@@ -308,15 +308,18 @@ ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
         libwebviewchromium \
         skia_skia_library_gyp
 
+    LOCAL_DISABLE_PTHREAD := \
+      libc_netbsd
+
       # -O3 flags and friends
       O3_FLAGS := \
         -O3 \
         -Wno-error=array-bounds \
         -Wno-error=strict-overflow
-    endif
+   else
+    OPT3:=
 
-  LOCAL_DISABLE_THUMB_INTERWORK := \
-    libmincrypt
+   endif
 
   ifeq (true,$(KRAIT_TUNINGS))
     OPT4 := (krait)
@@ -338,7 +341,13 @@ ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
    OPT8 := (floop-nest)
   endif
 
-    GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)$(OPT7)$(OPT8)
+  ifeq ($(strip $(ENABLE_PTHREAD)),true)
+    OPT9 := (pthread)
+  else
+    OPT9:=
+  endif
+
+    GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)$(OPT7)$(OPT8)$(OPT9)
     ifneq ($(GCC_OPTIMIZATION_LEVELS),)
       PRODUCT_PROPERTY_OVERRIDES += \
         ro.sm.flags=$(GCC_OPTIMIZATION_LEVELS)
