@@ -14,12 +14,13 @@ TARGET_GCC_VERSION_ARM := 4.9
 # Set Custom GCC Rom Version 
 TARGET_GCC_VERSION_AND := 4.8
 
-# Enabled Optimization Option Here : 
+# Enabled SaberMod Optimization Here 
 GRAPHITE_OPTS := true
 STRICT_ALIASING := true
 USE_HOST_4_8 := true
 O3_OPTIMIZATIONS := true
 KRAIT_TUNINGS := true
+ENABLE_PTHREAD := true
 #ENABLE_GCCONLY := true
 #TARGET_USE_PIPE := true
 #export LOCAL_LTO := true
