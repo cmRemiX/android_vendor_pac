@@ -310,7 +310,8 @@ ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
 
       # Don't compile -O3 with thumb to reduce code size.
       LOCAL_DISABLE_O3_FLAGS := \
-        -mthumb
+        -mthumb \
+        -mthumb-interwork
 
       # -O3 flags and friends
       O3_FLAGS := \
@@ -318,6 +319,9 @@ ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
         -Wno-error=array-bounds \
         -Wno-error=strict-overflow
     endif
+
+  LOCAL_DISABLE_THUMB_INTERWORK := \
+    libmincrypt
 
   ifeq (true,$(KRAIT_TUNINGS))
     OPT4 := (krait)
