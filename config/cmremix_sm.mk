@@ -308,11 +308,6 @@ ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
         libwebviewchromium \
         skia_skia_library_gyp
 
-      # Don't compile -O3 with thumb to reduce code size.
-      LOCAL_DISABLE_O3_FLAGS := \
-        -mthumb \
-        -mthumb-interwork
-
       # -O3 flags and friends
       O3_FLAGS := \
         -O3 \
