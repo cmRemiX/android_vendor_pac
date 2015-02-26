@@ -223,6 +223,9 @@ ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
       libavcodec \
       skia_skia_library_gyp
 
+    # Force disable some modules that are not compatible with Strict Aliasing flags.
+    # Add more modules if needed for devices in BoardConfig.mk
+    # LOCAL_DISABLE_STRICT +=
   ifeq ($(strip $(STRICT_ALIASING)),true)
   OPT2 := (strict)
 
@@ -294,7 +297,14 @@ ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
 	libssh \
 	ssh \
 	libcrypto_static \
-	libbusybox
+	libbusybox \
+	patchoat \
+	libart-disassembler \
+	dex2oat \
+	oatdump \
+	libart \
+	libart-compiler
+
   endif
 
     ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
