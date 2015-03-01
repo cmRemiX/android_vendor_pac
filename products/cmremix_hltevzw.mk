@@ -14,6 +14,9 @@ TARGET_GCC_VERSION_ARM := 4.9
 # Set Custom GCC Rom Version 
 TARGET_GCC_VERSION_AND := 4.8
 
+# Set Qcom Clang 3.5 
+USE_CLANG_QCOM := true
+
 # Enabled SaberMod Optimization Here 
 GRAPHITE_OPTS := true
 STRICT_ALIASING := true
