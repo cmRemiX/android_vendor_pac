@@ -33,7 +33,8 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/cmremix/overlay/common
 PRODUCT_COPY_FILES += vendor/cmremix/prebuilt/common/bootanimation/$(CMREMIX_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
 
 # Init script file with cmRemiX extras
-PRODUCT_COPY_FILES += vendor/cmremix/prebuilt/common/etc/init.local.rc:root/init.cmremix.rc
+PRODUCT_COPY_FILES += \
+vendor/cmremix/prebuilt/common/etc/init.local.rc:root/init.cmremix.rc
 
 # SuperSU
 PRODUCT_COPY_FILES += \
@@ -44,6 +45,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/common/etc/hosts.alt:system/etc/hosts.alt \
     vendor/cmremix/prebuilt/common/etc/hosts.og:system/etc/hosts.og
+
+# Zion959 Kernel Needed Files
+PRODUCT_COPY_FILES += \
+    vendor/cmremix/prebuilt/common/lib/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
+    vendor/cmremix/prebuilt/common/etc/init.kernel.sh:system/etc/init.kernel.sh \
+    vendor/cmremix/prebuilt/common/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh
 
 # easy way to extend to add more packages
 -include vendor/cmremix/extra/product.mk
