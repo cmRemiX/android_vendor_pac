@@ -22,13 +22,13 @@ PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/lib/libwebviewchromium_loader.so:system/lib/libwebviewchromium_loader.so \
     vendor/cmremix/prebuilt/lib/libwebviewchromium_plat_support.so:system/lib/libwebviewchromium_plat_support.so
 
-# cmRemiX Overlays
+# CM-Remix Overlays
 PRODUCT_PACKAGE_OVERLAYS += vendor/cmremix/overlay/common
 
 # Bootanimation
 PRODUCT_COPY_FILES += vendor/cmremix/prebuilt/common/bootanimation/$(CMREMIX_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
 
-# Init script file with cmRemiX extras
+# Init script file with CM-Remix extras
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/etc/init.local.rc:root/init.cmremix.rc
 
@@ -67,10 +67,10 @@ BOARD_SEPOLICY_UNION += \
     system_app.te \
     system_server.te
 
-# cmRemiX version
+# CM-Remix version
 CMREMIXVERSION := $(shell echo $(CMREMIX_VERSION) | sed -e 's/^[ \t]*//;s/[ \t]*$$//;s/ /./g')
 BOARD := $(subst cmremix_,,$(TARGET_PRODUCT))
-CMREMIX_BUILD_VERSION := cmRemiX-$(BOARD)-$(CMREMIXVERSION)-$(shell date +%Y%m%d-%H%M%S)
+CMREMIX_BUILD_VERSION := CM-Remix-$(BOARD)-$(CMREMIXVERSION)-$(shell date +%Y%m%d-%H%M%S)
 
 # Set the board version
 CM_BUILD := $(BOARD)
