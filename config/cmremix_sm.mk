@@ -339,7 +339,7 @@ ifeq ($(strip $(TARGET_SM_AND_DEFINED)),true)
    OPT5 := (gcconly)
   endif
 
-  ifeq (true,$(LOCAL_LTO))
+  ifeq (true,$(USE_CLANG_QCOM_LTO))
    OPT6 := (lto)
   endif
 
