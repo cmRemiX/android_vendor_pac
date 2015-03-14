@@ -35,3 +35,9 @@
 
 # Lockscreen wallpaper
 /data/system/users/[0-9]+/keyguard_wallpaper   u:object_r:wallpaper_file:s0
+
+##########################
+# Devices
+#
+/dev/erandom		u:object_r:urandom_device:s0
+/dev/frandom		u:object_r:random_device:s0

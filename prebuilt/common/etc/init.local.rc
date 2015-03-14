@@ -1,4 +1,4 @@
-# PAC Extras
+# CMRemix Extras
 
 on boot
     # I/O scheduler
@@ -33,3 +33,7 @@ on boot
 
     chown system system /sys/module/lowmemorykiller/parameters/minfree
     chmod 0664 /sys/module/lowmemorykiller/parameters/minfree
+
+# e/frandom permissions
+    chmod 444 /dev/erandom
+    chmod 444 /dev/frandom
