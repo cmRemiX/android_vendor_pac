@@ -1,12 +1,6 @@
 [
   {
     "account":      "cmRemiX",
-    "repository":   "android_external_mm-dash",
-    "target_path":  "external/mm-dash",
-    "revision":     "cm-12.0"
-  },
-  {
-    "account":      "cmRemiX",
     "repository":   "android_kernel_samsung_trlte",
     "target_path":  "kernel/samsung/trlte",
     "revision":     "cm-12.0"
