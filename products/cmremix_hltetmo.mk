@@ -17,6 +17,10 @@ TARGET_GCC_VERSION_AND := 4.8
 # Set Qcom Clang 3.5 
 USE_CLANG_QCOM := true
 
+# ignore recovery size build error!
+TARGET_NO_RECOVERY := true
+CMREMIX_IGNORE_RECOVERY_SIZE := true
+
 # Enabled SaberMod Optimization Here 
 GRAPHITE_OPTS := true
 STRICT_ALIASING := true
