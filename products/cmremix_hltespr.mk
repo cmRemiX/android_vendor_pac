@@ -21,7 +21,8 @@ USE_CLANG_QCOM := true
 TARGET_NO_RECOVERY := true
 CMREMIX_IGNORE_RECOVERY_SIZE := true
 
-# Enabled SaberMod Optimization Here 
+# Enabled SaberMod Optimization Here
+CMREMIX_OPTIMIZATIONS := true
 GRAPHITE_OPTS := true
 STRICT_ALIASING := true
 USE_HOST_4_8 := true

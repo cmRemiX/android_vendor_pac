@@ -17,7 +17,8 @@ TARGET_GCC_VERSION_AND := 4.8
 # Set Qcom Clang 3.5 
 USE_CLANG_QCOM := true
 
-# Enabled SaberMod Optimization Here 
+# Enabled SaberMod Optimization Here
+CMREMIX_OPTIMIZATIONS := true 
 GRAPHITE_OPTS := true
 STRICT_ALIASING := true
 USE_HOST_4_8 := true
