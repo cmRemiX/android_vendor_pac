@@ -295,3 +295,4 @@ fi
 # Cleanup unused built
 rm -f $OUTDIR/target/product/$device/cm-*.*
 rm -f $OUTDIR/target/product/$device/cmremix_*-ota*.zip
+repo forall -pc git log --reverse --since=1.week.ago > Changelog
