@@ -11,6 +11,11 @@ PRODUCT_PACKAGES += \
     cmRemiXUpdater \
     SlimCenter
 
+# slim Apps
+PRODUCT_PACKAGES += \
+    SlimFileManager \
+    DashClock
+
 # Viper4Android
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/etc/viper/ViPER4Android.apk:system/app/ViPER4Android.apk
