@@ -336,7 +336,10 @@ ifeq ($(strip $(HOST_OS)),linux)
 	dex2oat \
 	oatdump \
 	libart \
-	libart-compiler
+	libart-compiler \
+	clatd \
+	linker \
+	tcpdump
 
   endif
 
