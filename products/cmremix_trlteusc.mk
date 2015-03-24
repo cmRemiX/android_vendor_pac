@@ -32,6 +32,11 @@ TARGET_USE_PIPE := true
 ENABLE_PTHREAD := true
 FLOOP_NEST_OPTIMIZE := true
 
+# General flags for gcc 4.9 to allow compilation to complete.
+MAYBE_UNINITIALIZED := \
+
+##
+
 # Set bootanimation Size
 CMREMIX_BOOTANIMATION_NAME := 1440
 

@@ -28,19 +28,10 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/cmremix/overlay/common
 # Bootanimation
 PRODUCT_COPY_FILES += vendor/cmremix/prebuilt/common/bootanimation/$(CMREMIX_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
 
-# Init script file with CM-Remix extras
-PRODUCT_COPY_FILES += \
-vendor/cmremix/prebuilt/common/etc/init.local.rc:root/init.cmremix.rc
-
 # SuperSU
 PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/common/etc/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
     vendor/cmremix/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
-
-# AdBlocker Files
-PRODUCT_COPY_FILES += \
-    vendor/cmremix/prebuilt/common/etc/hosts.alt:system/etc/hosts.alt \
-    vendor/cmremix/prebuilt/common/etc/hosts.og:system/etc/hosts.og
 
 # Zion959 Kernel Needed Files
 PRODUCT_COPY_FILES += \
@@ -58,14 +49,6 @@ PRODUCT_COPY_FILES += \
 ifeq ($(PRODUCT_PREBUILT_WEBVIEWCHROMIUM),yes)
 -include prebuilts/chromium/$(TARGET_DEVICE)/chromium_prebuilt.mk
 endif
-
-# SELinux
-BOARD_SEPOLICY_IGNORE += vendor/cm/sepolicy/file_contexts
-BOARD_SEPOLICY_DIRS += vendor/cmremix/sepolicy
-BOARD_SEPOLICY_UNION += \
-    file_contexts \
-    system_app.te \
-    system_server.te
 
 # CM-Remix version
 CMREMIXVERSION := $(shell echo $(CMREMIX_VERSION) | sed -e 's/^[ \t]*//;s/[ \t]*$$//;s/ /./g')
