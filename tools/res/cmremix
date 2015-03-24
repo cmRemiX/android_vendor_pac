@@ -37,7 +37,7 @@ cat << EOF
  ${white}║                                                                  ║
  ${white}║ ${redf}  ▄█ █▄${reset}    ${greenf}  ▄█ █▄${reset}    ${yellowf}  ▄█ █▄${reset}    ${bluef}  ▄█ █▄${reset}    ${purplef}  ▄█ █▄${reset}    ${cyanf}  ▄█ █▄${reset}   ${white}║
  ${white}║ ${boldon}${redf}▄█◄► ◄►█▄${reset}  ${boldon}${greenf}▄█◄► ◄►█▄${reset}  ${boldon}${yellowf}▄█◄► ◄►█▄${reset}  ${boldon}${bluef}▄█◄► ◄►█▄${reset}  ${boldon}${purplef}▄█◄► ◄►█▄${reset}  ${boldon}${cyanf}▄█◄► ◄►█▄${reset} ${white}║
- ${white}║ ${boldon}${redf}▀█     █▀${reset}  ${boldon}${greenf}▀█     █▀${reset}  ${boldon}${yellowf}▀█     █▀${reset}  ${boldon}${bluef}▀█     █▀${reset}  ${boldon}${purplef}▀█     █▀${reset}  ${boldon}${cyanf}▀█     █▀${reset} ${white}║
+ ${white}║ ${boldon}${redf}▀█  C  █▀${reset}  ${boldon}${greenf}▀█  M  █▀${reset}  ${boldon}${yellowf}▀█  R  █▀${reset}  ${boldon}${bluef}▀█  C  █▀${reset}  ${boldon}${purplef}▀█  M  █▀${reset}  ${boldon}${cyanf}▀█  R  █▀${reset} ${white}║
  ${white}║ ${redf}  ▀█ █▀${reset}    ${greenf}  ▀█ █▀${reset}    ${yellowf}  ▀█ █▀${reset}    ${bluef}  ▀█ █▀${reset}    ${purplef}  ▀█ █▀${reset}    ${cyanf}  ▀█ █▀${reset}   ${white}║
  ${white}║                                                                  ║
  ${white}║            THANK YOU FOR CHOOSING CMRemix Rom                    ║
@@ -45,7 +45,7 @@ cat << EOF
  ${white}║                                                                  ║
  ${white}║ ${redf}  ▄█ █▄${reset}    ${greenf}  ▄█ █▄${reset}    ${yellowf}  ▄█ █▄${reset}    ${bluef}  ▄█ █▄${reset}    ${purplef}  ▄█ █▄${reset}    ${cyanf}  ▄█ █▄${reset}   ${white}║
  ${white}║ ${boldon}${redf}▄█◄► ◄►█▄${reset}  ${boldon}${greenf}▄█◄► ◄►█▄${reset}  ${boldon}${yellowf}▄█◄► ◄►█▄${reset}  ${boldon}${bluef}▄█◄► ◄►█▄${reset}  ${boldon}${purplef}▄█◄► ◄►█▄${reset}  ${boldon}${cyanf}▄█◄► ◄►█▄${reset} ${white}║
- ${white}║ ${boldon}${redf}▀█     █▀${reset}  ${boldon}${greenf}▀█     █▀${reset}  ${boldon}${yellowf}▀█     █▀${reset}  ${boldon}${bluef}▀█     █▀${reset}  ${boldon}${purplef}▀█     █▀${reset}  ${boldon}${cyanf}▀█     █▀${reset} ${white}║
+ ${white}║ ${boldon}${redf}▀█  C  █▀${reset}  ${boldon}${greenf}▀█  M  █▀${reset}  ${boldon}${yellowf}▀█  R  █▀${reset}  ${boldon}${bluef}▀█  C  █▀${reset}  ${boldon}${purplef}▀█  M  █▀${reset}  ${boldon}${cyanf}▀█  R  █▀${reset} ${white}║
  ${white}║ ${redf}  ▀█ █▀${reset}    ${greenf}  ▀█ █▀${reset}    ${yellowf}  ▀█ █▀${reset}    ${bluef}  ▀█ █▀${reset}    ${purplef}  ▀█ █▀${reset}    ${cyanf}  ▀█ █▀${reset}   ${white}║
  ${white}║                                                                  ║
  ${white}╚══════════════════════════════════════════════════════════════════╝
