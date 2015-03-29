@@ -424,6 +424,10 @@ ifeq ($(strip $(HOST_OS)),linux)
       third_party_angle_src_translator_lib_gyp \
       third_party_WebKit_Source_core_webcore_generated_gyp
   endif
+  else
+    OPT2:=
+
+  endif
 
   # O3 optimizations
   # To enable this set O3_OPTIMIZATIONS=true in a device makefile somewhere.
