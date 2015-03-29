@@ -5,15 +5,15 @@ ifeq (cmremix_trltetmo,$(TARGET_PRODUCT))
 TARGET_ARCH := arm
 
 # Some common sabermod variables before common
-TARGET_SM_AND := 4.8
+TARGET_SM_AND := 4.9
 TARGET_SM_KERNEL := 4.9
-TARGET_LIB_VERSION := 4.8
+TARGET_LIB_VERSION := 4.9
 
 # Set Custom GCC Kernel Version 
 TARGET_GCC_VERSION_ARM := 4.9
 
 # Set Custom GCC Rom Version 
-TARGET_GCC_VERSION_AND := 4.8
+TARGET_GCC_VERSION_AND := 4.9
 
 # Set Qcom Clang 3.5 
 USE_CLANG_QCOM := true
