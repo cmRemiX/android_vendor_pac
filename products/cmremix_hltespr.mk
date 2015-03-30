@@ -9,6 +9,9 @@ TARGET_SM_AND := 4.9
 TARGET_SM_KERNEL := 4.9
 TARGET_LIB_VERSION := 4.9
 
+# Allow overriding of NDK toolchain version
+TARGET_NDK_VERSION := 4.9
+
 # Set Custom GCC Kernel Version 
 TARGET_GCC_VERSION_ARM := 4.9
 
