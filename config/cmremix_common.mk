@@ -98,7 +98,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # statistics identity
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.cmremix.version=$(CMREMIXVERSION) \
-    ro.modversion=$(CMREMIXVERSION)
+    ro.modversion=$(CMREMIX_BUILD_VERSION) \
+    cmremix.ota.version=$(CMREMIX_BUILD_VERSION)
 
 # Disable ADB authentication and set root access to Apps and ADB
 ifeq ($(DISABLE_ADB_AUTH),true)
