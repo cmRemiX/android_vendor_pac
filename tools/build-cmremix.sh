@@ -2,7 +2,7 @@
 
 # CM-Remix version System
 export CMREMIX_VERSION_MAJOR="LP"
-export CMREMIX_VERSION_MINOR="v0.2"
+export CMREMIX_VERSION_MINOR="5.1.0"
 export CMREMIX_VERSION_MAINTENANCE="Unofficial"
 # Acceptible maintenance versions are; Stable, Official, Nightly or Unofficial
 
