@@ -8,7 +8,7 @@ PRODUCT_PACKAGES += \
 
 # cmRemiX OTA
 PRODUCT_PACKAGES += \
-    cmRemiXUpdater \
+    CMRemixUpdater \
     CMRemixCenter
 
 # slim Apps
