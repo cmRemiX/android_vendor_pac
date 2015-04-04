@@ -14,7 +14,8 @@ PRODUCT_PACKAGES += \
 # slim Apps
 PRODUCT_PACKAGES += \
     SlimFileManager \
-    DashClock
+    DashClock \
+    SlimLauncher
 
 # Viper4Android
 PRODUCT_COPY_FILES += \
