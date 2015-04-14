@@ -294,4 +294,4 @@ fi
 # Cleanup unused built
 rm -f $OUTDIR/target/product/$device/cm-*.*
 rm -f $OUTDIR/target/product/$device/cmremix_*-ota*.zip
-$(hide) ./vendor/cmremix/tools/weekly_changelog.sh
+./vendor/cmremix/tools/weekly_changelog.sh
