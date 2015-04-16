@@ -1,6 +1,8 @@
 # Check for target product
 ifeq (cmremix_trltetmo,$(TARGET_PRODUCT))
 
+$(shell unset EXTRA_SABERMOD_GCC_CFLAGS)
+
 # Set bootanimation Size
 CMREMIX_BOOTANIMATION_NAME := 1440
 
