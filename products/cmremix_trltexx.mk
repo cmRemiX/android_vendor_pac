@@ -1,8 +1,6 @@
 # Check for target product
 ifeq (cmremix_trltexx,$(TARGET_PRODUCT))
 
-$(shell unset EXTRA_SABERMOD_GCC_CFLAGS)
-
 # Inherit sabermod device configuration
 include vendor/cmremix/products/sm_trltexx.mk
 
