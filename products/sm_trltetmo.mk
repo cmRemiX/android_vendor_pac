@@ -12,21 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Target arch is arm
-TARGET_ARCH := arm
-
-# Some common sabermod variables before common
+# Sabermod configs
 TARGET_SM_AND := 4.8
-TARGET_SM_KERNEL := 4.9
+TARGET_SM_KERNEL := 6.0
 
 # Allow overriding of NDK toolchain version
 TARGET_NDK_VERSION := 4.8
 
-# Set Custom GCC Kernel Version 
-TARGET_GCC_VERSION_ARM := 4.9
-
 # Set Custom GCC Rom Version 
 TARGET_GCC_VERSION_AND := 4.8
+
+# Set Custom GCC Kernel Version 
+TARGET_GCC_VERSION_ARM := 6.0
 
 # Set Qcom Clang 3.5 
 USE_CLANG_QCOM := true
@@ -48,24 +45,35 @@ FLOOP_NEST_OPTIMIZE := true
 # General flags for gcc 4.9 to allow compilation to complete.
 MAYBE_UNINITIALIZED := \
 
+
 ##
-# Extra SaberMod C flags for the ROM and Kernel
+# Extra SaberMod GCC C flags for the ROM and Kernel
 export EXTRA_SABERMOD_GCC_CFLAGS := \
          -ftree-loop-distribution \
          -ftree-loop-if-convert \
-         -fvect-cost-model=dynamic \
+         -ftree-loop-im \
+         -ftree-loop-ivcanon \
          -fprefetch-loop-arrays \
          -ftree-vectorize \
          -mvectorize-with-neon-quad
 
-EXTRA_SABERMOD_AND_GCC_CFLAGS := \
-         -fsanitize=thread
-
+# Extra SaberMod CLANG C flags
 EXTRA_SABERMOD_CLANG_CFLAGS := \
-         -ftree-loop-if-convert \
          -fprefetch-loop-arrays \
-         -ftree-vectorize \
-         -mvectorize-with-neon-quad \
-	 -fsanitize=memory
+         -ftree-vectorize
+
+OPT10 := (extra)
+
+# Extra graphite flags for hammerhead, optimized for number of threads
+GRAPHITE_FLAGS := \
+  -floop-parallelize-all \
+  -ftree-parallelize-loops=4
+
+GRAPHITE_KERNEL_FLAGS := \
+  -floop-parallelize-all \
+  -ftree-parallelize-loops=4
+
+LOCAL_DISABLE_GRAPHITE := \
+  libc_netbsd
 
 ##
