@@ -4,7 +4,6 @@ TARGET_ARCH := arm
 # Some common sabermod variables before common
 TARGET_SM_AND := 4.8
 TARGET_SM_KERNEL := 4.9
-TARGET_LIB_VERSION := 4.8
 
 # Allow overriding of NDK toolchain version
 TARGET_NDK_VERSION := 4.8
