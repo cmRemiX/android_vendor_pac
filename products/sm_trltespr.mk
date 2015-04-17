@@ -12,18 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+#
+# Target arch is arm
+TARGET_ARCH := arm
+
 # Sabermod configs
-TARGET_SM_AND := 4.8
-TARGET_SM_KERNEL := 6.0
+TARGET_SM_AND := 4.9
+TARGET_SM_KERNEL := 4.9
 
 # Allow overriding of NDK toolchain version
-TARGET_NDK_VERSION := 4.8
+TARGET_NDK_VERSION := 4.9
 
 # Set Custom GCC Rom Version 
-TARGET_GCC_VERSION_AND := 4.8
+TARGET_GCC_VERSION_AND := 4.9
 
 # Set Custom GCC Kernel Version 
-TARGET_GCC_VERSION_ARM := 6.0
+TARGET_GCC_VERSION_ARM := 4.9
 
 # Set Qcom Clang 3.5 
 USE_CLANG_QCOM := true
