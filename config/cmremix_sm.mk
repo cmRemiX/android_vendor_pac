@@ -419,7 +419,7 @@ ifeq ($(strip $(HOST_OS)),linux)
       third_party_angle_src_translator_lib_gyp \
       third_party_WebKit_Source_core_webcore_generated_gyp
  else
-    LOCAL_DISABLE_STRICT +=
+    LOCAL_DISABLE_STRICT += \
       libc_bionic \
       libc_dns \
       libc_tzcode \
@@ -503,6 +503,26 @@ ifeq ($(strip $(HOST_OS)),linux)
 
   endif
 
+  ifndef LOCAL_FORCE_DISABLE_STRICT
+    LOCAL_FORCE_DISABLE_STRICT := \
+      libziparchive-host \
+      libziparchive \
+      libdiskconfig \
+      logd \
+      libjavacore \
+      camera.msm8084 \
+      bluetooth.default
+   else
+    LOCAL_FORCE_DISABLE_STRICT += \
+      libziparchive-host \
+      libziparchive \
+      libdiskconfig \
+      logd \
+      libjavacore \
+      camera.msm8084 \
+      bluetooth.default
+   endif
+
   # O3 optimizations
   # To enable this set O3_OPTIMIZATIONS=true in a device makefile somewhere.
   ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
@@ -516,11 +536,13 @@ ifeq ($(strip $(HOST_OS)),linux)
     ifndef LOCAL_DISABLE_O3
       LOCAL_DISABLE_O3 := \
         libaudioflinger \
-        skia_skia_library_gyp
+        skia_skia_library_gyp \
+        bluetooth.default
     else
       LOCAL_DISABLE_O3 += \
         libaudioflinger \
-        skia_skia_library_gyp
+        skia_skia_library_gyp \
+        bluetooth.default
     endif
 
     # -O3 flags and friends
