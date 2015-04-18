@@ -19,38 +19,15 @@ TARGET_ARCH := arm
 # Sabermod configs
 TARGET_SM_AND := 4.9
 TARGET_SM_KERNEL := 4.9
-
-# Allow overriding of NDK toolchain version
-TARGET_NDK_VERSION := 4.9
-
-# Set Custom GCC Rom Version 
-TARGET_GCC_VERSION_AND := 4.9
-
-# Set Custom GCC Kernel Version 
-TARGET_GCC_VERSION_ARM := 4.9
-
-# Set Qcom Clang 3.5 
-USE_CLANG_QCOM := true
-#USE_CLANG_QCOM_LTO := true
-LTO_OPTIMIZATION := true
-
-# Enabled SaberMod Optimization Here
-CMREMIX_OPTIMIZATIONS := true
-GRAPHITE_OPTS := true
-STRICT_ALIASING := true
-USE_HOST_4_8 := true
 O3_OPTIMIZATIONS := true
-KRAIT_TUNINGS := true
-ENABLE_GCCONLY := true
-TARGET_USE_PIPE := true
 ENABLE_PTHREAD := true
-FLOOP_NEST_OPTIMIZE := true
+TRLTETMO_THREADS := 4
+PRODUCT_THREADS := $(TRLTETMO_THREADS)
 
 # General flags for gcc 4.9 to allow compilation to complete.
 MAYBE_UNINITIALIZED := \
+  hwcomposer.msm8974
 
-
-##
 # Extra SaberMod GCC C flags for the ROM and Kernel
 export EXTRA_SABERMOD_GCC_CFLAGS := \
          -ftree-loop-distribution \
@@ -59,25 +36,19 @@ export EXTRA_SABERMOD_GCC_CFLAGS := \
          -ftree-loop-ivcanon \
          -fprefetch-loop-arrays \
          -ftree-vectorize \
-         -mvectorize-with-neon-quad
+         -mvectorize-with-neon-quad \
+         -pipe
 
 # Extra SaberMod CLANG C flags
 EXTRA_SABERMOD_CLANG_CFLAGS := \
-         -fprefetch-loop-arrays \
-         -ftree-vectorize
+  -fprefetch-loop-arrays \
+  -ftree-vectorize \
+  -pipe
 
-OPT10 := (extra)
 
-# Extra graphite flags for hammerhead, optimized for number of threads
-GRAPHITE_FLAGS := \
-  -floop-parallelize-all \
-  -ftree-parallelize-loops=4
+OPT4 := (extra)
 
 GRAPHITE_KERNEL_FLAGS := \
   -floop-parallelize-all \
-  -ftree-parallelize-loops=4
-
-LOCAL_DISABLE_GRAPHITE := \
-  libc_netbsd
-
-##
+  -ftree-parallelize-loops=$(PRODUCT_THREADS) \
+  -fopenmp

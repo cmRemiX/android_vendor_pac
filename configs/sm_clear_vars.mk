@@ -1,4 +1,4 @@
-# Copyright (C) 2015 CMRemix Roms Project
+# Copyright (C) 2015 The SaberMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,8 +13,6 @@
 # limitations under the License.
 #
 
-include vendor/cmremix/configs/sm_clear_vars.mk
-
-ifneq ($(filter cmremix_%,$(TARGET_PRODUCT)),)
-PRODUCT_MAKEFILES += $(LOCAL_DIR)/$(TARGET_PRODUCT).mk
-endif
+# Clear SaberMod variables
+$(shell unset EXTRA_SABERMOD_GCC_CFLAGS)
+$(shell unset GRAPHITE_KERNEL_FLAGS)

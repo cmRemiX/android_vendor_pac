@@ -151,6 +151,7 @@ ifeq ($(strip $(HOST_OS)),linux)
           endif
         else
    export GRAPHITE_KERNEL_FLAGS := \
+            $(GRAPHITE_KERNEL_FLAGS) \
             -fgraphite \
             -fgraphite-identity \
             -floop-flatten \
@@ -259,6 +260,7 @@ ifeq ($(strip $(HOST_OS)),linux)
           endif
         else
    export GRAPHITE_KERNEL_FLAGS := \
+            $(GRAPHITE_KERNEL_FLAGS) \
             -fgraphite \
             -fgraphite-identity \
             -floop-flatten \
@@ -330,203 +332,10 @@ ifeq ($(strip $(HOST_OS)),linux)
       fio
   endif
 
-    # To enable this set STRICT_ALIASING=true in a device makefile somewhere.
-    ifeq ($(strip $(STRICT_ALIASING)),true)
-  OPT2 := (strict)
-
-    # Force disable some modules that are not compatible with Strict Aliasing flags.
-    # Add more modules if needed for devices in BoardConfig.mk
-    # LOCAL_DISABLE_STRICT +=
-
-  # Check if there's already something set in a device make file somewhere.
-  ifndef LOCAL_DISABLE_STRICT
-    LOCAL_DISABLE_STRICT := \
-      libc_bionic \
-      libc_dns \
-      libc_tzcode \
-      libziparchive \
-      libtwrpmtp \
-      libfusetwrp \
-      libguitwrp \
-      busybox \
-      libuclibcrpc \
-      libziparchive-host \
-      libpdfiumcore \
-      libandroid_runtime \
-      libmedia \
-      libpdfiumcore \
-      libpdfium \
-      bluetooth.default \
-      logd \
-      mdnsd \
-      net_net_gyp \
-      libstagefright_webm \
-      libaudioflinger \
-      libmediaplayerservice \
-      libstagefright \
-      ping \
-      ping6 \
-      libdiskconfig \
-      libjavacore \
-      libfdlibm \
-      libvariablespeed \
-      librtp_jni \
-      libwilhelm \
-      libdownmix \
-      libldnhncr \
-      libqcomvisualizer \
-      libvisualizer \
-      libstlport \
-      libutils \
-      libandroidfw \
-      dnsmasq \
-      libc_gdtoa \
-      libc_openbsd \
-      libc \
-      libc_nomalloc \
-      libc_malloc \
-      camera.msm8084 \
-      libfusetwrp \
-      libguitwrp \
-      libwnndict \
-      libtwrpmtp \
-      libstlport_static \
-      gatt_testtool \
-      libfuse \
-      lsof \
-      libOmxVenc \
-      libssh \
-      ssh \
-      libcrypto_static \
-      libbusybox \
-      patchoat \
-      libart-disassembler \
-      dex2oat \
-      oatdump \
-      libart \
-      libart-compiler \
-      clatd \
-      linker \
-      tcpdump \
-      static_busybox \
-      libwebviewchromium \
-      libwebviewchromium_loader \
-      libwebviewchromium_plat_support \
-      content_content_renderer_gyp \
-      third_party_WebKit_Source_modules_modules_gyp \
-      third_party_WebKit_Source_platform_blink_platform_gyp \
-      third_party_WebKit_Source_core_webcore_remaining_gyp \
-      third_party_angle_src_translator_lib_gyp \
-      third_party_WebKit_Source_core_webcore_generated_gyp
- else
-    LOCAL_DISABLE_STRICT += \
-      libc_bionic \
-      libc_dns \
-      libc_tzcode \
-      libziparchive \
-      libtwrpmtp \
-      libfusetwrp \
-      libguitwrp \
-      busybox \
-      libuclibcrpc \
-      libziparchive-host \
-      libpdfiumcore \
-      libandroid_runtime \
-      libmedia \
-      libpdfiumcore \
-      libpdfium \
-      bluetooth.default \
-      logd \
-      mdnsd \
-      net_net_gyp \
-      libstagefright_webm \
-      libaudioflinger \
-      libmediaplayerservice \
-      libstagefright \
-      ping \
-      ping6 \
-      libdiskconfig \
-      libjavacore \
-      libfdlibm \
-      libvariablespeed \
-      librtp_jni \
-      libwilhelm \
-      libdownmix \
-      libldnhncr \
-      libqcomvisualizer \
-      libvisualizer \
-      libstlport \
-      libutils \
-      libandroidfw \
-      dnsmasq \
-      libc_gdtoa \
-      libc_openbsd \
-      libc \
-      libc_nomalloc \
-      libc_malloc \
-      camera.msm8084 \
-      libfusetwrp \
-      libguitwrp \
-      libwnndict \
-      libtwrpmtp \
-      libstlport_static \
-      gatt_testtool \
-      libfuse \
-      lsof \
-      libOmxVenc \
-      libssh \
-      ssh \
-      libcrypto_static \
-      libbusybox \
-      patchoat \
-      libart-disassembler \
-      dex2oat \
-      oatdump \
-      libart \
-      libart-compiler \
-      clatd \
-      linker \
-      tcpdump \
-      static_busybox \
-      libwebviewchromium \
-      libwebviewchromium_loader \
-      libwebviewchromium_plat_support \
-      content_content_renderer_gyp \
-      third_party_WebKit_Source_modules_modules_gyp \
-      third_party_WebKit_Source_platform_blink_platform_gyp \
-      third_party_WebKit_Source_core_webcore_remaining_gyp \
-      third_party_angle_src_translator_lib_gyp \
-      third_party_WebKit_Source_core_webcore_generated_gyp
-  endif
-  else
-    OPT2:=
-
-  endif
-
-  ifndef LOCAL_FORCE_DISABLE_STRICT
-    LOCAL_FORCE_DISABLE_STRICT := \
-      libziparchive-host \
-      libziparchive \
-      libdiskconfig \
-      logd \
-      libjavacore \
-      camera.msm8084 \
-      bluetooth.default
-   else
-    LOCAL_FORCE_DISABLE_STRICT += \
-      libziparchive-host \
-      libziparchive \
-      libdiskconfig \
-      logd \
-      libjavacore \
-      camera.msm8084 \
-      bluetooth.default
-   endif
-
   # O3 optimizations
   # To enable this set O3_OPTIMIZATIONS=true in a device makefile somewhere.
   ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
-    OPT3 := (03)
+    OPT2 := (max)
 
     # Disable some modules that break with -O3
     # Add more modules if needed for devices in a device make file somewhere with
@@ -536,13 +345,11 @@ ifeq ($(strip $(HOST_OS)),linux)
     ifndef LOCAL_DISABLE_O3
       LOCAL_DISABLE_O3 := \
         libaudioflinger \
-        skia_skia_library_gyp \
-        bluetooth.default
+        skia_skia_library_gyp
     else
       LOCAL_DISABLE_O3 += \
         libaudioflinger \
-        skia_skia_library_gyp \
-        bluetooth.default
+        skia_skia_library_gyp
     endif
 
     # -O3 flags and friends
@@ -551,14 +358,14 @@ ifeq ($(strip $(HOST_OS)),linux)
       -Wno-error=array-bounds \
       -Wno-error=strict-overflow
   else
-    OPT3:=
+    OPT2:=
 
   endif
 
   # posix thread optimizations
   # To enable this set ENABLE_PTHREAD=true in a device makefile somewhere.
   ifeq ($(strip $(ENABLE_PTHREAD)),true)
-    OPT4 := (pthread)
+    OPT3 := (pthread)
 
     # Disable some modules that break with -pthread
     # Add more modules if needed for devices in a device make file somewhere with
@@ -573,35 +380,16 @@ ifeq ($(strip $(HOST_OS)),linux)
         libc_netbsd
     endif
   else
-    OPT4:=
+    OPT3:=
   endif
 
-  ifeq (true,$(KRAIT_TUNINGS))
-    OPT5 := (krait)
+  # Write gcc optimizations to build.prop
+  GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)
+  ifneq ($(GCC_OPTIMIZATION_LEVELS),)
+    PRODUCT_PROPERTY_OVERRIDES += \
+      ro.sm.flags=$(GCC_OPTIMIZATION_LEVELS)
   endif
 
-  ifeq (true,$(ENABLE_GCCONLY))
-   OPT6 := (gcconly)
-  endif
-
-  ifeq (true,$(USE_CLANG_QCOM_LTO))
-   OPT7 := (lto)
-  endif
-
-  ifeq (true,$(GNU11_OPTIMIZATIONS))
-   OPT8 := (gnu11++)
-  endif
-
-  ifeq (true,$(FLOOP_NEST_OPTIMIZE))
-   OPT9 := (floop-nest)
-  endif
-
-    GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)$(OPT7)$(OPT8)$(OPT9)
-    ifneq ($(GCC_OPTIMIZATION_LEVELS),)
-      PRODUCT_PROPERTY_OVERRIDES += \
-        ro.sm.flags=$(GCC_OPTIMIZATION_LEVELS)
-    endif
-  
   # General flags for gcc 4.9 to allow compilation to complete.
   # Commented out for now since there's no common (non-device specific) modules to list here.
   # Add more modules if needed for devices in a device make file somewhere with
@@ -623,7 +411,8 @@ ifeq ($(strip $(HOST_OS)),linux)
   # Most of the host binary files are linked with ld or gcc as shared and static libraries for arch and clang binaries.
   EXTRA_SABERMOD_HOST_GCC_CFLAGS := \
     -march=x86-64 \
-    -ftree-vectorize
+    -ftree-vectorize \
+    -pipe
 
   # Only enable loop optimizations if -O3 is enabled.
   # These's no graphite here on host, so extra loop optimzations by themselves can be bad.
