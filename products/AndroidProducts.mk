@@ -13,7 +13,7 @@
 # limitations under the License.
 #
 
-include vendor/cmremix/configs/sm_clear_vars.mk
+include vendor/cmremix/config/sm_clear_vars.mk
 
 ifneq ($(filter cmremix_%,$(TARGET_PRODUCT)),)
 PRODUCT_MAKEFILES += $(LOCAL_DIR)/$(TARGET_PRODUCT).mk
