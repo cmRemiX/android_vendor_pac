@@ -17,6 +17,11 @@ PRODUCT_PACKAGES += \
     DashClock \
     SlimLauncher
 
+# CMRemix Kernel Tweaker
+PRODUCT_PACKAGES += \
+    KernelAdiutor \
+    FloatingActionButton
+
 # Viper4Android
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/etc/viper/ViPER4Android.apk:system/app/ViPER4Android.apk
