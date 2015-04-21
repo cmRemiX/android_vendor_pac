@@ -308,7 +308,10 @@ ifeq ($(strip $(HOST_OS)),linux)
       libSR_Core \
       third_party_libvpx_libvpx_gyp \
       ui_gl_gl_gyp \
-      fio
+      fio \
+      libwebviewchromium \
+      libwebviewchromium_loader \
+      libwebviewchromium_plat_support
   else
     LOCAL_DISABLE_GRAPHITE += \
       libunwind \
@@ -329,13 +332,16 @@ ifeq ($(strip $(HOST_OS)),linux)
       libSR_Core \
       third_party_libvpx_libvpx_gyp \
       ui_gl_gl_gyp \
-      fio
+      fio \
+      libwebviewchromium \
+      libwebviewchromium_loader \
+      libwebviewchromium_plat_support
   endif
 
   # O3 optimizations
   # To enable this set O3_OPTIMIZATIONS=true in a device makefile somewhere.
   ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
-    OPT2 := (max)
+    OPT2 := (-O3)
 
     # Disable some modules that break with -O3
     # Add more modules if needed for devices in a device make file somewhere with
@@ -382,6 +388,199 @@ ifeq ($(strip $(HOST_OS)),linux)
   else
     OPT3:=
   endif
+
+    # To enable this set STRICT_ALIASING=true in a device makefile somewhere.
+    ifeq ($(strip $(STRICT_ALIASING)),true)
+  OPT4 := (strict)
+
+    # Force disable some modules that are not compatible with Strict Aliasing flags.
+    # Add more modules if needed for devices in BoardConfig.mk
+    # LOCAL_DISABLE_STRICT +=
+
+  # Check if there's already something set in a device make file somewhere.
+  ifndef LOCAL_DISABLE_STRICT
+    LOCAL_DISABLE_STRICT := \
+      libc_bionic \
+      libc_dns \
+      libc_tzcode \
+      libziparchive \
+      libtwrpmtp \
+      libfusetwrp \
+      libguitwrp \
+      busybox \
+      libuclibcrpc \
+      libziparchive-host \
+      libpdfiumcore \
+      libandroid_runtime \
+      libmedia \
+      libpdfiumcore \
+      libpdfium \
+      bluetooth.default \
+      logd \
+      mdnsd \
+      net_net_gyp \
+      libstagefright_webm \
+      libaudioflinger \
+      libmediaplayerservice \
+      libstagefright \
+      ping \
+      ping6 \
+      libdiskconfig \
+      libjavacore \
+      libfdlibm \
+      libvariablespeed \
+      librtp_jni \
+      libwilhelm \
+      libdownmix \
+      libldnhncr \
+      libqcomvisualizer \
+      libvisualizer \
+      libstlport \
+      libutils \
+      libandroidfw \
+      dnsmasq \
+      libc_gdtoa \
+      libc_openbsd \
+      libc \
+      libc_nomalloc \
+      libc_malloc \
+      camera.msm8084 \
+      libfusetwrp \
+      libguitwrp \
+      libwnndict \
+      libtwrpmtp \
+      libstlport_static \
+      gatt_testtool \
+      libfuse \
+      lsof \
+      libOmxVenc \
+      libssh \
+      ssh \
+      libcrypto_static \
+      libbusybox \
+      patchoat \
+      libart-disassembler \
+      dex2oat \
+      oatdump \
+      libart \
+      libart-compiler \
+      clatd \
+      linker \
+      tcpdump \
+      static_busybox \
+      libwebviewchromium \
+      libwebviewchromium_loader \
+      libwebviewchromium_plat_support \
+      content_content_renderer_gyp \
+      third_party_WebKit_Source_modules_modules_gyp \
+      third_party_WebKit_Source_platform_blink_platform_gyp \
+      third_party_WebKit_Source_core_webcore_remaining_gyp \
+      third_party_angle_src_translator_lib_gyp \
+      third_party_WebKit_Source_core_webcore_generated_gyp
+ else
+    LOCAL_DISABLE_STRICT += \
+      libc_bionic \
+      libc_dns \
+      libc_tzcode \
+      libziparchive \
+      libtwrpmtp \
+      libfusetwrp \
+      libguitwrp \
+      busybox \
+      libuclibcrpc \
+      libziparchive-host \
+      libpdfiumcore \
+      libandroid_runtime \
+      libmedia \
+      libpdfiumcore \
+      libpdfium \
+      bluetooth.default \
+      logd \
+      mdnsd \
+      net_net_gyp \
+      libstagefright_webm \
+      libaudioflinger \
+      libmediaplayerservice \
+      libstagefright \
+      ping \
+      ping6 \
+      libdiskconfig \
+      libjavacore \
+      libfdlibm \
+      libvariablespeed \
+      librtp_jni \
+      libwilhelm \
+      libdownmix \
+      libldnhncr \
+      libqcomvisualizer \
+      libvisualizer \
+      libstlport \
+      libutils \
+      libandroidfw \
+      dnsmasq \
+      libc_gdtoa \
+      libc_openbsd \
+      libc \
+      libc_nomalloc \
+      libc_malloc \
+      camera.msm8084 \
+      libfusetwrp \
+      libguitwrp \
+      libwnndict \
+      libtwrpmtp \
+      libstlport_static \
+      gatt_testtool \
+      libfuse \
+      lsof \
+      libOmxVenc \
+      libssh \
+      ssh \
+      libcrypto_static \
+      libbusybox \
+      patchoat \
+      libart-disassembler \
+      dex2oat \
+      oatdump \
+      libart \
+      libart-compiler \
+      clatd \
+      linker \
+      tcpdump \
+      static_busybox \
+      libwebviewchromium \
+      libwebviewchromium_loader \
+      libwebviewchromium_plat_support \
+      content_content_renderer_gyp \
+      third_party_WebKit_Source_modules_modules_gyp \
+      third_party_WebKit_Source_platform_blink_platform_gyp \
+      third_party_WebKit_Source_core_webcore_remaining_gyp \
+      third_party_angle_src_translator_lib_gyp \
+      third_party_WebKit_Source_core_webcore_generated_gyp
+  endif
+  else
+    OPT4:=
+
+  endif
+
+  ifndef LOCAL_FORCE_DISABLE_STRICT
+    LOCAL_FORCE_DISABLE_STRICT := \
+      libziparchive-host \
+      libziparchive \
+      libdiskconfig \
+      logd \
+      libjavacore \
+      camera.msm8084 \
+      bluetooth.default
+   else
+    LOCAL_FORCE_DISABLE_STRICT += \
+      libziparchive-host \
+      libziparchive \
+      libdiskconfig \
+      logd \
+      libjavacore \
+      camera.msm8084 \
+      bluetooth.default
+   endif
 
   # Write gcc optimizations to build.prop
   GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)
