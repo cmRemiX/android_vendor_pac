@@ -16,40 +16,67 @@
 # Target arch is arm
 TARGET_ARCH := arm
 
-# Sabermod configs
-TARGET_SM_AND := 4.9
-TARGET_SM_KERNEL := 4.9
-O3_OPTIMIZATIONS := true
-STRICT_ALIASING := true
-ENABLE_PTHREAD := true
-TRLTEXX_THREADS := 4
-PRODUCT_THREADS := $(TRLTEXX_THREADS)
+# Find host os
+UNAME := $(shell uname -s)
 
-# General flags for gcc 4.9 to allow compilation to complete.
-MAYBE_UNINITIALIZED := \
-  hwcomposer.msm8974
+ifeq ($(strip $(UNAME)),Linux)
+  HOST_OS := linux
+endif
 
-# Extra SaberMod GCC C flags for the ROM and Kernel
-export EXTRA_SABERMOD_GCC_CFLAGS := \
-         -ftree-loop-distribution \
-         -ftree-loop-if-convert \
-         -ftree-loop-im \
-         -ftree-loop-ivcanon \
-         -fprefetch-loop-arrays \
-         -ftree-vectorize \
-         -mvectorize-with-neon-quad \
-         -pipe
+# Only use these compilers on linux host.
+ifeq ($(strip $(HOST_OS)),linux)
 
-# Extra SaberMod CLANG C flags
-EXTRA_SABERMOD_CLANG_CFLAGS := \
-  -fprefetch-loop-arrays \
-  -ftree-vectorize \
-  -pipe
+  # Sabermod configs
+  TARGET_SM_AND := 4.9
+  TARGET_SM_KERNEL := 4.9
+  O3_OPTIMIZATIONS := true
+  STRICT_ALIASING := true
+  ENABLE_PTHREAD := true
+  TRLTEXX_THREADS := 4
+  PRODUCT_THREADS := $(TRLTEXX_THREADS)
 
+  # General flags for gcc 4.9 to allow compilation to complete.
+  MAYBE_UNINITIALIZED := \
+    hwcomposer.msm8974
 
-OPT4 := (extra)
+  # Extra SaberMod GCC C flags for arch target and Kernel
+  export EXTRA_SABERMOD_GCC_CFLAGS := \
+           -ftree-vectorize \
+           -mvectorize-with-neon-quad \
+           -pipe
 
-GRAPHITE_KERNEL_FLAGS := \
-  -floop-parallelize-all \
-  -ftree-parallelize-loops=$(PRODUCT_THREADS) \
-  -fopenmp
+  # Flags that should only be used with -O3 optimizations on arch target gcc.
+  ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
+    EXTRA_SABERMOD_GCC_O3_CFLAGS := \
+      -ftree-loop-distribution \
+      -ftree-loop-if-convert \
+      -ftree-loop-im \
+      -ftree-loop-ivcanon \
+      -fprefetch-loop-arrays
+  endif
+
+  # Extra SaberMod CLANG C flags
+  EXTRA_SABERMOD_CLANG_CFLAGS := \
+    -ftree-vectorize \
+    -pipe
+
+  # Flags that should only be used with -O3 optimizations on clang.
+  ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
+    EXTRA_SABERMOD_CLANG_O3_CFLAGS := -fprefetch-loop-arrays
+  endif
+
+  OPT4 := (extra)
+
+  GRAPHITE_KERNEL_FLAGS := \
+    -floop-parallelize-all \
+    -ftree-parallelize-loops=$(PRODUCT_THREADS) \
+    -fopenmp
+
+  # strict-aliasing kernel flags
+  export KERNEL_STRICT_FLAGS := \
+           -fstrict-aliasing \
+           -Werror=strict-aliasing
+
+  # Enable strict-aliasing kernel flags
+# export CONFIG_MACH_MSM8974_HAMMERHEAD_STRICT_ALIASING := y
+endif
