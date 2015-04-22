@@ -16,3 +16,9 @@
 # Clear SaberMod variables
 $(shell unset EXTRA_SABERMOD_GCC_CFLAGS)
 $(shell unset GRAPHITE_KERNEL_FLAGS)
+$(shell unset KERNEL_STRICT_FLAGS)
+
+#ifeq (cmremix_hlte,$(TARGET_PRODUCT))
+  #$(shell unset CONFIG_MACH_MSM8974_HLTE_STRICT_ALIASING)
+#endif
+
