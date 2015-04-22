@@ -35,6 +35,11 @@ ifeq ($(strip $(HOST_OS)),linux)
   HLTESPR_THREADS := 4
   PRODUCT_THREADS := $(HLTESPR_THREADS)
 
+  # Make this dependent on "O3_OPTIMIZATIONS := true" for easier configuring and testing.
+  ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
+    DISABLE_O3_OPTIMIZATIONS_THUMB := true
+  endif
+
   # General flags for gcc 4.9 to allow compilation to complete.
   MAYBE_UNINITIALIZED := \
     hwcomposer.msm8974
