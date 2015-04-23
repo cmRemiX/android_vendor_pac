@@ -27,8 +27,8 @@ endif
 ifeq ($(strip $(HOST_OS)),linux)
 
   # Sabermod configs
-  TARGET_NDK_VERSION := 4.9
-  TARGET_SM_AND := 4.9
+  TARGET_NDK_VERSION := 4.8
+  TARGET_SM_AND := 4.8
   TARGET_SM_KERNEL := 4.9
   HLTETMO_THREADS := 4
   PRODUCT_THREADS := $(HLTETMO_THREADS)
