@@ -27,11 +27,12 @@ endif
 ifeq ($(strip $(HOST_OS)),linux)
 
   # Sabermod configs
-  TARGET_NDK_VERSION := 4.8
-  TARGET_SM_AND := 4.8
+  TARGET_NDK_VERSION := 4.9
+  TARGET_SM_AND := 4.9
   TARGET_SM_KERNEL := 4.9
   TRLTETMO_THREADS := 4
   PRODUCT_THREADS := $(TRLTETMO_THREADS)
+  ENABLE_SABERMOD_ARM_MODE := true
 
   GRAPHITE_KERNEL_FLAGS := \
     -floop-parallelize-all \
@@ -47,14 +48,7 @@ ifeq ($(strip $(HOST_OS)),linux)
 #  export CONFIG_MACH_APQ8084_TRLTETMO_STRICT_ALIASING := y
 endif
 
-O3_OPTIMIZATIONS := true
 ENABLE_PTHREAD := true
-STRICT_ALIASING := true
-
-# Make this dependent on "O3_OPTIMIZATIONS := true" for easier configuring and testing.
-ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
-  DISABLE_O3_OPTIMIZATIONS_THUMB := true
-endif
 
 # General flags for gcc 4.9 to allow compilation to complete.
 MAYBE_UNINITIALIZED := \
@@ -68,12 +62,12 @@ export EXTRA_SABERMOD_GCC_CFLAGS := \
 
 # Flags that should only be used with -O3 optimizations on arch target gcc.
 ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
-  EXTRA_SABERMOD_GCC_O3_CFLAGS := \
-    -ftree-loop-distribution \
-    -ftree-loop-if-convert \
-    -ftree-loop-im \
-    -ftree-loop-ivcanon \
-    -fprefetch-loop-arrays
+export EXTRA_SABERMOD_GCC_O3_CFLAGS := \
+         -ftree-loop-distribution \
+         -ftree-loop-if-convert \
+         -ftree-loop-im \
+         -ftree-loop-ivcanon \
+         -fprefetch-loop-arrays
 endif
 
 # Extra SaberMod CLANG C flags
@@ -87,3 +81,7 @@ ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
 endif
 
 OPT4 := (extra)
+
+LOCAL_DISABLE_STRICT_ALIASING := \
+  libmmcamera_interface\
+  camera.hammerhead
