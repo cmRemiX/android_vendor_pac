@@ -60,6 +60,7 @@ endif
 
 # Enable -O3 for all builds.
 export O3_OPTIMIZATIONS := true
+ENABLE_SABERMOD_ARM_MODE := true
 
 # Only use these compilers on linux host.
 ifeq ($(strip $(HOST_OS)),linux)

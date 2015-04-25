@@ -32,7 +32,6 @@ ifeq ($(strip $(HOST_OS)),linux)
   TARGET_SM_KERNEL := 4.9
   HLTESPR_THREADS := 4
   PRODUCT_THREADS := $(HLTESPR_THREADS)
-  ENABLE_SABERMOD_ARM_MODE := true
 
   GRAPHITE_KERNEL_FLAGS := \
     -floop-parallelize-all \
