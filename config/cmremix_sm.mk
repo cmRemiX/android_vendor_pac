@@ -58,11 +58,20 @@ ifeq ($(strip $(UNAME)),Linux)
   HOST_OS := linux
 endif
 
-# Enable -O3 for all builds.
-export O3_OPTIMIZATIONS := true
-ENABLE_SABERMOD_ARM_MODE := true
+# Enable SaberMod ARM Mode for all arm builds.
+ifneq ($(filter arm arm64,$(TARGET_ARCH)),)
+  ENABLE_SABERMOD_ARM_MODE := true
+endif
 
-# Only use these compilers on linux host.
+# Enable -O3 for all builds.
+ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
+export O3_OPTIMIZATIONS := true
+endif
+
+OPT5 := (saber-mode)
+
+# Only use these compilers on linux host and arm targets.
+
 ifeq ($(strip $(HOST_OS)),linux)
   ifneq ($(filter arm arm64,$(TARGET_ARCH)),)
     ifeq ($(strip $(TARGET_ARCH)),arm)
@@ -84,22 +93,22 @@ ifeq ($(strip $(HOST_OS)),linux)
         PRODUCT_PROPERTY_OVERRIDES += \
           ro.sm.android=$(SM_AND_VERSION)
 
-        OPT1 := (graphite)
-
-        # Graphite flags and friends
-        BASE_GRAPHITE_FLAGS := \
-          -fgraphite \
-          -fgraphite-identity \
-          -floop-flatten \
-          -ftree-loop-linear \
-          -floop-interchange \
-          -floop-strip-mine \
-          -floop-block
-
-        # Check if there's already something set in a device make file somewhere.
         # Make dependent on -O3 optimizations.
         # These are extra loop optmizations, that act as helpers for -O3 and other loop optimization flags.
         ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
+          OPT1 := (graphite)
+
+          # Graphite flags and friends
+          BASE_GRAPHITE_FLAGS := \
+            -fgraphite \
+            -fgraphite-identity \
+            -floop-flatten \
+            -ftree-loop-linear \
+            -floop-interchange \
+            -floop-strip-mine \
+            -floop-block
+
+          # Check if there's already something set in a device make file somewhere.
           ifndef GRAPHITE_FLAGS
             GRAPHITE_FLAGS := \
               $(BASE_GRAPHITE_FLAGS)
@@ -189,10 +198,13 @@ ifeq ($(strip $(HOST_OS)),linux)
         PRODUCT_PROPERTY_OVERRIDES += \
           ro.sm.android=$(SM_AND_VERSION)
 
-        OPT1 := (graphite)
+        # Make dependent on -O3 optimizations.
+        # These are extra loop optmizations, that act as helpers for -O3 and other loop optimization flags.
+        ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
+          OPT1 := (graphite)
 
-        # Graphite flags and friends
-        BASE_GRAPHITE_FLAGS := \
+          # Graphite flags and friends
+          BASE_GRAPHITE_FLAGS := \
             -fgraphite \
             -fgraphite-identity \
             -floop-flatten \
@@ -201,10 +213,7 @@ ifeq ($(strip $(HOST_OS)),linux)
             -floop-strip-mine \
             -floop-block
 
-       # Check if there's already something set in a device make file somewhere.
-        # Make dependent on -O3 optimizations.
-        # These are extra loop optmizations, that act as helpers for -O3 and other loop optimization flags.
-        ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
+          # Check if there's already something set in a device make file somewhere.
           ifndef GRAPHITE_FLAGS
             GRAPHITE_FLAGS := \
               $(BASE_GRAPHITE_FLAGS)
@@ -317,41 +326,6 @@ ifeq ($(strip $(HOST_OS)),linux)
           $(LOCAL_BASE_DISABLE_GRAPHITE)
       endif
     endif
-
-    # Bluetooth modules
-    LOCAL_BLUETOOTH_BLUEDROID := \
-      bluetooth.default \
-      libbt-brcm_stack \
-      audio.a2dp.default \
-      libbt-brcm_gki \
-      libbt-utils \
-      libbt-qcom_sbc_decoder \
-      libbt-brcm_bta \
-      bdt \
-      bdtest \
-      libbt-hci \
-      libosi \
-      ositests \
-      libbt-vendor
-
-    # SABERMOD_ARM_MODE
-    # The LOCAL_COMPILERS_WHITELIST will allow modules that absolutely have to be complied with thumb instructions,
-    # or the clang compiler, to skip replacing the default overrides.
-    ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
-      LOCAL_COMPILERS_WHITELIST := \
-        $(LOCAL_BLUETOOTH_BLUEDROID) \
-        libmincrypt \
-        libc++abi \
-        libjni_latinime_common_static \
-        libcompiler_rt \
-        libnativebridge \
-        libc++ \
-        libRSSupport \
-        netd \
-        libscrypt_static \
-        libRSCpuRef \
-        libRSDriver
-    endif
   endif
 else
     $(warning ********************************************************************************)
@@ -456,9 +430,15 @@ ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
     -O3 \
     -Wno-error=array-bounds \
     -Wno-error=strict-overflow
-else
-  OPT2:=
 
+  EXTRA_SABERMOD_HOST_GCC_O3_CFLAGS := \
+    -ftree-loop-distribution \
+    -ftree-loop-if-convert \
+    -ftree-loop-im \
+    -ftree-loop-ivcanon \
+    -fprefetch-loop-arrays
+else
+    OPT2:=
 endif
 
 # posix thread optimizations
@@ -505,18 +485,43 @@ EXTRA_SABERMOD_HOST_GCC_CFLAGS := \
   -ftree-vectorize \
   -pipe
 
-# Only enable loop optimizations if -O3 is enabled.
-# These's no graphite here on host, so extra loop optimzations by themselves can be bad.
-ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
-  EXTRA_SABERMOD_HOST_GCC_O3_CFLAGS := \
-    -ftree-loop-distribution \
-    -ftree-loop-if-convert \
-    -ftree-loop-im \
-    -ftree-loop-ivcanon \
-    -fprefetch-loop-arrays
+ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
+  # SABERMOD_ARM_MODE
+  # The LOCAL_COMPILERS_WHITELIST will allow modules that absolutely have to be complied with thumb instructions,
+  # or the clang compiler, to skip replacing the default overrides.
+
+  # Bluetooth modules
+  LOCAL_BLUETOOTH_BLUEDROID := \
+    bluetooth.default \
+    libbt-brcm_stack \
+    audio.a2dp.default \
+    libbt-brcm_gki \
+    libbt-utils \
+    libbt-qcom_sbc_decoder \
+    libbt-brcm_bta \
+    bdt \
+    bdtest \
+    libbt-hci \
+    libosi \
+    ositests \
+    libbt-vendor
+
+  LOCAL_COMPILERS_WHITELIST := \
+    $(LOCAL_BLUETOOTH_BLUEDROID) \
+    libmincrypt \
+    libc++abi \
+    libjni_latinime_common_static \
+    libcompiler_rt \
+    libnativebridge \
+    libc++ \
+    libRSSupport \
+    netd \
+    libscrypt_static \
+    libRSCpuRef \
+    libRSDriver
 endif
 
-GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)
+GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)
 ifneq ($(GCC_OPTIMIZATION_LEVELS),)
   PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.flags=$(GCC_OPTIMIZATION_LEVELS)
