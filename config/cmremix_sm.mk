@@ -68,7 +68,9 @@ ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
 export O3_OPTIMIZATIONS := true
 endif
 
-OPT5 := (saber-mode)
+ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
+  OPT5 := (saber-mode)
+endif
 
 # Only use these compilers on linux host and arm targets.
 
@@ -402,7 +404,6 @@ else
 endif
 
 # O3 optimizations
-# To enable this set O3_OPTIMIZATIONS=true in a device makefile somewhere.
 ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
 
   # If -O3 is enabled, force disable on thumb flags.
@@ -430,6 +431,16 @@ ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
     -O3 \
     -Wno-error=array-bounds \
     -Wno-error=strict-overflow
+
+  # Extra SaberMod GCC loop flags.
+export EXTRA_SABERMOD_GCC_O3_CFLAGS := \
+         -ftree-loop-distribution \
+         -ftree-loop-if-convert \
+         -ftree-loop-im \
+         -ftree-loop-ivcanon \
+         -fprefetch-loop-arrays
+
+  EXTRA_SABERMOD_CLANG_O3_CFLAGS := -fprefetch-loop-arrays
 
   EXTRA_SABERMOD_HOST_GCC_O3_CFLAGS := \
     -ftree-loop-distribution \
@@ -477,13 +488,13 @@ endif
 
 # Enable some basic host gcc optimizations
 # None that are cpu specific but arch is ok. It's already known that we are on linux-x86.
-# Many people claim that host binaries are not useful, this can be proven as false, and that there is some benifit.
-# Especially when used with -O3
-# Most of the host binary files are linked with ld or gcc as shared and static libraries for arch and clang binaries.
 EXTRA_SABERMOD_HOST_GCC_CFLAGS := \
   -march=x86-64 \
-  -ftree-vectorize \
-  -pipe
+  -ftree-vectorize
+
+# Extra SaberMod CLANG C flags
+EXTRA_SABERMOD_CLANG_CFLAGS := \
+  -ftree-vectorize
 
 ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
   # SABERMOD_ARM_MODE

@@ -37,14 +37,6 @@ ifeq ($(strip $(HOST_OS)),linux)
     -floop-parallelize-all \
     -ftree-parallelize-loops=$(PRODUCT_THREADS) \
     -fopenmp
-
-  # strict-aliasing kernel flags
-  export KERNEL_STRICT_FLAGS := \
-           -fstrict-aliasing \
-           -Werror=strict-aliasing
-
-  # Enable strict-aliasing kernel flags
-#  export CONFIG_MACH_APQ8084_TRLTETMO_STRICT_ALIASING := y
 endif
 
 ENABLE_PTHREAD := true
@@ -56,31 +48,11 @@ MAYBE_UNINITIALIZED := \
 # Extra SaberMod GCC C flags for arch target and Kernel
 export EXTRA_SABERMOD_GCC_CFLAGS := \
          -ftree-vectorize \
-         -mvectorize-with-neon-quad \
-         -pipe
-
-# Flags that should only be used with -O3 optimizations on arch target gcc.
-ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
-export EXTRA_SABERMOD_GCC_O3_CFLAGS := \
-         -ftree-loop-distribution \
-         -ftree-loop-if-convert \
-         -ftree-loop-im \
-         -ftree-loop-ivcanon \
-         -fprefetch-loop-arrays
-endif
-
-# Extra SaberMod CLANG C flags
-EXTRA_SABERMOD_CLANG_CFLAGS := \
-  -ftree-vectorize \
-  -pipe
-
-# Flags that should only be used with -O3 optimizations on clang.
-ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
-  EXTRA_SABERMOD_CLANG_O3_CFLAGS := -fprefetch-loop-arrays
-endif
+         -mvectorize-with-neon-quad
 
 OPT4 := (extra)
 
 LOCAL_DISABLE_STRICT_ALIASING := \
   libmmcamera_interface\
-  camera.hammerhead
+  camera.msm8084
+rhead
