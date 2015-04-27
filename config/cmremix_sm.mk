@@ -392,7 +392,8 @@ LOCAL_BASE_DISABLE_STRICT_ALIASING := \
     libsdcard \
     libvold \
     gatt_testtool \
-    su
+    su \
+    libqsap_sdk
 
 # Check if there's already something set in a device make file somewhere.
 ifndef LOCAL_DISABLE_STRICT_ALIASING
