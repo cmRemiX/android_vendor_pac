@@ -40,10 +40,12 @@ ifeq ($(strip $(HOST_OS)),linux)
 endif
 
 ENABLE_PTHREAD := true
+USE_CLANG_QCOM := true
 
 # General flags for gcc 4.9 to allow compilation to complete.
 MAYBE_UNINITIALIZED := \
-  hwcomposer.msm8974
+  hwcomposer.msm8974 \
+  libbt-brcm_stack
 
 # Extra SaberMod GCC C flags for arch target and Kernel
 export EXTRA_SABERMOD_GCC_CFLAGS := \
