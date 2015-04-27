@@ -35,7 +35,7 @@ ifeq ($(strip $(HOST_OS)),linux)
   TOGARI_THREADS := 4
   PRODUCT_THREADS := $(TOGARI_THREADS)
 
-  GRAPHITE_KERNEL_FLAGS := \
+GRAPHITE_KERNEL_FLAGS := \
     -floop-parallelize-all \
     -ftree-parallelize-loops=$(PRODUCT_THREADS) \
     -fopenmp
@@ -44,6 +44,7 @@ endif
 ENABLE_PTHREAD := true
 USE_CLANG_QCOM := true
 USE_CLANG_QCOM_VERBOSE := true
+ENABLE_STRICT_ALIASING := true
 
 # General flags for gcc 4.9 to allow compilation to complete.
 MAYBE_UNINITIALIZED := \
@@ -55,7 +56,15 @@ export EXTRA_SABERMOD_GCC_CFLAGS := \
          -ftree-vectorize \
          -mvectorize-with-neon-quad
 
-OPT4 := (extra)
+ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
+  # strict-aliasing kernel flags
+  export KERNEL_STRICT_FLAGS := \
+           -fstrict-aliasing \
+           -Werror=strict-aliasing
 
-LOCAL_DISABLE_STRICT_ALIASING := \
-  libqsap_sdk
+  # Enable strict-aliasing kernel flags
+#export CONFIG_MACH_MSM8974_HLTE_STRICT_ALIASING := y
+#LOCAL_DISABLE_STRICT_ALIASING := \
+   #libmmcamera_interface\
+   #camera.hammerhead
+endif

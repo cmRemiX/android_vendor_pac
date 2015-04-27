@@ -151,7 +151,7 @@ ifeq ($(strip $(HOST_OS)),linux)
             # Graphite flags for kernel
 
             # Some graphite flags are only available for certain gcc versions
-            GRAPHITE_UNROLL_AND_JAM := $(filter 5.0.x-sabermod 6.0.x-sabermod,$(SM_KERNEL))
+     export GRAPHITE_UNROLL_AND_JAM := $(filter 5.0.x-sabermod 6.0.x-sabermod,$(SM_KERNEL))
 
             BASE_GRAPHITE_KERNEL_FLAGS := \
               -fgraphite \
@@ -256,7 +256,7 @@ ifeq ($(strip $(HOST_OS)),linux)
             # Graphite flags for kernel
 
             # Some graphite flags are only available for certain gcc versions
-            GRAPHITE_UNROLL_AND_JAM := $(filter 5.0.x-sabermod 6.0.x-sabermod,$(SM_KERNEL))
+     export GRAPHITE_UNROLL_AND_JAM := $(filter 5.0.x-sabermod 6.0.x-sabermod,$(SM_KERNEL))
 
             BASE_GRAPHITE_KERNEL_FLAGS := \
               -fgraphite \
@@ -317,7 +317,8 @@ ifeq ($(strip $(HOST_OS)),linux)
         third_party_libvpx_libvpx_gyp \
         ui_gl_gl_gyp \
         fio \
-        libncurses
+        libncurses \
+        libpdfiumcore
 
       # Check if there's already something set in a device make file somewhere.
       ifndef LOCAL_DISABLE_GRAPHITE
@@ -342,7 +343,8 @@ endif
 # This causes warnings and should be dealt with, by turning strict-aliasing off to fix the warnings,
 # until AOSP gets around to fixing the warnings locally in the code.
 
-LOCAL_BASE_DISABLE_STRICT_ALIASING := \
+ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
+  LOCAL_BASE_DISABLE_STRICT_ALIASING := \
     libpdfiumcore \
     libpdfium \
     libc_bionic \
@@ -392,15 +394,19 @@ LOCAL_BASE_DISABLE_STRICT_ALIASING := \
     libsdcard \
     libvold \
     gatt_testtool \
-    su
+    su \
+    libqsap_sdk \
+    libc_malloc \
+    libRSSupport
 
-# Check if there's already something set in a device make file somewhere.
-ifndef LOCAL_DISABLE_STRICT_ALIASING
-  LOCAL_DISABLE_STRICT_ALIASING := \
-    $(LOCAL_BASE_DISABLE_STRICT_ALIASING)
-else
-  LOCAL_DISABLE_STRICT_ALIASING += \
-    $(LOCAL_BASE_DISABLE_STRICT_ALIASING)
+  # Check if there's already something set in a device make file somewhere.
+  ifndef LOCAL_DISABLE_STRICT_ALIASING
+    LOCAL_DISABLE_STRICT_ALIASING := \
+      $(LOCAL_BASE_DISABLE_STRICT_ALIASING)
+  else
+    LOCAL_DISABLE_STRICT_ALIASING += \
+      $(LOCAL_BASE_DISABLE_STRICT_ALIASING)
+  endif
 endif
 
 # O3 optimizations
@@ -496,6 +502,8 @@ EXTRA_SABERMOD_HOST_GCC_CFLAGS := \
 EXTRA_SABERMOD_CLANG_CFLAGS := \
   -ftree-vectorize
 
+OPT4 := (extra)
+
 ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
   # SABERMOD_ARM_MODE
   # The LOCAL_COMPILERS_WHITELIST will allow modules that absolutely have to be complied with thumb instructions,
@@ -517,7 +525,7 @@ ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
     ositests \
     libbt-vendor
 
-  LOCAL_COMPILERS_WHITELIST := \
+  LOCAL_ARM_COMPILERS_WHITELIST := \
     $(LOCAL_BLUETOOTH_BLUEDROID) \
     libmincrypt \
     libc++abi \
@@ -530,6 +538,19 @@ ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
     libscrypt_static \
     libRSCpuRef \
     libRSDriver
+
+  LOCAL_ARM64_COMPILERS_WHITELIST := \
+    $(LOCAL_BLUETOOTH_BLUEDROID) \
+    libc++abi \
+    libcompiler_rt \
+    libnativebridge \
+    libjni_latinime_common_static \
+    libRSSupport \
+    libc++ \
+    libRSCpuRef \
+    netd \
+    libRSDriver \
+    libjpeg
 endif
 
 GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)
