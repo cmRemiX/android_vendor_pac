@@ -443,17 +443,13 @@ export EXTRA_SABERMOD_GCC_O3_CFLAGS := \
          -ftree-loop-distribution \
          -ftree-loop-if-convert \
          -ftree-loop-im \
-         -ftree-loop-ivcanon \
-         -fprefetch-loop-arrays
-
-  EXTRA_SABERMOD_CLANG_O3_CFLAGS := -fprefetch-loop-arrays
+         -ftree-loop-ivcanon
 
   EXTRA_SABERMOD_HOST_GCC_O3_CFLAGS := \
     -ftree-loop-distribution \
     -ftree-loop-if-convert \
     -ftree-loop-im \
-    -ftree-loop-ivcanon \
-    -fprefetch-loop-arrays
+    -ftree-loop-ivcanon
 else
     OPT2:=
 endif
