@@ -343,7 +343,10 @@ endif
 # This causes warnings and should be dealt with, by turning strict-aliasing off to fix the warnings,
 # until AOSP gets around to fixing the warnings locally in the code.
 
+# To enable this set ENABLE_STRICT_ALIASING := true in a device makefile somewhere.
 ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
+  OPT6 := (strict)
+
   LOCAL_BASE_DISABLE_STRICT_ALIASING := \
     libpdfiumcore \
     libpdfium \
@@ -397,7 +400,28 @@ ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
     su \
     libqsap_sdk \
     libc_malloc \
-    libRSSupport
+    libRSSupport \
+    libstlport \
+    libstlport_static \
+    libcrypto_static \
+    dnsmasq \
+    libmedia \
+    ping \
+    libaudioflinger \
+    libmediaplayerservice \
+    libstagefright \
+    libssh \
+    libvariablespeed \
+    libsurfaceflinger \
+    libstagefright_amrnbdec \
+    librtp_jni \
+    libOmxVenc \
+    libwilhelm \
+    libldnhncr \
+    libdownmix \
+    libqcomvisualizer \
+    libvisualizer \
+    lsof
 
   # Check if there's already something set in a device make file somewhere.
   ifndef LOCAL_DISABLE_STRICT_ALIASING
@@ -407,6 +431,8 @@ ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
     LOCAL_DISABLE_STRICT_ALIASING += \
       $(LOCAL_BASE_DISABLE_STRICT_ALIASING)
   endif
+else
+    OPT6:=
 endif
 
 # O3 optimizations
@@ -549,7 +575,7 @@ ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
     libjpeg
 endif
 
-GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)
+GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)
 ifneq ($(GCC_OPTIMIZATION_LEVELS),)
   PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.flags=$(GCC_OPTIMIZATION_LEVELS)
