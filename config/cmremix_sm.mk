@@ -514,38 +514,26 @@ else
     fastboot
 endif
 
-# Enable some basic host gcc optimizations
-# None that are cpu specific but arch is ok. It's already known that we are on linux-x86.
-EXTRA_SABERMOD_HOST_GCC_CFLAGS := \
-  -march=x86-64 \
-  -ftree-vectorize
-
-# Extra SaberMod CLANG C flags
-EXTRA_SABERMOD_CLANG_CFLAGS := \
-  -ftree-vectorize
-
-OPT4 := (extra)
+# Bluetooth modules
+LOCAL_BLUETOOTH_BLUEDROID := \
+  bluetooth.default \
+  libbt-brcm_stack \
+  audio.a2dp.default \
+  libbt-brcm_gki \
+  libbt-utils \
+  libbt-qcom_sbc_decoder \
+  libbt-brcm_bta \
+  bdt \
+  bdtest \
+  libbt-hci \
+  libosi \
+  ositests \
+  libbt-vendor
 
 ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
   # SABERMOD_ARM_MODE
   # The LOCAL_COMPILERS_WHITELIST will allow modules that absolutely have to be complied with thumb instructions,
   # or the clang compiler, to skip replacing the default overrides.
-
-  # Bluetooth modules
-  LOCAL_BLUETOOTH_BLUEDROID := \
-    bluetooth.default \
-    libbt-brcm_stack \
-    audio.a2dp.default \
-    libbt-brcm_gki \
-    libbt-utils \
-    libbt-qcom_sbc_decoder \
-    libbt-brcm_bta \
-    bdt \
-    bdtest \
-    libbt-hci \
-    libosi \
-    ositests \
-    libbt-vendor
 
   LOCAL_ARM_COMPILERS_WHITELIST := \
     $(LOCAL_BLUETOOTH_BLUEDROID) \
@@ -574,6 +562,32 @@ ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
     libRSDriver \
     libjpeg
 endif
+
+# Enable some basic host gcc optimizations
+# None that are cpu specific but arch is ok. It's already known that we are on linux-x86.
+EXTRA_SABERMOD_HOST_GCC_CFLAGS := \
+  -march=x86-64 \
+  -ftree-vectorize
+
+# Extra SaberMod CLANG C flags
+LOCAL_SABERMOD_CLANG_VECTORIZE_CFLAGS := \
+  -ftree-vectorize
+
+# Check if there's already something set in a device make file somewhere.
+ifndef LOCAL_DISABLE_SABERMOD_GCC_VECTORIZE_CFLAGS
+  LOCAL_DISABLE_SABERMOD_GCC_VECTORIZE_CFLAGS := $(LOCAL_BLUETOOTH_BLUEDROID)
+else
+  LOCAL_DISABLE_SABERMOD_GCC_VECTORIZE_CFLAGS += $(LOCAL_BLUETOOTH_BLUEDROID)
+endif
+
+# Check if there's already something set in a device make file somewhere.
+ifndef LOCAL_DISABLE_SABERMOD_CLANG_VECTORIZE_CFLAGS
+  LOCAL_DISABLE_SABERMOD_CLANG_VECTORIZE_CFLAGS := $(LOCAL_BLUETOOTH_BLUEDROID)
+else
+  LOCAL_DISABLE_SABERMOD_CLANG_VECTORIZE_CFLAGS += $(LOCAL_BLUETOOTH_BLUEDROID)
+endif
+
+OPT4 := (extra)
 
 GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)
 ifneq ($(GCC_OPTIMIZATION_LEVELS),)

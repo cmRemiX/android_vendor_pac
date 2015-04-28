@@ -49,7 +49,7 @@ MAYBE_UNINITIALIZED := \
   libbt-brcm_stack
 
 # Extra SaberMod GCC C flags for arch target and Kernel
-export EXTRA_SABERMOD_GCC_CFLAGS := \
+export EXTRA_SABERMOD_GCC_VECTORIZE_CFLAGS := \
          -ftree-vectorize \
          -mvectorize-with-neon-quad
 
