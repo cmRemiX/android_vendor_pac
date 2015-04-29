@@ -72,6 +72,10 @@ ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
   OPT5 := (saber-mode)
 endif
 
+ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
+  OPTIMIZE_FOR_SIZE := libbluetooth_jni
+endif
+
 # Only use these compilers on linux host and arm targets.
 
 ifeq ($(strip $(HOST_OS)),linux)
@@ -451,11 +455,13 @@ ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
   ifndef LOCAL_DISABLE_O3
     LOCAL_DISABLE_O3 := \
       libaudioflinger \
-      skia_skia_library_gyp
+      skia_skia_library_gyp \
+      libbluetooth_jni
   else
     LOCAL_DISABLE_O3 += \
       libaudioflinger \
-      skia_skia_library_gyp
+      skia_skia_library_gyp \
+      libbluetooth_jni
   endif
 
   # -O3 flags and friends
