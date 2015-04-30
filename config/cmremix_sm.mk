@@ -144,10 +144,6 @@ ifeq ($(strip $(HOST_OS)),linux)
           SM_KERNEL_STATUS := $(filter (release) (prerelease) (experimental),$(SM_KERNEL))
           SM_KERNEL_VERSION := $(SM_KERNEL_NAME)-$(SM_KERNEL_DATE)-$(SM_KERNEL_STATUS)
 
-          # Write version info to build.prop
-          PRODUCT_PROPERTY_OVERRIDES += \
-            ro.sm.kernel=$(SM_KERNEL_VERSION)
-
           # Make dependent on -O3 optimizations.
           # These are extra loop optmizations, that act as helpers for -O3 and other loop optimization flags.
           ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
@@ -248,10 +244,6 @@ ifeq ($(strip $(HOST_OS)),linux)
           SM_KERNEL_DATE := $(filter 20140% 20141% 20150% 20151%,$(SM_KERNEL))
           SM_KERNEL_STATUS := $(filter (release) (prerelease) (experimental),$(SM_KERNEL))
           SM_KERNEL_VERSION := $(SM_KERNEL_NAME)-$(SM_KERNEL_DATE)-$(SM_KERNEL_STATUS)
-
-          # Write version info to build.prop
-          PRODUCT_PROPERTY_OVERRIDES += \
-            ro.sm.kernel=$(SM_KERNEL_VERSION)
 
           # Make dependent on -O3 optimizations.
           # These are extra loop optmizations, that act as helpers for -O3 and other loop optimization flags.
