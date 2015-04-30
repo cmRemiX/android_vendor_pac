@@ -339,10 +339,7 @@ endif
 # This causes warnings and should be dealt with, by turning strict-aliasing off to fix the warnings,
 # until AOSP gets around to fixing the warnings locally in the code.
 
-# To enable this set ENABLE_STRICT_ALIASING := true in a device makefile somewhere.
 ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
-  OPT6 := (strict)
-
   LOCAL_BASE_DISABLE_STRICT_ALIASING := \
     libpdfiumcore \
     libpdfium \
@@ -427,8 +424,9 @@ ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
     LOCAL_DISABLE_STRICT_ALIASING += \
       $(LOCAL_BASE_DISABLE_STRICT_ALIASING)
   endif
+  OPT6 := (strict-aliasing)
 else
-    OPT6:=
+  OPT6 :=
 endif
 
 # O3 optimizations
