@@ -14,7 +14,7 @@
 #
 
 # Clear SaberMod variables
-$(shell unset EXTRA_SABERMOD_GCC_CFLAGS)
+$(shell unset EXTRA_SABERMOD_GCC_VECTORIZE_CFLAGS)
 $(shell unset GRAPHITE_KERNEL_FLAGS)
 $(shell unset KERNEL_STRICT_FLAGS)
 $(shell unset O3_OPTIMIZATIONS)

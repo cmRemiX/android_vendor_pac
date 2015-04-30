@@ -72,10 +72,6 @@ ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
   OPT5 := (saber-mode)
 endif
 
-ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
-  OPTIMIZE_FOR_SIZE := libbluetooth_jni
-endif
-
 # Only use these compilers on linux host and arm targets.
 
 ifeq ($(strip $(HOST_OS)),linux)
@@ -429,53 +425,6 @@ else
   OPT6 :=
 endif
 
-# O3 optimizations
-ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
-
-  # If -O3 is enabled, force disable on thumb flags.
-  # loop optmizations are not really usefull in thumb mode.
-  DISABLE_O3_OPTIMIZATIONS_THUMB := true
-  OPT2 := (max)
-
-  # Disable some modules that break with -O3
-  # Add more modules if needed for devices in a device make file somewhere with
-  # LOCAL_DISABLE_O3 :=
-
-  # Check if there's already something set in a device make file somewhere.
-  ifndef LOCAL_DISABLE_O3
-    LOCAL_DISABLE_O3 := \
-      libaudioflinger \
-      skia_skia_library_gyp \
-      libbluetooth_jni
-  else
-    LOCAL_DISABLE_O3 += \
-      libaudioflinger \
-      skia_skia_library_gyp \
-      libbluetooth_jni
-  endif
-
-  # -O3 flags and friends
-  O3_FLAGS := \
-    -O3 \
-    -Wno-error=array-bounds \
-    -Wno-error=strict-overflow
-
-  # Extra SaberMod GCC loop flags.
-export EXTRA_SABERMOD_GCC_O3_CFLAGS := \
-         -ftree-loop-distribution \
-         -ftree-loop-if-convert \
-         -ftree-loop-im \
-         -ftree-loop-ivcanon
-
-  EXTRA_SABERMOD_HOST_GCC_O3_CFLAGS := \
-    -ftree-loop-distribution \
-    -ftree-loop-if-convert \
-    -ftree-loop-im \
-    -ftree-loop-ivcanon
-else
-    OPT2:=
-endif
-
 # posix thread optimizations
 # To enable this set ENABLE_PTHREAD=true in a device makefile somewhere.
 ifeq ($(strip $(ENABLE_PTHREAD)),true)
@@ -524,7 +473,57 @@ LOCAL_BLUETOOTH_BLUEDROID := \
   libbt-hci \
   libosi \
   ositests \
-  libbt-vendor
+  libbt-vendor \
+  libbluetooth_jni
+
+# O3 optimizations
+ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
+
+  # If -O3 is enabled, force disable on thumb flags.
+  # loop optmizations are not really usefull in thumb mode.
+  DISABLE_O3_OPTIMIZATIONS_THUMB := true
+  OPT2 := (max)
+
+  # Disable some modules that break with -O3
+  # Add more modules if needed for devices in a device make file somewhere with
+  # LOCAL_DISABLE_O3 :=
+
+  # Check if there's already something set in a device make file somewhere.
+  ifndef LOCAL_DISABLE_O3
+    LOCAL_DISABLE_O3 := \
+      libaudioflinger \
+      skia_skia_library_gyp \
+      $(LOCAL_BLUETOOTH_BLUEDROID)
+  else
+    LOCAL_DISABLE_O3 += \
+      libaudioflinger \
+      skia_skia_library_gyp \
+      $(LOCAL_BLUETOOTH_BLUEDROID)
+  endif
+
+  # -O3 flags and friends
+  O3_FLAGS := \
+    -O3 \
+    -Wno-error=array-bounds \
+    -Wno-error=strict-overflow
+
+  # Extra SaberMod GCC loop flags.
+export EXTRA_SABERMOD_GCC_O3_CFLAGS := \
+         -ftree-loop-distribution \
+         -ftree-loop-if-convert \
+         -ftree-loop-im \
+         -ftree-loop-ivcanon
+
+  EXTRA_SABERMOD_HOST_GCC_O3_CFLAGS := \
+    -ftree-loop-distribution \
+    -ftree-loop-if-convert \
+    -ftree-loop-im \
+    -ftree-loop-ivcanon
+else
+    OPT2:=
+endif
+
+NO_OPTIMIZATIONS := $(LOCAL_BLUETOOTH_BLUEDROID)
 
 ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
   # SABERMOD_ARM_MODE
@@ -532,7 +531,6 @@ ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
   # or the clang compiler, to skip replacing the default overrides.
 
   LOCAL_ARM_COMPILERS_WHITELIST := \
-    $(LOCAL_BLUETOOTH_BLUEDROID) \
     libmincrypt \
     libc++abi \
     libjni_latinime_common_static \
@@ -543,10 +541,10 @@ ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
     netd \
     libscrypt_static \
     libRSCpuRef \
-    libRSDriver
+    libRSDriver \
+    $(LOCAL_BLUETOOTH_BLUEDROID)
 
   LOCAL_ARM64_COMPILERS_WHITELIST := \
-    $(LOCAL_BLUETOOTH_BLUEDROID) \
     libc++abi \
     libcompiler_rt \
     libnativebridge \
@@ -556,7 +554,8 @@ ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
     libRSCpuRef \
     netd \
     libRSDriver \
-    libjpeg
+    libjpeg \
+    $(LOCAL_BLUETOOTH_BLUEDROID)
 endif
 
 # Enable some basic host gcc optimizations
@@ -566,7 +565,7 @@ EXTRA_SABERMOD_HOST_GCC_CFLAGS := \
   -ftree-vectorize
 
 # Extra SaberMod CLANG C flags
-LOCAL_SABERMOD_CLANG_VECTORIZE_CFLAGS := \
+EXTRA_SABERMOD_CLANG_CFLAGS := \
   -ftree-vectorize
 
 # Check if there's already something set in a device make file somewhere.
