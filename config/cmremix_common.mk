@@ -32,24 +32,9 @@ PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/common/etc/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
     vendor/cmremix/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
 
-# Zion959 Kernel Needed Files
-PRODUCT_COPY_FILES += \
-    vendor/cmremix/prebuilt/common/lib/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
-    vendor/cmremix/prebuilt/common/etc/init.kernel.sh:system/etc/init.kernel.sh \
-    vendor/cmremix/prebuilt/common/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh
-
 # Init script file with CM-Remix extras
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/etc/init.local.rc:root/init.cmremix.rc
-
-# SELinux
-BOARD_SEPOLICY_IGNORE += vendor/cm/sepolicy/file_contexts
-BOARD_SEPOLICY_DIRS += vendor/cmremix/sepolicy
-BOARD_SEPOLICY_UNION += \
-    file_contexts \
-    system_app.te \
-    system_server.te \
-    system.te
 
 # easy way to extend to add more packages
 -include vendor/cmremix/extra/product.mk
