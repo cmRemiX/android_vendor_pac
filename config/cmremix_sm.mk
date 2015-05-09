@@ -418,7 +418,11 @@ ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
     libdownmix \
     libqcomvisualizer \
     libvisualizer \
-    lsof
+    lsof \
+    libcrypto \
+    ping6 \
+    ssh \
+    tcpdump
 
   # Check if there's already something set in a device make file somewhere.
   ifndef LOCAL_DISABLE_STRICT_ALIASING
