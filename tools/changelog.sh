@@ -61,4 +61,3 @@ EOF
 '
 cp $ANDROID_BUILD_TOP/CHANGELOGS/cmremix_$logd $OUT/system/etc/CHANGELOG-cmR.txt
 cp $ANDROID_BUILD_TOP/CHANGELOGS/cmremix_$logd $OUT/Changelog.txt
-cp $ANDROID_BUILD_TOP/CHANGELOGS/cmremix_$logd  $ANDROID_BUILD_TOP/CHANGELOGS/Weekly_Changelog.md
