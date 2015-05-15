@@ -72,6 +72,12 @@ ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
   OPT5 := (saber-mode)
 endif
 
+# Strict aliasing
+ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
+  GCC_STRICT_CFLAGS := -Wstrict-aliasing=3 -Werror=strict-aliasing
+  CLANG_STRICT_CFLAGS := -Wstrict-aliasing=2 -Werror=strict-aliasing
+endif
+
 # Only use these compilers on linux host and arm targets.
 
 ifeq ($(strip $(HOST_OS)),linux)
