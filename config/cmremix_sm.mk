@@ -74,7 +74,7 @@ endif
 
 # Strict aliasing
 ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
-  GCC_STRICT_CFLAGS := -Wstrict-aliasing=3 -Werror=strict-aliasing
+  GCC_STRICT_CFLAGS := -fstrict-aliasing -Wstrict-aliasing=3 -Werror=strict-aliasing
   CLANG_STRICT_CFLAGS := -Wstrict-aliasing=2 -Werror=strict-aliasing
 endif
 
@@ -428,7 +428,13 @@ ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
     libcrypto \
     ping6 \
     ssh \
-    tcpdump
+    tcpdump \
+    libfuse \
+    libbusybox \
+    libziparchive-host \
+    mdnsd \
+    libuclibcrpc \
+    busybox
 
   # Check if there's already something set in a device make file somewhere.
   ifndef LOCAL_DISABLE_STRICT_ALIASING
