@@ -30,18 +30,17 @@ ifeq ($(strip $(HOST_OS)),linux)
   TARGET_NDK_VERSION := 4.9
   TARGET_SM_AND := 4.9
   TARGET_SM_KERNEL := 4.9
+  USE_CLANG_QCOM := true
   HLTESPR_THREADS := 4
   PRODUCT_THREADS := $(HLTESPR_THREADS)
+  ENABLE_STRICT_ALIASING := true
+  export ENABLE_PTHREAD := false
 
 GRAPHITE_KERNEL_FLAGS := \
     -floop-parallelize-all \
     -ftree-parallelize-loops=$(PRODUCT_THREADS) \
     -fopenmp
 endif
-
-export ENABLE_PTHREAD := false
-USE_CLANG_QCOM := true
-ENABLE_STRICT_ALIASING := true
 
 # General flags for gcc 4.9 to allow compilation to complete.
 MAYBE_UNINITIALIZED := \

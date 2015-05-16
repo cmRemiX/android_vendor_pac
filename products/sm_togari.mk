@@ -32,19 +32,18 @@ ifeq ($(strip $(HOST_OS)),linux)
   #use linaro instead of sm
   TARGET_SM_KERNEL := 4.9-linaro
   #TARGET_SM_KERNEL := 4.9
+  USE_CLANG_QCOM := true
+  USE_CLANG_QCOM_VERBOSE := true
   TOGARI_THREADS := 4
   PRODUCT_THREADS := $(TOGARI_THREADS)
+  ENABLE_STRICT_ALIASING := true
+  export ENABLE_PTHREAD := false
 
 GRAPHITE_KERNEL_FLAGS := \
     -floop-parallelize-all \
     -ftree-parallelize-loops=$(PRODUCT_THREADS) \
     -fopenmp
 endif
-
-export ENABLE_PTHREAD := false
-USE_CLANG_QCOM := true
-USE_CLANG_QCOM_VERBOSE := true
-ENABLE_STRICT_ALIASING := true
 
 # General flags for gcc 4.9 to allow compilation to complete.
 MAYBE_UNINITIALIZED := \
