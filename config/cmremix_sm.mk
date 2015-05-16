@@ -151,7 +151,7 @@ ifeq ($(strip $(HOST_OS)),linux)
             # Graphite flags for kernel
 
             # Some graphite flags are only available for certain gcc versions
-     export GRAPHITE_UNROLL_AND_JAM := $(filter 5.0.x-sabermod 6.0.x-sabermod,$(SM_KERNEL))
+     export GRAPHITE_UNROLL_AND_JAM := $(filter 5.1.x-sabermod 6.0.x-sabermod,$(SM_KERNEL))
 
             BASE_GRAPHITE_KERNEL_FLAGS := \
               -fgraphite \
@@ -256,7 +256,7 @@ ifeq ($(strip $(HOST_OS)),linux)
             # Graphite flags for kernel
 
             # Some graphite flags are only available for certain gcc versions
-     export GRAPHITE_UNROLL_AND_JAM := $(filter 5.0.x-sabermod 6.0.x-sabermod,$(SM_KERNEL))
+     export GRAPHITE_UNROLL_AND_JAM := $(filter 5.1.x-sabermod 6.0.x-sabermod,$(SM_KERNEL))
 
             BASE_GRAPHITE_KERNEL_FLAGS := \
               -fgraphite \
@@ -595,8 +595,9 @@ else
 endif
 
 OPT4 := (extra)
+OPT7 := (memory-sanitizer)
 
-GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)
+GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)$(OPT7)
 ifneq ($(GCC_OPTIMIZATION_LEVELS),)
   PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.flags=$(GCC_OPTIMIZATION_LEVELS)

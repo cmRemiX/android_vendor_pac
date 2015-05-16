@@ -22,6 +22,7 @@ $(shell unset EXTRA_SABERMOD_GCC_O3_CFLAGS)
 $(shell unset GRAPHITE_UNROLL_AND_JAM)
 $(shell unset LD_LIBRARY_PATH)
 $(shell unset LIBRARY_PATH)
+$(shell unset ENABLE_PTHREAD)
 
 
 #ifeq (cmremix_hlte,$(TARGET_PRODUCT))

@@ -41,7 +41,7 @@ GRAPHITE_KERNEL_FLAGS := \
     -fopenmp
 endif
 
-ENABLE_PTHREAD := true
+export ENABLE_PTHREAD := false
 USE_CLANG_QCOM := true
 USE_CLANG_QCOM_VERBOSE := true
 ENABLE_STRICT_ALIASING := true
