@@ -72,10 +72,22 @@ ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
   OPT5 := (saber-mode)
 endif
 
-# Strict aliasing
-ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
-  GCC_STRICT_CFLAGS := -fstrict-aliasing -Wstrict-aliasing=3 -Werror=strict-aliasing
-  CLANG_STRICT_CFLAGS := -Wstrict-aliasing=2 -Werror=strict-aliasing
+ifeq ($(strip $(TARGET_ARCH)),arm)
+
+  # Strict aliasing
+  ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
+    GCC_STRICT_CFLAGS := -fstrict-aliasing -Wstrict-aliasing=3 -Werror=strict-aliasing
+    CLANG_STRICT_CFLAGS := -Wstrict-aliasing=2 -Werror=strict-aliasing
+  endif
+endif
+
+ifeq ($(strip $(TARGET_ARCH)),arm64)
+
+  # Strict aliasing
+  ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
+    GCC_STRICT_CFLAGS := -fstrict-aliasing -Wstrict-aliasing=3 -Werror=strict-aliasing
+    CLANG_STRICT_CFLAGS := -fstrict-aliasing -Wstrict-aliasing=2 -Werror=strict-aliasing
+  endif
 endif
 
 # Only use these compilers on linux host and arm targets.
@@ -343,11 +355,7 @@ else
     $(warning ********************************************************************************)
 endif
 
-# BUGFIX for AOSP
-# strict-aliasing has a long well known history of breaking code when allowed to pass with warnings.
-# AOSP has blindly turned on strict-aliasing in various places locally throughout the source.
-# This causes warnings and should be dealt with, by turning strict-aliasing off to fix the warnings,
-# until AOSP gets around to fixing the warnings locally in the code.
+# strict-aliasing
 
 ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
   LOCAL_BASE_DISABLE_STRICT_ALIASING := \
