@@ -434,7 +434,8 @@ ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
     libziparchive-host \
     mdnsd \
     libuclibcrpc \
-    busybox
+    busybox \
+    libfdlibm
 
   # Check if there's already something set in a device make file somewhere.
   ifndef LOCAL_DISABLE_STRICT_ALIASING
