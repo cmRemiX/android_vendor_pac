@@ -69,7 +69,7 @@ export O3_OPTIMIZATIONS := true
 endif
 
 ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
-  OPT5 := (saber-mode)
+  OPT4 := (saber-mode)
 endif
 
 ifeq ($(strip $(TARGET_ARCH)),arm)
@@ -453,29 +453,9 @@ ifeq ($(strip $(ENABLE_STRICT_ALIASING)),true)
     LOCAL_DISABLE_STRICT_ALIASING += \
       $(LOCAL_BASE_DISABLE_STRICT_ALIASING)
   endif
-  OPT6 := (strict-aliasing)
+  OPT5 := (strict-aliasing)
 else
-  OPT6 :=
-endif
-
-# posix thread optimizations
-# To enable this set ENABLE_PTHREAD=true in a device makefile somewhere.
-ifeq ($(strip $(ENABLE_PTHREAD)),true)
-  OPT3 := (pthread)
-
-  # Disable some modules that break with -pthread
-  # Add more modules if needed for devices in a device make file somewhere with
-  # LOCAL_DISABLE_PTHREAD :=
-  # Check if there's already something set in a device make file somewhere.
-  ifndef LOCAL_DISABLE_PTHREAD
-    LOCAL_DISABLE_PTHREAD := \
-      libc_netbsd
-  else
-    LOCAL_DISABLE_PTHREAD += \
-      libc_netbsd
-  endif
-else
-  OPT3:=
+  OPT5 :=
 endif
 
 # General flags for gcc 4.9 to allow compilation to complete.
@@ -615,10 +595,11 @@ else
   LOCAL_DISABLE_SABERMOD_CLANG_VECTORIZE_CFLAGS += $(LOCAL_BLUETOOTH_BLUEDROID)
 endif
 
-OPT4 := (extra)
-OPT7 := (memory-sanitizer)
+OPT3 := (extra)
+OPT6 := (memory-sanitizer)
+Opt7 := (OpenMP)
 
-GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)$(OPT7)
+GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT4)$(OPT5)$(OPT6)$(OPT7)
 ifneq ($(GCC_OPTIMIZATION_LEVELS),)
   PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.flags=$(GCC_OPTIMIZATION_LEVELS)
