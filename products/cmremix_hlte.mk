@@ -1,9 +1,6 @@
 # Check for target product
 ifeq (cmremix_hlte,$(TARGET_PRODUCT))
 
-# Inherit sabermod device configuration
-include vendor/cmremix/products/sm_hlte.mk
-
 # Set bootanimation Size
 CMREMIX_BOOTANIMATION_NAME := 1080
 

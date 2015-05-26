@@ -1,9 +1,6 @@
 # Check for target product
 ifeq (cmremix_trltexx,$(TARGET_PRODUCT))
 
-# Inherit sabermod device configuration
-include vendor/cmremix/products/sm_trltexx.mk
-
 # Set bootanimation Size
 CMREMIX_BOOTANIMATION_NAME := 1440
 
