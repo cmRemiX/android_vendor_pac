@@ -26,3 +26,7 @@ vendor/cmremix/prebuilt/common/etc/viper/ViPER4Android.apk:system/app/ViPER4Andr
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/apk/re.codefi.savoca.kcal.apk:system/app/re.codefi.savoca.kcal.apk
 
+# MDNIE-tuner
+PRODUCT_COPY_FILES += \
+vendor/cmremix/prebuilt/common/apk/MDNIE-tuner.apk:system/app/MDNIE-tuner.apk
+
