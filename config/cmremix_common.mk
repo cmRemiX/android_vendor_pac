@@ -1,17 +1,3 @@
-# Backup Tool
-PRODUCT_COPY_FILES += \
-    vendor/cmremix/prebuilt/common/bin/50-backup-script.sh:system/addon.d/50-backup-script.sh \
-    vendor/cmremix/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/cmremix/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/cmremix/prebuilt/common/bin/98-temasek.sh:system/addon.d/98-temasek.sh \
-    vendor/cmremix/prebuilt/common/bin/otasigcheck.sh:system/bin/otasigcheck.sh \
-    
-
-# LCD density backup
-PRODUCT_COPY_FILES += \
-vendor/cmremix/prebuilt/common/bin/99-backup.sh:system/addon.d/99-backup.sh \
-vendor/cmremix/prebuilt/common/etc/backup.conf:system/etc/backup.conf
-
 # Zion959 Debugs Files
 PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/common/etc/00_DEBUG:system/etc/init.d/00_DEBUG
