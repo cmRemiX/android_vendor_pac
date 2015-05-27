@@ -42,7 +42,8 @@ usage()
     echo -e "        3 - Restore previous snapshot, then snapshot sync"
     echo -e "    -o# Only build:"
     echo -e "        1 - Boot Image"
-    echo -e "        2 - Recovery Image"
+    echo -e "        2 - Boot Zip"
+    echo -e "        3 - Recovery Image"
     echo -e "    -p  Build using pipe"
     echo -e "    -t  Build ROM with TWRP Recovery (Extreme caution, ONLY for developers)"
     echo -e "        (This may produce an invalid recovery. Use only if you have the correct settings for these)"
@@ -272,10 +273,14 @@ else
 fi
 
 if [ "$opt_only" -eq 1 ]; then
-    echo -e "${bldcya}Starting compilation: ${cya}Only will be built Boot Image${rst}"
+    echo -e "${bldcya}Starting compilation: ${cya}Only will be built Kernel Boot Image${rst}"
     echo -e ""
     make -j"$opt_jobs" bootimage
 elif [ "$opt_only" -eq 2 ]; then
+    echo -e "${bldcya}Starting compilation: ${cya}Only will be built Kernel Boot Zip${rst}"
+    echo -e ""
+    make -j"$opt_jobs" bootzip
+elif [ "$opt_only" -eq 3 ]; then
     echo -e "${bldcya}Starting compilation: ${cya}Only will be built Recovery Image${rst}"
     echo -e ""
     make -j"$opt_jobs" recoveryimage
