@@ -35,3 +35,7 @@ vendor/cmremix/prebuilt/common/apk/re.codefi.savoca.kcal.apk:system/app/re.codef
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/apk/MDNIE-tuner.apk:system/app/MDNIE-tuner.apk
 
+# OpenCamra
+PRODUCT_COPY_FILES += \
+vendor/cmremix/prebuilt/common/apk/OpenCamera.apk:system/app/OpenCamera.apk
+
