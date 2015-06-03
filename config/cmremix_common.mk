@@ -71,6 +71,10 @@ endif
 
 EXTENDED_POST_PROCESS_PROPS := vendor/cmremix/tools/cmremix_process_props.py
 
+# Write SaberMod Kernel version info to build.prop
+PRODUCT_PROPERTY_OVERRIDES += \
+  ro.sm.kernel=$(SM_KERNEL_VERSION)
+
 # Inherite sabermod vendor
 SM_VENDOR := vendor/sm
 include $(SM_VENDOR)/Main.mk
