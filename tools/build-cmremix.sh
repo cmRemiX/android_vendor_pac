@@ -67,7 +67,7 @@ usage() {
 
 # CMREMIX version
 export CMREMIX_VERSION_MAJOR="LP"
-export CMREMIX_VERSION_MINOR="MR3"
+export CMREMIX_VERSION_MINOR="5.1.1"
 export CMREMIX_VERSION_MAINTENANCE="Unofficial"
 # Acceptable maintenance versions are; Stable, Official, Nightly or Unofficial
 
