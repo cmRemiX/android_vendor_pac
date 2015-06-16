@@ -15,20 +15,20 @@ PRODUCT_PACKAGES += \
 
 # Viper4Android
 PRODUCT_COPY_FILES += \
-vendor/cmremix/prebuilt/common/etc/viper/ViPER4Android.apk:system/app/ViPER4Android.apk
+vendor/cmremix/prebuilt/common/apk/ViPER4Android/ViPER4Android.apk:system/app/ViPER4Android/ViPER4Android.apk
 
 # KCAL - Advanced color control for Qualcomm MDSS 8x26/8974/8084
 PRODUCT_COPY_FILES += \
-vendor/cmremix/prebuilt/common/apk/re.codefi.savoca.kcal.apk:system/app/re.codefi.savoca.kcal.apk
+vendor/cmremix/prebuilt/common/apk/savoca-kcal/savoca-kcal.apk:system/app/savoca-kcal.apk
 
 # MDNIE-tuner
 PRODUCT_COPY_FILES += \
-vendor/cmremix/prebuilt/common/apk/MDNIE-tuner.apk:system/app/MDNIE-tuner.apk
+vendor/cmremix/prebuilt/common/apk/MDNIE-tuner/MDNIE-tuner.apk:system/app/MDNIE-tuner/MDNIE-tuner.apk
 
 # OpenCamra
 PRODUCT_COPY_FILES += \
-vendor/cmremix/prebuilt/common/apk/OpenCamera.apk:system/app/OpenCamera.apk
+vendor/cmremix/prebuilt/common/apk/OpenCamera/OpenCamera.apk:system/app/OpenCamera/OpenCamera.apk
 
 # Kernel Adiutor
-PRODUCT_COPY_FILES += vendor/cmremix/prebuilt/common/app/KernelAdiutor/KernelAdiutor.apk:system/app/KernelAdiutor/KernelAdiutor.apk
+PRODUCT_COPY_FILES += vendor/cmremix/prebuilt/common/apk/KernelAdiutor/KernelAdiutor.apk:system/app/KernelAdiutor/KernelAdiutor.apk
 
