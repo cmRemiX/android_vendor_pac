@@ -13,6 +13,11 @@ PRODUCT_PACKAGES += \
     DashClock \
     SlimLauncher
 
+# Kernel Adiuter
+PRODUCT_PACKAGES += \
+    KernelAdiutor \
+    FloatingActionButton
+
 # Viper4Android
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/apk/ViPER4Android/ViPER4Android.apk:system/app/ViPER4Android/ViPER4Android.apk
@@ -29,6 +34,4 @@ vendor/cmremix/prebuilt/common/apk/MDNIE-tuner/MDNIE-tuner.apk:system/app/MDNIE-
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/apk/OpenCamera/OpenCamera.apk:system/app/OpenCamera/OpenCamera.apk
 
-# Kernel Adiutor
-PRODUCT_COPY_FILES += vendor/cmremix/prebuilt/common/apk/KernelAdiutor/KernelAdiutor.apk:system/app/KernelAdiutor/KernelAdiutor.apk
 
