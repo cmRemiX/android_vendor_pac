@@ -25,7 +25,7 @@ vendor/cmremix/prebuilt/common/apk/ViPER4Android/ViPER4Android.apk:system/app/Vi
 
 # KCAL - Advanced color control for Qualcomm MDSS 8x26/8974/8084
 PRODUCT_COPY_FILES += \
-vendor/cmremix/prebuilt/common/apk/savoca-kcal/savoca-kcal.apk:system/app/savoca-kcal.apk
+vendor/cmremix/prebuilt/common/apk/Savoca-Kcal/Savoca-Kcal.apk:system/app/Savoca-Kcal/Savoca-Kcal.apk
 
 # MDNIE-tuner
 PRODUCT_COPY_FILES += \
