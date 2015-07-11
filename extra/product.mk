@@ -22,7 +22,9 @@ PRODUCT_PACKAGES += \
 
 # Viper4Android
 PRODUCT_COPY_FILES += \
-vendor/cmremix/prebuilt/common/apk/ViPER4Android/ViPER4Android.apk:system/app/ViPER4Android/ViPER4Android.apk
+vendor/cmremix/prebuilt/common/apk/ViPER4Android/ViPER4Android_FX_A4.x/ViPER4Android_FX_A4.x.apk:system/app/ViPER4Android/ViPER4Android_FX_A4.x.apk
+vendor/cmremix/prebuilt/common/apk/ViPER4Android/addon.d/95-LolliViPER.sh:system/addon.d/95-LolliViPER.sh
+vendor/cmremix/prebuilt/common/apk/ViPER4Android/audio_policy.sh:system/audio_policy.sh
 
 # KCAL - Advanced color control for Qualcomm MDSS 8x26/8974/8084
 PRODUCT_COPY_FILES += \
