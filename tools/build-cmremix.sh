@@ -80,6 +80,8 @@ if [ -z "${USE_CCACHE}" ]; then
     export USE_CCACHE=1
 fi
 
+#CMRemix Build Changelog
+export BUILD_CMREMIX_CHANGELOG=true
 
 # Maintenance logic
 if [ -s ~/CMREMIXname ]; then
