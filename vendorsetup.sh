@@ -14,3 +14,6 @@ add_lunch_combo cmremix_togari-userdebug
 # Motorola
 add_lunch_combo cmremix_falcon-userdebug
 add_lunch_combo cmremix_titan-userdebug
+# Sprout
+add_lunch_combo cmremix_sprout4-userdebug
+add_lunch_combo cmremix_sprout8-userdebug
