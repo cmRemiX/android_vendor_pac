@@ -1,7 +1,8 @@
 #################################
 ## cmRemiX Required Packages Apps
 PRODUCT_PACKAGES += \
-    OmniSwitch
+    OmniSwitch \
+    WallpaperPicker
 
 # CMRemixOTA
 PRODUCT_PACKAGES += \
