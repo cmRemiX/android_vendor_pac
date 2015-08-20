@@ -75,6 +75,15 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     dalvik.vm.image-dex2oat-filter=everything \
     dalvik.vm.dex2oat-filter=everything
 
+# TWRP Recovery
+ifeq ($(RECOVERY_VARIANT),twrp)
+    ifeq ($(CMREMIX_MAKE),recoveryimage)
+        BOARD_SEPOLICY_IGNORE += external/sepolicy/domain.te
+        BOARD_SEPOLICY_DIRS += vendor/cmremix/sepolicy/twrp
+        BOARD_SEPOLICY_UNION += domain.te init.te recovery.te
+    endif
+endif
+
 EXTENDED_POST_PROCESS_PROPS := vendor/cmremix/tools/cmremix_process_props.py
 
 # Inherite sabermod vendor
