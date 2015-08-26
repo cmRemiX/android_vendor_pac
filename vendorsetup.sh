@@ -17,3 +17,6 @@ add_lunch_combo cmremix_titan-userdebug
 # Sprout
 add_lunch_combo cmremix_sprout4-userdebug
 add_lunch_combo cmremix_sprout8-userdebug
+# OnePlus One
+add_lunch_combo cmremix_bacon-userdebug
+
