@@ -125,6 +125,11 @@ ifeq ($(RECOVERY_VARIANT),twrp)
     endif
 endif
 
+# Synapse UKM
+ifneq ($(TARGET_ENABLE_UKM),true)
+-include vendor/cmremix/config/common_ukm.mk
+endif
+
 EXTENDED_POST_PROCESS_PROPS := vendor/cmremix/tools/cmremix_process_props.py
 
 # Inherite sabermod vendor
