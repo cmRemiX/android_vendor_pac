@@ -48,6 +48,10 @@ PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/common/etc/hosts.alt:system/etc/hosts.alt \
     vendor/cmremix/prebuilt/common/etc/hosts.og:system/etc/hosts.og
 
+# WakeGestures
+PRODUCT_COPY_FILES += \
+vendor/cmremix/prebuilt/common/apk/WakeGestures/WakeGestures.apk:system/app/WakeGestures/WakeGestures.apk
+
 # CM-Remix Overlays
 PRODUCT_PACKAGE_OVERLAYS += vendor/cmremix/overlay/common
 
