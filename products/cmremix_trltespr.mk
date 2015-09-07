@@ -1,6 +1,9 @@
 # Check for target product
 ifeq (cmremix_trltespr,$(TARGET_PRODUCT))
 
+# Synapse 
+TARGET_ENABLE_UKM := true
+
 # Set bootanimation Size
 CMREMIX_BOOTANIMATION_NAME := 1440
 
