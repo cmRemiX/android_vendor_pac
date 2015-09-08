@@ -120,6 +120,7 @@ endif
 
 # CMRemix Tweaks & Optimization
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.build.selinux=0 \
     ro.adb.secure=0 \
     dalvik.vm.image-dex2oat-filter=everything \
     dalvik.vm.dex2oat-filter=everything
