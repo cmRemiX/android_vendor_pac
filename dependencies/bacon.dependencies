@@ -1,18 +1,24 @@
 [
   {
-    "repository": "ProjectX-Android/device_oppo_msm8974-common",
+    "repository": "akhilnarang/android_device_oneplus_bacon",
+    "target_path": "device/oneplus/bacon",
+    "revision": "cmR",
+    "remote": "github"
+  },
+  {
+    "repository": "CyanogenMod/android_device_oppo_msm8974-common",
     "target_path": "device/oppo/msm8974-common",
     "remote": "github",
     "revision": "cm-12.1"
   },
   {
-    "repository": "ProjectX-Android/kernel_oneplus_msm8974",
+    "repository": "akhilnarang/android_kernel_oneplus_msm8974",
     "target_path": "kernel/oneplus/msm8974",
     "remote": "github",
     "revision": "cm-12.1"
   },
   {
-    "repository": "ProjectX-Android/device_oppo_common",
+    "repository": "CyanogenMod/android_device_oppo_common",
     "target_path": "device/oppo/common",
     "remote": "github",
     "revision": "cm-12.1"
