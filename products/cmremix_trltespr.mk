@@ -4,6 +4,9 @@ ifeq (cmremix_trltespr,$(TARGET_PRODUCT))
 # Synapse 
 TARGET_ENABLE_UKM := true
 
+# Disable ADB authentication and set root access to Apps and ADB
+DISABLE_ADB_AUTH := true
+
 # Set bootanimation Size
 CMREMIX_BOOTANIMATION_NAME := 1440
 
