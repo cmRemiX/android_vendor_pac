@@ -71,6 +71,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/etc/init.local.rc:root/init.cmremix.rc
 
+# Add ZION959 kernel config file
+#PRODUCT_COPY_FILES += \
+#    vendor/cmremix/prebuilt/common/etc/init.zion959.kernel.sh:system/etc/init.zion959.kernel.sh
+
 # easy way to extend to add more packages
 -include vendor/cmremix/extra/product.mk
 
