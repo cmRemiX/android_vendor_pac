@@ -52,10 +52,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/apk/WakeGestures/WakeGestures.apk:system/app/WakeGestures/WakeGestures.apk
 
-# Synapse
-PRODUCT_COPY_FILES += \
-vendor/cmremix/prebuilt/common/apk/Synapse/Synapse.apk:system/app/Synapse/Synapse.apk
-
 # CM-Remix Overlays
 PRODUCT_PACKAGE_OVERLAYS += vendor/cmremix/overlay/common
 
@@ -139,7 +135,7 @@ ifeq ($(RECOVERY_VARIANT),twrp)
 endif
 
 # Synapse UKM
-ifeq ($(TARGET_ENABLE_UKM),true)
+ifneq ($(TARGET_ENABLE_UKM),true)
 -include vendor/cmremix/config/common_ukm.mk
 endif
 
