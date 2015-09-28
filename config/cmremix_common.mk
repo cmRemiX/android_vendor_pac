@@ -135,7 +135,7 @@ ifeq ($(RECOVERY_VARIANT),twrp)
 endif
 
 # Synapse UKM
-ifneq ($(TARGET_ENABLE_UKM),true)
+ifeq ($(TARGET_ENABLE_UKM),true)
 -include vendor/cmremix/config/common_ukm.mk
 endif
 
