@@ -58,6 +58,10 @@ PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/common/etc/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
     vendor/cmremix/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
 
+# AdAway App
+PRODUCT_COPY_FILES += \
+    vendor/cmremix/prebuilt/AdAway/AdAway.apk:system/priv-app/AdAway/AdAway.apk
+
 # Init script file with CM-Remix extras
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/etc/init.local.rc:root/init.cmremix.rc
