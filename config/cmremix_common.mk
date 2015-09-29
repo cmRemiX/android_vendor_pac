@@ -43,11 +43,6 @@ vendor/cmremix/prebuilt/common/apk/OpenCamera/OpenCamera.apk:system/app/OpenCame
 PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/common/etc/00_DEBUG:system/etc/init.d/00_DEBUG
 
-# AdBlocker Files
-PRODUCT_COPY_FILES += \
-    vendor/cmremix/prebuilt/common/etc/hosts.alt:system/etc/hosts.alt \
-    vendor/cmremix/prebuilt/common/etc/hosts.og:system/etc/hosts.og
-
 # WakeGestures
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/apk/WakeGestures/WakeGestures.apk:system/app/WakeGestures/WakeGestures.apk
