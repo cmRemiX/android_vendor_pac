@@ -1,36 +1,42 @@
 [
   {
-    "repository": "akhilnarang/android_device_oneplus_bacon",
+    "account": "akhilnarang",
+    "repository": "android_device_oneplus_bacon",
     "target_path": "device/oneplus/bacon",
     "revision": "cmR",
     "remote": "github"
   },
   {
-    "repository": "akhilnarang/android_kernel_oneplus_msm8974",
+    "account": "akhilnarang",
+    "repository": "android_kernel_oneplus_msm8974",
     "target_path": "kernel/oneplus/msm8974",
     "remote": "github",
     "revision": "cm-12.1"
   },
   {
-    "repository": "CyanogenMod/android_device_oppo_common",
+    "account": "CyanogenMod",
+    "repository": "android_device_oppo_common",
     "target_path": "device/oppo/common",
     "remote": "github",
     "revision": "cm-12.1"
   },
   {
-    "repository": "CyanogenMod/android_device_qcom_common",
+    "account": "CyanogenMod",
+    "repository": "android_device_qcom_common",
     "target_path": "device/qcom/common",
     "remote": "github",
     "revision": "cm-12.1"
   },
   {
-    "repository": "TheMuppets/proprietary_vendor_oneplus",
+    "account": "TheMuppets",
+    "repository": "proprietary_vendor_oneplus",
     "target_path": "vendor/oneplus",
     "remote": "github",
     "revision": "cm-12.1"
   },
   {
-    "repository": "TheMuppets/proprietary_vendor_oppo",
+    "account": "TheMuppets",
+    "repository": "proprietary_vendor_oppo",
     "target_path": "vendor/oppo",
     "remote": "github",
     "revision": "cm-12.1"
