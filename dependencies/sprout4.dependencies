@@ -1,8 +1,21 @@
 [
     {
-        "remote":      "github",
-        "repository":  "ujwalp15/android_device_google_sprout4",
+        "remote": "github",
+        "account": "ujwalp15",
+        "repository": "android_device_google_sprout4",
         "target_path": "device/google/sprout4",
-        "revision":    "cr-5.1"
+        "revision": "cr-5.1"
+    },
+    {
+        "remote": "github",
+        "account": "Cyanogenmod",
+        "repository": "android_kernel_mediatek_sprout",
+        "target_path": "kernel/mediatek/sprout"
+    },
+    {
+        "remote": "github",
+        "account": "TheMuppets",
+        "repository": "proprietary_vendor_google",
+        "target_path": "vendor/google"
     }
 ]
