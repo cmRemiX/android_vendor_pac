@@ -11,11 +11,13 @@
         "account": "Cyanogenmod",
         "repository": "android_kernel_mediatek_sprout",
         "target_path": "kernel/mediatek/sprout"
+        "revision": "cm-12.1"
     },
     {
         "remote": "github",
         "account": "TheMuppets",
         "repository": "proprietary_vendor_google",
         "target_path": "vendor/google"
+        "revision": "cm-12.1"
     }
 ]
