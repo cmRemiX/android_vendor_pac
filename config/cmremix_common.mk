@@ -141,5 +141,5 @@ endif
 EXTENDED_POST_PROCESS_PROPS := vendor/cmremix/tools/cmremix_process_props.py
 
 # Inherite sabermod vendor
-SM_VENDOR := vendor/sm
-include $(SM_VENDOR)/Main.mk
+#SM_VENDOR := vendor/sm
+#include $(SM_VENDOR)/Main.mk
