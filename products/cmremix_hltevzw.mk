@@ -10,6 +10,4 @@ include vendor/cmremix/config/cmremix_common.mk
 # Inherit CM device configuration
 $(call inherit-product, device/samsung/hltevzw/cm.mk)
 
-PRODUCT_NAME := cmremix_hltevzw
-
 endif

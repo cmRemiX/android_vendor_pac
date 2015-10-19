@@ -10,6 +10,4 @@ include vendor/cmremix/config/cmremix_common.mk
 # Inherit CM device configuration
 $(call inherit-product, device/google/sprout4/cm.mk)
 
-PRODUCT_NAME := cmremix_sprout4
-
 endif

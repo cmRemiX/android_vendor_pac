@@ -16,6 +16,4 @@ include vendor/cmremix/config/cmremix_common.mk
 # Inherit CM device configuration
 $(call inherit-product, device/samsung/trltespr/cm.mk)
 
-PRODUCT_NAME := cmremix_trltespr
-
 endif

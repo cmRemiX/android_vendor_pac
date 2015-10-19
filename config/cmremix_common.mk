@@ -80,6 +80,7 @@ vendor/cmremix/prebuilt/common/etc/init.local.rc:root/init.cmremix.rc
 CMREMIXVERSION := $(shell echo $(CMREMIX_VERSION) | sed -e 's/^[ \t]*//;s/[ \t]*$$//;s/ /./g')
 BOARD := $(subst cmremix_,,$(TARGET_PRODUCT))
 CMREMIX_BUILD_VERSION := CMRemix-$(BOARD)-$(CMREMIXVERSION)-$(shell date +%Y%m%d-%H%M%S)
+PRODUCT_NAME := $(TARGET_PRODUCT)
 
 # Set the board version
 CM_BUILD := $(BOARD)

@@ -18,7 +18,7 @@ echo "" > $CHANGELOGOUT
 ln -sf $CHANGELOGOUT $ANDROID_BUILD_TOP/CHANGES.LOG
 getbranch()
 {
-  git --git-dir $REPOPATH/.repo/manifests.git config --local branch.default.merge
+  git --git-dir $REPOPATH/.repo/manifests.git config --local branch.default.merge | sed 's/refs\/heads\///g'
 }
 export version=`getbranch`
 export newversion=HEAD
