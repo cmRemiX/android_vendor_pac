@@ -1,0 +1,26 @@
+[
+  {
+    "account":      "CMRemix",
+    "repository":   "android_kernel_lge_g3",
+    "target_path":  "kernel/lge/g3"
+    "revision":     "cm-13.0"
+  },
+  {
+    "account":      "CMRemix",
+    "repository":   "android_device_lge_g3-common",
+    "target_path":  "device/lge/g3-common"
+    "revision":     "cm-13.0"
+  },
+  {
+    "account":      "CyanogenMod",
+    "repository":   "android_device_qcom_common",
+    "target_path":  "device/qcom/common"
+    "revision":     "cm-13.0"
+  },
+  {
+    "account":      "CMRemix",
+    "repository":   "proprietary_vendor_lge",
+    "target_path":  "vendor/lge",
+    "revision":     "cm-13.0"
+  }
+]
