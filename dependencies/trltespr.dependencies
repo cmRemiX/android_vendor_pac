@@ -36,6 +36,12 @@
     "revision":     "cm-12.1"
   },
   {
+    "account":      "CyanogenMod",
+    "repository":   "android_external_stlport",
+    "target_path":  "external/stlport",
+    "revision":     "cm-13.0"
+  },
+  {
     "account":      "CMRemix",
     "repository":   "proprietary_vendor_samsung",
     "target_path":  "vendor/samsung",
