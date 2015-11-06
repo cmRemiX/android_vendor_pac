@@ -1,8 +1,11 @@
 # Check for target product
 ifeq (cmremix_trltetmo,$(TARGET_PRODUCT))
 
-TARGET_GCC_VERSION_AND := 4.9
-TARGET_GCC_VERSION_ARM := 4.9
+GCC_VERSION_AND := 4.9
+GCC_VERSION_ARM := 4.9
+
+#SaberMod GCC info
+-include vendor/cmremix/config/sm_board.mk
 
 # Synapse 
 TARGET_ENABLE_UKM := true
