@@ -1,6 +1,18 @@
 # Check for target product
 ifeq (cmremix_trlteusc,$(TARGET_PRODUCT))
 
+TARGET_GCC_VERSION_AND := 4.9
+TARGET_GCC_VERSION_ARM := 4.9
+
+LOCAL_STRICT_ALIASING := true
+O3_OPTIMIZATIONS := true
+TARGET_USE_PIPE := true
+ENABLE_PTHREAD := true
+ENABLE_SANITIZE := true
+ENABLE_GOMP := true
+ENABLE_GCCONLY := true
+FLOOP_NEST_OPTIMIZE := true
+
 # Synapse 
 TARGET_ENABLE_UKM := true
 
