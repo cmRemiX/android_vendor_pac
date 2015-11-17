@@ -7,8 +7,8 @@
   },
   {
     "account":      "CMRemix",
-    "repository":   "android_device_samsung_trltetmo",
-    "target_path":  "device/samsung/trltetmo",
+    "repository":   "android_device_samsung_trltevzw",
+    "target_path":  "device/samsung/trltevzw",
     "revision":     "cm-13.0"
   },
   {

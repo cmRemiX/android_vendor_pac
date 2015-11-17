@@ -9,6 +9,7 @@ add_lunch_combo cmremix_trlteeur-userdebug
 add_lunch_combo cmremix_trltetmo-userdebug
 add_lunch_combo cmremix_trltespr-userdebug
 add_lunch_combo cmremix_trlteusc-userdebug
+add_lunch_combo cmremix_trltevzw-userdebug
 # Sony Xperia Z Ultra
 add_lunch_combo cmremix_togari-userdebug
 # Motorola
