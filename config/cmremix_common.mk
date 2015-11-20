@@ -141,6 +141,16 @@ endif
 
 EXTENDED_POST_PROCESS_PROPS := vendor/cmremix/tools/cmremix_process_props.py
 
+# Include Firefox browser in all ROM builds.
+CMREMIX_VENDOR := vendor/cmremix
+PRODUCT_PACKAGES += SaberFox
+$(call inherit-product, $(CMREMIX_VENDOR)/prebuilt/system/lib/armeabi-v7a/arm.mk)
+
+# SuperSU for aosp based ROMs.
+#ifeq ($(strip $(TARGET_BASE_ROM)),cmremix)
+#  include $(CMREMIX_VENDOR)/prebuilts/SuperSU/supersu.mk
+#endif
+
 # Inherite sabermod vendor
 #SM_VENDOR := vendor/sm
 #include $(SM_VENDOR)/Main.mk
