@@ -21,6 +21,10 @@ PRODUCT_PACKAGES += \
     KernelAdiutor \
     FloatingActionButton
 
+# Busybox
+PRODUCT_PACKAGES += \
+    Busybox
+
 # Viper4Android
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/apk/ViPER4Android/ViPER4Android_FX_A4.x/ViPER4Android_FX_A4.x.apk:system/app/ViPER4Android/ViPER4Android_FX_A4.x.apk
