@@ -55,8 +55,7 @@ PRODUCT_COPY_FILES += vendor/cmremix/prebuilt/common/bootanimation/$(CMREMIX_BOO
 
 # SuperSU
 PRODUCT_COPY_FILES += \
-    vendor/cmremix/prebuilt/common/etc/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
-    vendor/cmremix/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
+    vendor/cmremix/prebuilt/common/etc/supersu.zip:supersu/supersu.zip
 
 # AdAway App
 PRODUCT_COPY_FILES += \
