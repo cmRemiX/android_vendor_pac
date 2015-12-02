@@ -1,23 +1,19 @@
 # Check for target product
 ifeq (cmremix_trltetmo,$(TARGET_PRODUCT))
 
+# Define Which GCC Version
 TARGET_GCC_VERSION_AND := 4.9
 TARGET_GCC_VERSION_ARM := 4.9
 
-LOCAL_STRICT_ALIASING := true
-O3_OPTIMIZATIONS := true
-TARGET_USE_PIPE := true
-ENABLE_PTHREAD := true
-ENABLE_SANITIZE := true
-ENABLE_GOMP := true
+# Uber-MM Optimization
+STRICT_ALIASING := true
+KRAIT_TUNINGS := true
 ENABLE_GCCONLY := true
-FLOOP_NEST_OPTIMIZE := true
-
-#SaberMod GCC info
--include vendor/cmremix/config/sm_board.mk
+GRAPHITE_OPTS := true
+CLANG_O3 := true
 
 # Synapse 
-TARGET_ENABLE_UKM := true
+# TARGET_ENABLE_UKM := true
 
 # Disable ADB authentication and set root access to Apps and ADB
 DISABLE_ADB_AUTH := true
