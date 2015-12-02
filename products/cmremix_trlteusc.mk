@@ -11,9 +11,7 @@ KRAIT_TUNINGS := true
 ENABLE_GCCONLY := true
 GRAPHITE_OPTS := true
 CLANG_O3 := true
-
-#SaberMod GCC info
--include vendor/cmremix/config/sm_board.mk
+POLLY_OPTIMIZATION := true
 
 # Synapse 
 # TARGET_ENABLE_UKM := true
