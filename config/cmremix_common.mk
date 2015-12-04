@@ -76,8 +76,8 @@ vendor/cmremix/prebuilt/common/etc/init.local.rc:root/init.cmremix.rc
 # easy way to extend to add more packages
 -include vendor/cmremix/extra/product.mk
 
-# Debugs Script
--include vendor/cmremix/products/debug.mk
+# SM Configs
+#-include vendor/cmremix/config/sm_board.mk
 
 # CM-Remix version
 CMREMIXVERSION := $(shell echo $(CMREMIX_VERSION) | sed -e 's/^[ \t]*//;s/[ \t]*$$//;s/ /./g')
