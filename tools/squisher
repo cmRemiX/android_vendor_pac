@@ -88,6 +88,6 @@ if [ "$CMREMIX_LOW_RAM_DEVICE" = "true" ]; then
 fi
 
 # Optimize PNG resources in APKs
-( cd $OUT/system; find framework/ app/ priv-app/ -name \*.apk -print | $XARGS $OPTICHARGER; )
+( cd $OUT/system; find framework/ app/ priv-app/ ! -name 'webview.apk' -name \*.apk -print | $XARGS $OPTICHARGER; )
 
 exit 0
