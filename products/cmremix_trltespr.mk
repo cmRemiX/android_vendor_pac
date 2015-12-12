@@ -1,18 +1,6 @@
 # Check for target product
 ifeq (cmremix_trltespr,$(TARGET_PRODUCT))
 
-# Define Which GCC Version
-TARGET_GCC_VERSION_AND := 4.9
-TARGET_GCC_VERSION_ARM := 4.9
-
-# Uber-MM Optimization
-STRICT_ALIASING := true
-KRAIT_TUNINGS := true
-ENABLE_GCCONLY := true
-GRAPHITE_OPTS := true
-CLANG_O3 := true
-POLLY_OPTIMIZATION := true
-
 # Synapse 
 # TARGET_ENABLE_UKM := true
 
