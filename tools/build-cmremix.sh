@@ -68,6 +68,7 @@ usage() {
 export CMREMIX_VERSION_MAJOR="MM"
 export CMREMIX_VERSION_MINOR="6.0.1_r3"
 export CMREMIX_VERSION_MAINTENANCE="Unofficial"
+export CMREMIX_KERNEL_VERSION_MAINTENANCE="ZION959"
 # Acceptable maintenance versions are; Stable, Official, Nightly or Unofficial
 
 
@@ -87,6 +88,12 @@ else
 fi
 export CMREMIX_VERSION="$CMREMIX_VERSION_MAJOR $CMREMIX_VERSION_MINOR $CMREMIX_MAINTENANCE"
 
+# CMRemix Kernel logic
+if [ -s ~/KERNELname ]; then
+    export KERNEL_VERSION=$(cat ~/KERNELname)
+else
+   export KERNEL_VERSION="$CMREMIX_KERNEL_VERSION_MAINTENANCE"
+fi
 
 # Check directories
 if [ ! -d ".repo" ]; then
