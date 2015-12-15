@@ -1,6 +1,6 @@
 # CMRemix Core
-export KBUILD_BUILD_USER := cmremix
-export KBUILD_BUILD_HOST := zion959
+  export KBUILD_BUILD_USER := cmremix
+  export KBUILD_BUILD_HOST := zion959
 
 # System
 # export ANDROID_COMPILE_WITH_JACK := false
@@ -11,48 +11,59 @@ export KBUILD_BUILD_HOST := zion959
 #export BLOCK_BUILD := false
 
 export DISABLE_SM_OPTIMIZATIONS :=false
-ifneq ($(DISABLE_SM_OPTIMIZATIONS),true)
-TARGET_NDK_VERSION := 5.2
-TARGET_SM_AND := 5.3
-TARGET_SM_KERNEL := 6.0
+ ifneq ($(DISABLE_SM_OPTIMIZATIONS),true)
+  TARGET_NDK_VERSION := 5.2
+  TARGET_SM_AND := 5.3
+  TARGET_SM_KERNEL := 6.0
 endif
 
 # Build
 export DISABLE_SM_OPTIMIZATIONS :=false
-ifneq ($(DISABLE_SM_OPTIMIZATIONS),true)
-export DONT_ERROROUT := false
-export USE_O3_OPTIMIZATIONS := true
-export FORCE_DISABLE_DEBUGGING := true
-export ENABLE_GOLD_LINKER := true
-export ENABLE_IPA_ANALYSER := true
-export TARGET_USE_PIPE := true
-export KRAIT_TUNINGS := true
-export ENABLE_PTHREAD := true
-export ENABLE_GOMP := true
-export GRAPHITE_OPTS := true
-export ENABLE_EXTRAGCC := true
-export STRICT_ALIASING := true
-export ENABLE_SANITIZE := true
-export POLLY_OPTIMIZATION := true
+ ifneq ($(DISABLE_SM_OPTIMIZATIONS),true)
+  export DONT_ERROROUT := false
+  export USE_O3_OPTIMIZATIONS := true
+  export FORCE_DISABLE_DEBUGGING := true
+  export ENABLE_GOLD_LINKER := true
+  export ENABLE_IPA_ANALYSER := true
+  export TARGET_USE_PIPE := true
+  export KRAIT_TUNINGS := true
+  export ENABLE_PTHREAD := true
+  export ENABLE_GOMP := true
+  export GRAPHITE_OPTS := true
+  export ENABLE_EXTRAGCC := true
+  export STRICT_ALIASING := true
+  export ENABLE_SANITIZE := true
+  export POLLY_OPTIMIZATION := true
 endif
 
 # Toolchain and other
 DISABLE_UBER_OPTIMIZATIONS := true
-ifneq ($(DISABLE_UBER_OPTIMIZATIONS),true)
-TARGET_NDK_GCC_VERSION := 4.9
-TARGET_GCC_VERSION_AND := 4.9
-TARGET_GCC_VERSION_ARM := 4.9
+ ifneq ($(DISABLE_UBER_OPTIMIZATIONS),true)
+  TARGET_NDK_GCC_VERSION := 4.9
+  TARGET_GCC_VERSION_AND := 4.9
+  TARGET_GCC_VERSION_ARM := 4.9
 endif
 
 # Uber-MM Optimization
 DISABLE_UBER_OPTIMIZATIONS := true
 ifneq ($(DISABLE_UBER_OPTIMIZATIONS),true)
-STRICT_ALIASING := true
-KRAIT_TUNINGS := true
-ENABLE_GCCONLY := true
-GRAPHITE_OPTS := true
-CLANG_O3 := true
-POLLY_OPTIMIZATION := true
+  STRICT_ALIASING := true
+  KRAIT_TUNINGS := true
+  ENABLE_GCCONLY := true
+  GRAPHITE_OPTS := true
+  CLANG_O3 := true
+  POLLY_OPTIMIZATION := true
+endif
+
+# Clang Qcom Optimization
+DISABLE_CLANG_QCOM_OPTIMIZATIONS := true
+ifneq ($(DISABLE_CLANG_QCOM_OPTIMIZATIONS),true)
+  USE_CLANG_QCOM := true
+  USE_CLANG_QCOM_VERBOSE := false
+  USE_CLANG_QCOM_POLLY := true
+  CLANG_QCOM_COMPILE_ART := false
+  CLANG_QCOM_COMPILE_BIONIC := false
+  CLANG_QCOM_COMPILE_MIXED := false
 endif
 
 # Prop Optimizations
