@@ -156,3 +156,4 @@ EXTENDED_POST_PROCESS_PROPS := vendor/cmremix/tools/cmremix_process_props.py
 # Inherite sabermod Config
 CMREMIX_VENDOR := vendor/cmremix
 include $(CMREMIX_VENDOR)/config/opti.mk
+-include $(CMREMIX_VENDOR)/config/sm_board.mk
