@@ -76,8 +76,9 @@ vendor/cmremix/prebuilt/common/etc/init.local.rc:root/init.cmremix.rc
 # easy way to extend to add more packages
 -include vendor/cmremix/extra/product.mk
 
-# SM Configs
-#-include vendor/cmremix/config/sm_board.mk
+# CMRemix Rom
+PRODUCT_COPY_FILES += \
+    vendor/cmremix/config/permissions/org.cmremixrom.android.xml:system/etc/permissions/org.cmremixrom.android.xml
 
 # CM-Remix version
 CMREMIXVERSION := $(shell echo $(CMREMIX_VERSION) | sed -e 's/^[ \t]*//;s/[ \t]*$$//;s/ /./g')
