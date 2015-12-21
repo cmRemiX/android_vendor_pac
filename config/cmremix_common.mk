@@ -51,6 +51,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/apk/WakeGestures/WakeGestures.apk:system/app/WakeGestures/WakeGestures.apk
 
+# KernelAdiutor
+PRODUCT_COPY_FILES += \
+    vendor/cmremix/prebuilt/common/apk/KernelAdiutor/KernelAdiutor.apk:system/app/KernelAdiutor/KernelAdiutor.apk
+
 # CM-Remix Overlays
 PRODUCT_PACKAGE_OVERLAYS += vendor/cmremix/overlay/common
 
@@ -63,7 +67,7 @@ PRODUCT_COPY_FILES += \
 
 # AdAway App
 PRODUCT_COPY_FILES += \
-    vendor/cmremix/prebuilt/AdAway/AdAway.apk:system/priv-app/AdAway/AdAway.apk
+    vendor/cmremix/prebuilt/common/apk/AdAway/AdAway.apk:system/priv-app/AdAway/AdAway.apk
 
 # Init script file with CM-Remix extras
 PRODUCT_COPY_FILES += \
