@@ -10,16 +10,18 @@
 #export USE_SYSTEM_CCACHE := 1
 #export BLOCK_BUILD := false
 
-export DISABLE_SM_OPTIMIZATIONS :=false
-ifneq ($(DISABLE_SM_OPTIMIZATIONS),true)
+export DISABLE_SABERMOD_GCC :=false
+ifneq ($(DISABLE_SABERMOD_GCC),true)
   TARGET_NDK_VERSION := 5.2
   TARGET_SM_AND := 5.3
   TARGET_SM_KERNEL := 6.0
 endif
 
-# Build
-export DISABLE_SM_OPTIMIZATIONS :=false
+
+# Build SaberMod Optimization
+export DISABLE_SM_OPTIMIZATIONS :=true
  ifneq ($(DISABLE_SM_OPTIMIZATIONS),true)
+
   export DONT_ERROROUT := false
   export USE_O3_OPTIMIZATIONS := true
   export FORCE_DISABLE_DEBUGGING := true
@@ -38,17 +40,34 @@ export DISABLE_SM_OPTIMIZATIONS :=false
   export LTO_COMPRESSION_LEVEL := 5
 endif
 
-# Toolchain and other
-DISABLE_UBER_OPTIMIZATIONS := true
-ifneq ($(DISABLE_UBER_OPTIMIZATIONS),true)
-  TARGET_NDK_GCC_VERSION := 4.9
-  TARGET_GCC_VERSION_AND := 4.9
-  TARGET_GCC_VERSION_ARM := 4.9
+# Build 2nd SaberMod Optimization
+export DISABLE_2ND_SM_OPTIMIZATIONS := false
+ ifneq ($(DISABLE_2ND_SM_OPTIMIZATIONS),true)
+
+  TARGET_NDK_GCC_VERSION := 5.2
+  TARGET_GCC_VERSION_AND := 5.3
+  TARGET_GCC_VERSION_ARM := 6.0
+
+  LOCAL_O3 := false
+  LOCAL_STRICT_ALIASING := true
+  ENABLE_ARM_MODE := true
+  TARGET_USE_PIPE := true
+  ENABLE_PTHREAD := true
+  ENABLE_SANITIZE := true
+  ENABLE_GOMP := true
+  ENABLE_GCCONLY := true
+  ENABLE_GCC_DEFAULTS := true
 endif
 
-# Uber-MM Optimization
+
+# Build Uber-MM Optimization
 DISABLE_UBER_OPTIMIZATIONS := true
 ifneq ($(DISABLE_UBER_OPTIMIZATIONS),true)
+
+  TARGET_NDK_GCC_VERSION := 5.2
+  TARGET_GCC_VERSION_AND := 5.3
+  TARGET_GCC_VERSION_ARM := 6.0
+
   STRICT_ALIASING := true
   KRAIT_TUNINGS := true
   ENABLE_GCCONLY := true
