@@ -3,7 +3,7 @@
     "account":      "CMRemix",
     "repository":   "android_kernel_samsung_trlte",
     "target_path":  "kernel/samsung/trlte",
-    "revision":     "cm-13.0-ultimate"
+    "revision":     "cm-13.0-sm"
   },
   {
     "account":      "CMRemix",
