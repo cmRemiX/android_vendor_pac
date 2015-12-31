@@ -42,12 +42,6 @@
     "revision":     "cm-13.0"
   },
   {
-    "account":      "CyanogenMod",
-    "repository": "android_external_connectivity",
-    "target_path": "external/connectivity",
-    "revision":     "cm-13.0"
-  },
-  {
     "account":      "CMRemix",
     "repository":   "proprietary_vendor_samsung",
     "target_path":  "vendor/samsung",
