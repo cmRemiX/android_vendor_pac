@@ -119,7 +119,7 @@ ifeq ($(ENABLE_PTHREAD),true)
    OPT6 := (pthread)
 endif
 
-ifeq ($(ENABLE_GOMP),true)
+ifeq ($(ENABLE_LSAN_OPENMP),true)
    OPT7 := (openmp)
 endif
 

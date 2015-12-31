@@ -19,7 +19,8 @@
   KRAIT_TUNINGS := true
   ENABLE_GCCONLY := true
   GRAPHITE_OPTS := true
-  CLANG_O3 := true
+  ENABLE_LSAN_OPENMP := true
+  IPA_OPIMIZATION := true
   POLLY_OPTIMIZATION := true
 
 # Clang Qcom Optimization
