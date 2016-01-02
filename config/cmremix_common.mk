@@ -43,10 +43,6 @@ vendor/cmremix/prebuilt/common/apk/MDNIE-tuner/MDNIE-tuner.apk:system/app/MDNIE-
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/apk/OpenCamera/OpenCamera.apk:system/app/OpenCamera/OpenCamera.apk
 
-# Zion959 Debugs Files
-PRODUCT_COPY_FILES += \
-    vendor/cmremix/prebuilt/common/etc/00_DEBUG:system/etc/init.d/00_DEBUG
-
 # WakeGestures
 PRODUCT_COPY_FILES += \
 vendor/cmremix/prebuilt/common/apk/WakeGestures/WakeGestures.apk:system/app/WakeGestures/WakeGestures.apk
@@ -149,16 +145,10 @@ endif
 
 EXTENDED_POST_PROCESS_PROPS := vendor/cmremix/tools/cmremix_process_props.py
 
-# Include Firefox browser in all ROM builds.
-#PRODUCT_PACKAGES += SaberFox
-#$(call inherit-product, $(CMREMIX_VENDOR)/prebuilt/system/lib/armeabi-v7a/arm.mk)
-
-# SuperSU for aosp based ROMs.
-#ifeq ($(strip $(TARGET_BASE_ROM)),cmremix)
-#  include $(CMREMIX_VENDOR)/prebuilts/SuperSU/supersu.mk
-#endif
-
 # Inherite sabermod Config
 CMREMIX_VENDOR := vendor/cmremix
-include $(CMREMIX_VENDOR)/config/opti.mk
 -include $(CMREMIX_VENDOR)/config/sm_board.mk
+
+# Inherit sabermod vendor
+#SM_VENDOR := vendor/sm
+#include $(SM_VENDOR)/Main.mk
