@@ -53,3 +53,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.gservices_delay=-1 \
     wifi.supplicant_scan_interval=180 \
     windowsmgr.max_events_per_sec=150
+
+# enabled Debuggable by default
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.service.adb.enable=1 \
+    persist.service.debuggable=1 \
+    persist.sys.usb.config=mtp,adb
