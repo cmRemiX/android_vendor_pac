@@ -10,8 +10,8 @@ ifeq (cmremix_trltevzw,$(TARGET_PRODUCT))
   ENABLE_GCCONLY := true
   GRAPHITE_OPTS := true
   ENABLE_LSAN_OPENMP := true
-  IPA_OPIMIZATION := true
-  POLLY_OPTIMIZATION := true
+  USE_ARM_MODE := true
+#  DISABLE_DTC_OPTS := true
 
 # Clang Qcom Optimization
 DISABLE_CLANG_QCOM_OPTIMIZATIONS := true
