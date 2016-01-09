@@ -1,50 +1,76 @@
 # CMRemix Extras
 
-import /init.superuser.rc
+service supolicy /system/xbin/supolicy --live \
+	"allow shell dalvikcache_data_file file { write create }" \
+	"allow shell dalvikcache_data_file dir { add_name create relabelfrom relabelto remove_name rename reparent rmdir search setattr write }" \
+	"allow mediaserver mediaserver_tmpfs file execute" \
+	"allow isolated_app app_data_file dir search" \
+	"allow untrusted_app kernel dir search" \
+	"allow untrusted_app sysfs_mmi_touch dir search" \
+        "allow init kernel security read_policy" \
+        "allow zygote init unix_stream_socket { read write }" \
+	"allow untrusted_app kernel file { ioctl read write getattr append open }"
+     disabled
+     oneshot
 
-on init
-    export TERMINFO /system/etc/terminfo
-    export TERM linux
+on fs
+     start supolicy
 
-on post-fs-data
-    mkdir /data/.ssh 0750 root shell
+service init.zion959.kernel /system/etc/init.zion959.kernel.sh
+     class late_start
+     user root
+     group root
+     disabled
+     oneshot
 
-on boot
-    start sysinit
-
-    # Define TCP delayed ack settings for WiFi & LTE
-    chown system system /sys/kernel/ipv4/tcp_delack_seg
-    chown system system /sys/kernel/ipv4/tcp_use_userconfig
-    setprop net.tcp.delack.default     1
-    setprop net.tcp.delack.wifi        20
-    setprop net.tcp.delack.lte         8
-    setprop net.tcp.usercfg.default    0
-    setprop net.tcp.usercfg.wifi       1
-    setprop net.tcp.usercfg.lte        1
-
-# adb over network
-on property:service.adb.tcp.port=5555
-    stop adbd
-    start adbd
-on property:service.adb.tcp.port=-1
-    stop adbd
-    start adbd
-
-# sysinit (/system/etc/init.d)
-service sysinit /system/bin/sysinit
-    user root
-    oneshot
+service healthd2 /sbin/healthd2
+    class core
+    critical
     disabled
+    seclabel u:r:healthd:s0
+    group root system
 
-# Google play services wakelock fix
-sleep 40
-su -c "pm enable com.google.android.gms/.update.SystemUpdateActivity"
-su -c "pm enable com.google.android.gms/.update.SystemUpdateService"
-su -c "pm enable com.google.android.gms/.update.SystemUpdateService$ActiveReceiver"
-su -c "pm enable com.google.android.gms/.update.SystemUpdateService$Receiver"
-su -c "pm enable com.google.android.gms/.update.SystemUpdateService$SecretCodeReceiver"
-su -c "pm enable com.google.android.gsf/.update.SystemUpdateActivity"
-su -c "pm enable com.google.android.gsf/.update.SystemUpdatePanoActivity"
-su -c "pm enable com.google.android.gsf/.update.SystemUpdateService"
-su -c "pm enable com.google.android.gsf/.update.SystemUpdateService$Receiver"
-su -c "pm enable com.google.android.gsf/.update.SystemUpdateService$SecretCodeReceiver"
+on property:supolicy.loaded=1
+     start supolicy
+     init.zion959.kernel.sh
+
+# Power saving profile
+on property:fku.perf.profile=0
+    write /sys/module/cpufreq/parameters/custom_max_freq 2265600
+    write /sys/devices/system/cpu/cpu2/online 0
+    write /sys/devices/system/cpu/cpu3/online 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 2265600
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 2265600
+    write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/max_freq 389000000
+    write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/governor simple_ondemand
+    write /sys/devices/system/cpu/sched_balance_policy/current_sched_balance_policy powersaving
+
+# Balance
+on property:fku.perf.profile=1
+    write /sys/module/cpufreq/parameters/custom_max_freq 2265600
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 2265600
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 2265600
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2265600
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 2265600
+    write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/max_freq 600000000
+    write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/governor simple_ondemand
+    write /sys/devices/system/cpu/sched_balance_policy/current_sched_balance_policy powersaving
+
+# Performance (zionkernel defaults)
+on property:fku.perf.profile=2
+    write /sys/module/cpufreq/parameters/custom_max_freq 2649600
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 2649600
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 2649600
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2649600
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 2649600
+    write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/max_freq 600000000
+    write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/governor msm-adreno-tz
+    write /sys/devices/system/cpu/sched_balance_policy/current_sched_balance_policy performance
+
+on property:ro.build.flavor=cmremix_trlte-userdebug
+    stop healthd
+    start healthd2
