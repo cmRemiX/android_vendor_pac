@@ -3,7 +3,7 @@
     "account":      "ZION959",
     "repository":   "android_kernel_samsung_trlte",
     "target_path":  "kernel/samsung/trlte",
-    "revision":     "cm-13.0-sm"
+    "revision":     "cm-13.0-SM"
   },
   {
     "account":      "CMRemix",
