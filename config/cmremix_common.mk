@@ -73,12 +73,15 @@ vendor/cmremix/prebuilt/common/etc/init.local.rc:root/init.cmremix.rc
 #PRODUCT_COPY_FILES += \
 #    vendor/cmremix/prebuilt/common/etc/init.zion959.kernel.sh:system/etc/init.zion959.kernel.sh
 
-# easy way to extend to add more packages
--include vendor/cmremix/extra/product.mk
-
 # CMRemix Rom
 PRODUCT_COPY_FILES += \
     vendor/cmremix/config/permissions/org.cmremixrom.android.xml:system/etc/permissions/org.cmremixrom.android.xml
+
+# easy way to extend to add more packages
+-include vendor/cmremix/extra/product.mk
+
+# Inherite sabermod Config
+-include vendor/cmremix/config/sm_board.mk
 
 # CM-Remix version
 CMREMIXVERSION := $(shell echo $(CMREMIX_VERSION) | sed -e 's/^[ \t]*//;s/[ \t]*$$//;s/ /./g')
@@ -144,11 +147,3 @@ ifeq ($(TARGET_ENABLE_UKM),true)
 endif
 
 EXTENDED_POST_PROCESS_PROPS := vendor/cmremix/tools/cmremix_process_props.py
-
-# Inherite sabermod Config
-CMREMIX_VENDOR := vendor/cmremix
--include $(CMREMIX_VENDOR)/config/sm_board.mk
-
-# Inherit sabermod vendor
-#SM_VENDOR := vendor/sm
-#include $(SM_VENDOR)/Main.mk

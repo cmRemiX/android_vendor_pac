@@ -1,34 +1,48 @@
 # Check for target product
 ifeq (cmremix_trlteusc,$(TARGET_PRODUCT))
 
+# Custom Toolchaim
   TARGET_NDK_VERSION := 4.9
   TARGET_SM_AND := 4.9
   TARGET_SM_KERNEL := 4.9
 
-  STRICT_ALIASING := true
-  KRAIT_TUNINGS := true
-  ENABLE_GCCONLY := true
-  GRAPHITE_OPTS := true
-  ENABLE_LSAN_OPENMP := true
+# CMRemix-MM Optimization
+  GRAPHITE_OPTIMIZATION := true
+  LOCAL_STRICT_ALIASING := true
+  ENABLE_GCC_DEFAULTS := true
+  O3_OPTIMIZATIONS := true
   USE_ARM_MODE := true
-#  DISABLE_DTC_OPTS := true
+  DISABLE_DTC_OPTS := false
 
-# Clang Qcom Optimization
-DISABLE_CLANG_QCOM_OPTIMIZATIONS := true
-ifneq ($(DISABLE_CLANG_QCOM_OPTIMIZATIONS),true)
-  USE_CLANG_QCOM := true
-  USE_CLANG_QCOM_VERBOSE := true
-  USE_CLANG_QCOM_POLLY := true
-  CLANG_QCOM_COMPILE_ART := false
-  CLANG_QCOM_COMPILE_BIONIC := false
-  CLANG_QCOM_COMPILE_MIXED := false
+#################
+# NO OPTIMIZATION
+#################
+# Bluetooth modules
+LOCAL_BLUETOOTH_BLUEDROID := \
+  bluetooth.default \
+  libbt-brcm_stack \
+  audio.a2dp.default \
+  libbt-brcm_gki \
+  libbt-utils \
+  libbt-qcom_sbc_decoder \
+  libbt-brcm_bta \
+  bdt \
+  bdtest \
+  libbt-hci \
+  libosi \
+  ositests \
+  libbt-vendor \
+  libbluetooth_jni
+
+ifndef NO_OPTIMIZATIONS
+  NO_OPTIMIZATIONS := $(LOCAL_BLUETOOTH_BLUEDROID) libadbd
+else
+  NO_OPTIMIZATIONS += $(LOCAL_BLUETOOTH_BLUEDROID) libadbd
 endif
 
-# enabled Debuggable by default
+# setup scheduler tunable
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.service.adb.enable=1 \
-    persist.service.debuggable=1 \
-    persist.sys.usb.config=mtp,adb
+   ro.qualcomm.perf.cores_online=2
 
 # Synapse 
 # TARGET_ENABLE_UKM := true

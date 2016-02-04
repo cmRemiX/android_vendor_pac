@@ -95,15 +95,15 @@ export SM_KERNEL_NAME := $(filter %sabermod,$(SM_KERNEL))
  export LD_LIBRARY_PATH := $(TARGET_ARCH_LIB_PATH):$(LD_LIBRARY_PATH)
  export LIBRARY_PATH := $(TARGET_ARCH_LIB_PATH):$(LIBRARY_PATH)
 
-ifeq ($(USE_O3_OPTIMIZATIONS),true)
+ifeq ($(O3_OPTIMIZATIONS),true)
    OPT1 := (O3)
 endif
 
-ifeq ($(GRAPHITE_OPTS),true)
+ifeq ($(GRAPHITE_OPTIMIZATION),true)
    OPT2 := (graphite)
 endif
 
-ifeq (true,$(STRICT_ALIASING))
+ifeq (true,$(LOCAL_STRICT_ALIASING))
    OPT3 := (strict)
 endif
 
@@ -119,7 +119,7 @@ ifeq ($(ENABLE_PTHREAD),true)
    OPT6 := (pthread)
 endif
 
-ifeq ($(ENABLE_LSAN_OPENMP),true)
+ifeq ($(ENABLE_GOMP),true)
    OPT7 := (openmp)
 endif
 
@@ -135,23 +135,19 @@ ifeq (true,$(ENABLE_SANITIZE))
    OPT10 := (mem-sanitize)
 endif
 
-ifeq (true,$(POLLY_OPTIMIZATION))
-   OPT10 := (polly)
+ifeq (true,$(USE_ARM_MODE))
+   OPT10 := (arm-mode)
 endif
 
-ifeq (true,$(ENABLE_GCCONLY))
-   OPT5 := (gcc)
+ifeq (true,$(ENABLE_GCC_DEFAULTS))
+   OPT5 := (gcc-tunings)
 endif
 
-ifeq (true,$(CLANG_O3))
-   OPT6 := (llvm -O3)
+ifeq ($,$(TARGET_DRAGONTC_VERSION))
+   OPT6 := (polly)
 endif
 
-ifeq (true,$(ENABLE_LOCAL_LTO))
-   OPT12 := (lto)
-endif
-
-  GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)$(OPT7)$(OPT8)$(OPT9)$(OPT10)$(OPT11)$(OPT12)
+  GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)$(OPT7)$(OPT8)$(OPT9)$(OPT10)$(OPT11)
 
   ifneq ($(GCC_OPTIMIZATION_LEVELS),)
     PRODUCT_PROPERTY_OVERRIDES += \
