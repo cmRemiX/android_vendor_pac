@@ -10,6 +10,7 @@
 list_files() {
 cat <<EOF
 priv-app/ViPER4Android_FX_A4.x/ViPER4Android_FX_A4.x.apk
+su.d/50viper.sh
 EOF
 }
 
