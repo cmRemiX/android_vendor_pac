@@ -111,40 +111,40 @@ ifeq ($(KRAIT_TUNINGS),true)
    OPT4 := (krait)
 endif
 
-ifeq ($(FORCE_DISABLE_DEBUGGING),true)
-   OPT5 := (no-debug)
-endif
-
-ifeq ($(ENABLE_PTHREAD),true)
-   OPT6 := (pthread)
-endif
-
-ifeq ($(ENABLE_GOMP),true)
-   OPT7 := (openmp)
-endif
-
-ifeq (true,$(ENABLE_GOLD_LINKER))
-   OPT8 := (gold-linker)
-endif
-
-ifeq (true,$(ENABLE_EXTRAGCC))
-   OPT9 := (extras)
-endif
-
-ifeq (true,$(ENABLE_SANITIZE))
-   OPT10 := (mem-sanitize)
-endif
-
-ifeq (true,$(USE_ARM_MODE))
-   OPT10 := (arm-mode)
-endif
-
 ifeq (true,$(ENABLE_GCC_DEFAULTS))
    OPT5 := (gcc-tunings)
 endif
 
 ifeq ($,$(TARGET_DRAGONTC_VERSION))
    OPT6 := (polly)
+endif
+
+ifeq (true,$(USE_ARM_MODE))
+   OPT7 := (arm-mode)
+endif
+
+ifeq ($(ENABLE_PTHREAD),true)
+   OPT8 := (pthread)
+endif
+
+ifeq ($(ENABLE_GOMP),true)
+   OPT9 := (openmp)
+endif
+
+ifeq (true,$(ENABLE_GOLD_LINKER))
+   OPT10 := (gold-linker)
+endif
+
+ifeq (true,$(ENABLE_EXTRAGCC))
+   OPT11 := (extras)
+endif
+
+ifeq (true,$(ENABLE_SANITIZE))
+   OPT12 := (mem-sanitize)
+endif
+
+ifeq ($(FORCE_DISABLE_DEBUGGING),true)
+   OPT13 := (no-debug)
 endif
 
   GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)$(OPT7)$(OPT8)$(OPT9)$(OPT10)$(OPT11)
