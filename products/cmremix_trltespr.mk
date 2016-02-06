@@ -13,6 +13,7 @@ ifeq (cmremix_trltespr,$(TARGET_PRODUCT))
   O3_OPTIMIZATIONS := true
   USE_ARM_MODE := true
   DISABLE_DTC_OPTS := false
+  ENABLE_PTHREAD := true
 
 #################
 # NO OPTIMIZATION
