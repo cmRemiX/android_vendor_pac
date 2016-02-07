@@ -1,8 +1,9 @@
 ## CMRemix Roms Required Apps and Configs
 
+# Omni 
 PRODUCT_PACKAGES += \
     OmniSwitch \
-    Apollo
+    OmniJaws
 
 # CMRemixOTA
 PRODUCT_PACKAGES += \
