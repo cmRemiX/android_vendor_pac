@@ -55,10 +55,6 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/cmremix/overlay/common
 # Bootanimation
 PRODUCT_COPY_FILES += vendor/cmremix/prebuilt/common/bootanimation/$(CMREMIX_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
 
-# SuperSU
-PRODUCT_COPY_FILES += \
-    vendor/cmremix/prebuilt/common/etc/supersu.zip:supersu/supersu.zip
-
 # AdAway App
 PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/common/apk/AdAway/AdAway.apk:system/priv-app/AdAway/AdAway.apk
@@ -137,11 +133,6 @@ ifeq ($(RECOVERY_VARIANT),twrp)
         BOARD_SEPOLICY_DIRS += vendor/cmremix/sepolicy/twrp
         BOARD_SEPOLICY_UNION += domain.te init.te recovery.te
     endif
-endif
-
-# Synapse UKM
-ifeq ($(TARGET_ENABLE_UKM),true)
--include vendor/cmremix/config/common_ukm.mk
 endif
 
 EXTENDED_POST_PROCESS_PROPS := vendor/cmremix/tools/cmremix_process_props.py
