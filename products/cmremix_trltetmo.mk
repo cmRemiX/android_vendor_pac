@@ -41,10 +41,6 @@ else
   NO_OPTIMIZATIONS += $(LOCAL_BLUETOOTH_BLUEDROID) libadbd
 endif
 
-# setup scheduler tunable
-PRODUCT_PROPERTY_OVERRIDES += \
-   ro.qualcomm.perf.cores_online=2
-
 # Disable ADB authentication and set root access to Apps and ADB
 DISABLE_ADB_AUTH := true
 
