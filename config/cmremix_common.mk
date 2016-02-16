@@ -3,7 +3,8 @@
 # Omni 
 PRODUCT_PACKAGES += \
     OmniSwitch \
-    OmniJaws
+    OmniJaws \
+    OmniStyle
 
 # CMRemixOTA
 PRODUCT_PACKAGES += \
