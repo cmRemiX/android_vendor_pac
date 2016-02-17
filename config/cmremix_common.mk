@@ -68,6 +68,10 @@ vendor/cmremix/prebuilt/common/etc/init.local.rc:root/init.cmremix.rc
 #PRODUCT_COPY_FILES += \
 #    vendor/cmremix/prebuilt/common/etc/init.zion959.kernel.sh:system/etc/init.zion959.kernel.sh
 
+ # SuperSU
+PRODUCT_COPY_FILES += \
+    vendor/cmremix/prebuilt/common/etc/supersu.zip:supersu/supersu.zip
+
 # CMRemix Rom
 PRODUCT_COPY_FILES += \
     vendor/cmremix/config/permissions/org.cmremixrom.android.xml:system/etc/permissions/org.cmremixrom.android.xml
