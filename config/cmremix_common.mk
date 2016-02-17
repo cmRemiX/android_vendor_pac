@@ -116,16 +116,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Disable ADB authentication and set root access to Apps and ADB
 ifeq ($(DISABLE_ADB_AUTH),true)
     ADDITIONAL_DEFAULT_PROPERTIES += \
-        ro.adb.secure=3 \
+        ro.adb.secure=0 \
         persist.sys.root_access=3
 endif
-
-# CMRemix Tweaks & Optimization
-PRODUCT_PROPERTY_OVERRIDES += \
-         ro.build.selinux=0
-
-# Enable ADB authentication
-ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 
 # TWRP Recovery
 ifeq ($(RECOVERY_VARIANT),twrp)
