@@ -63,9 +63,9 @@ export SM_AND_NAME := $(filter %sabermod,$(SM_AND))
     endif
  
  # Write version info to build.prop
- ifeq (5.1,$(TARGET_GCC_VERSION))
+ ifeq (5.3,$(TARGET_GCC_VERSION))
    PRODUCT_PROPERTY_OVERRIDES += \
-     ro.sm.android=$(SM_AND_NAME)-$(SM_AND_DATE)-(experimental)
+     ro.sm.android=$(SM_AND_NAME)-$(SM_AND_DATE)-(release)
  else
    PRODUCT_PROPERTY_OVERRIDES += \
      ro.sm.android=$(SM_AND_VERSION)
@@ -83,13 +83,17 @@ export SM_KERNEL_NAME := $(filter %sabermod,$(SM_KERNEL))
     endif
 
  # Write version info to build.prop
- ifeq (5.1,$(TARGET_GCC_VERSION_KERNEL))
+ ifeq (6.0,$(TARGET_GCC_VERSION_KERNEL))
    PRODUCT_PROPERTY_OVERRIDES += \
-     ro.sm.kernel=$(SM_KERNEL_NAME)-$(SM_KERNEL_DATE)-(experimental)
+     ro.sm.kernel=$(SM_KERNEL_NAME)-$(SM_KERNEL_DATE)-(release)
  else
    PRODUCT_PROPERTY_OVERRIDES += \
      ro.sm.kernel=$(SM_KERNEL_VERSION)
  endif
+
+ # DragonTC Version
+ PRODUCT_PROPERTY_OVERRIDES += \
+   ro.dtc.version=$(TARGET_DRAGONTC_VERSION)
 
  # Add extra libs for the compilers to use
  export LD_LIBRARY_PATH := $(TARGET_ARCH_LIB_PATH):$(LD_LIBRARY_PATH)
