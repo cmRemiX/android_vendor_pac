@@ -2,9 +2,9 @@
 ifeq (cmremix_trltetmo,$(TARGET_PRODUCT))
 
 # Custom Toolchaim
-  TARGET_NDK_VERSION := 4.9
-  TARGET_SM_AND := 4.9
-  TARGET_SM_KERNEL := 4.9
+  TARGET_NDK_VERSION := 5.2
+  TARGET_SM_AND := 5.3
+  TARGET_SM_KERNEL := 6.0
 
 # CMRemix-MM Optimization
   GRAPHITE_OPTIMIZATION := true
