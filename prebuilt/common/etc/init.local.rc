@@ -23,6 +23,20 @@ service init.zion959.kernel /system/etc/init.zion959.kernel.sh
      disabled
      oneshot
 
+service 95-LolliViPER /system/addon.d/95-LolliViPER.sh
+     class late_start
+     user root
+     group root
+     disabled
+     oneshot
+
+service 50viper /system/su.d/50viper.sh
+     class late_start
+     user root
+     group root
+     disabled
+     oneshot
+
 service healthd2 /sbin/healthd2
     class core
     critical
