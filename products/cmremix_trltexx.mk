@@ -1,12 +1,12 @@
 # Check for target product
 ifeq (cmremix_trltexx,$(TARGET_PRODUCT))
 
-# Custom Toolchaim
+  # Custom Toolchain
   TARGET_NDK_VERSION := 5.2
   TARGET_SM_AND := 5.3
   TARGET_SM_KERNEL := 6.0
 
-# CMRemix-MM Optimization
+  # CMRemix-MM Optimization
   GRAPHITE_OPTIMIZATION := true
   LOCAL_STRICT_ALIASING := true
   ENABLE_GCC_DEFAULTS := true
@@ -15,9 +15,7 @@ ifeq (cmremix_trltexx,$(TARGET_PRODUCT))
   DISABLE_DTC_OPTS := false
   ENABLE_PTHREAD := true
 
-#################
-# NO OPTIMIZATION
-#################
+# No Optimization
 # Bluetooth modules
 LOCAL_BLUETOOTH_BLUEDROID := \
   bluetooth.default \
