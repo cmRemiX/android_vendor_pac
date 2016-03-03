@@ -39,6 +39,10 @@ else
   NO_OPTIMIZATIONS += $(LOCAL_BLUETOOTH_BLUEDROID) libadbd
 endif
 
+# Dalvik/Art
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.sys.fw.dex2oat_thread_count=4
+
 # Disable ADB authentication and set root access to Apps and ADB
 DISABLE_ADB_AUTH := true
 
