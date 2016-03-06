@@ -50,6 +50,10 @@ vendor/cmremix/prebuilt/common/apk/OpenCamera/OpenCamera.apk:system/app/OpenCame
 PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/common/apk/KernelAdiutor/KernelAdiutor.apk:system/app/KernelAdiutor/KernelAdiutor.apk
 
+# DeviceControl
+PRODUCT_COPY_FILES += \
+    vendor/cmremix/prebuilt/common/apk/DeviceControl/DeviceControl.apk:system/app/DeviceControl/DeviceControl.apk
+
 # CM-Remix Overlays
 PRODUCT_PACKAGE_OVERLAYS += vendor/cmremix/overlay/common
 
