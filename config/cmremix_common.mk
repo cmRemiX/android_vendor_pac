@@ -27,6 +27,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Busybox
 
+# DU Utils Library
+PRODUCT_PACKAGES += \
+    org.dirtyunicorns.utils
+
+PRODUCT_BOOT_JARS += \
+    org.dirtyunicorns.utils
+
 # Viper4Android
 PRODUCT_COPY_FILES += \
    vendor/cmremix/prebuilt/common/bin/audio_policy.sh:system/audio_policy.sh \
