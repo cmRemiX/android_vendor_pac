@@ -5,6 +5,7 @@ ifeq (cmremix_ls990,$(TARGET_PRODUCT))
   TARGET_NDK_VERSION := 5.2
   TARGET_SM_AND := 5.3
   TARGET_SM_KERNEL := 6.0
+  DRAGONTC_VERSION := 3.9
 
   # CMRemix-MM Optimization
   GRAPHITE_OPTIMIZATION := true
