@@ -121,9 +121,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.modversion=$(CMREMIX_BUILD_VERSION) \
     cmremix.ota.version=$(CMREMIX_BUILD_VERSION)
 
-# Clang DragonTC Version
+# DragonTC info
+DRAGONTC_VERSION := 3.9
+export $(DRAGONTC_VERSION)
+
+DTC_PATH := prebuilts/clang/linux-x86/host/$(DRAGONTC_VERSION)
+DTC_VER := $(shell cat $(DTC_PATH)/VERSION)
+export $(DTC_VER)
+
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.dtc.version=$(DRAGONTC_VERSION)
+    ro.dtc.version=$(DTC_VER)
 
 # Disable ADB authentication and set root access to Apps and ADB
 ifeq ($(DISABLE_ADB_AUTH),true)
