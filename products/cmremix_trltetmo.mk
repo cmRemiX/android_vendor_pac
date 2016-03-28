@@ -15,6 +15,7 @@ ifeq (cmremix_trltetmo,$(TARGET_PRODUCT))
   USE_ARM_MODE := true
   DISABLE_DTC_OPTS := false
   ENABLE_PTHREAD := true
+  GCC_ONLY_OPTIMIZATION := true
 
 # No Optimization
 # Bluetooth modules
