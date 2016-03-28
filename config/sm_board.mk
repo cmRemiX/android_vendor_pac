@@ -135,8 +135,8 @@ ifeq (true,$(ENABLE_GOLD_LINKER))
    OPT10 := (gold-linker)
 endif
 
-ifeq (true,$(ENABLE_EXTRAGCC))
-   OPT11 := (extras)
+ifeq (true,$(GCC_ONLY_OPTIMIZATION))
+   OPT11 := (gcconly)
 endif
 
 ifeq (true,$(ENABLE_SANITIZE))
