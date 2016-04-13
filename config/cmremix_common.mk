@@ -96,7 +96,7 @@ PRODUCT_COPY_FILES += \
 # CM-Remix version
 CMREMIXVERSION := $(shell echo $(CMREMIX_VERSION) | sed -e 's/^[ \t]*//;s/[ \t]*$$//;s/ /./g')
 BOARD := $(subst cmremix_,,$(TARGET_PRODUCT))
-CMREMIX_BUILD_VERSION := CMRemix-$(BOARD)-$(CMREMIXVERSION)-$(shell date +%Y%m%d-%H%M%S)
+CMREMIX_BUILD_VERSION := CMRemix_$(BOARD)_$(CMREMIXVERSION)_$(shell date +%Y%m%d-%H%M%S)
 PRODUCT_NAME := $(TARGET_PRODUCT)
 
 # Set the board version
