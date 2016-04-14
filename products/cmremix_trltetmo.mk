@@ -55,6 +55,9 @@ DISABLE_ADB_AUTH := true
 # Set bootanimation Size
 CMREMIX_BOOTANIMATION_NAME := 1440
 
+# Include Viper4Android
+CMREMIX_INCLUDE_VIPER4ANDROID := true
+
 # Include CM-Remix common configuration
 include vendor/cmremix/config/cmremix_common.mk
 

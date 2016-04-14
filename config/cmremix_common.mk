@@ -35,11 +35,17 @@ PRODUCT_BOOT_JARS += \
     org.dirtyunicorns.utils
 
 # Viper4Android
+ifeq ($(CMREMIX_INCLUDE_VIPER4ANDROID),true)
 PRODUCT_COPY_FILES += \
    vendor/cmremix/prebuilt/common/bin/audio_policy.sh:system/audio_policy.sh \
    vendor/cmremix/prebuilt/common/addon.d/95-LolliViPER.sh:system/addon.d/95-LolliViPER.sh \
    vendor/cmremix/prebuilt/common/su.d/50viper.sh:system/su.d/50viper.sh \
-   vendor/cmremix/prebuilt/common/apk/Viper4Android/Viper4Android.apk:system/priv-app/Viper4Android/Viper4Android.apk 
+   vendor/cmremix/prebuilt/common/etc/audio_effects.conf:system/etc/audio_effects.conf \
+   vendor/cmremix/prebuilt/common/lib/soundfx/libeffectproxy.so:system/lib/soundfx/libeffectproxy.so \
+   vendor/cmremix/prebuilt/common/lib/soundfx/libv4a_fx_ics.so:system/lib/soundfx/libv4a_fx_ics.so \
+   vendor/cmremix/prebuilt/common/apk/Viper4Android/lib/arm/libV4AJniUtils.so:system/priv-app/Viper4Android/lib/arm/libV4AJniUtils.so \
+   vendor/cmremix/prebuilt/common/apk/Viper4Android/Viper4Android.apk:system/priv-app/Viper4Android/Viper4Android.apk
+endif
 
 # KCAL - Advanced color control for Qualcomm MDSS 8x26/8974/8084
 PRODUCT_COPY_FILES += \
