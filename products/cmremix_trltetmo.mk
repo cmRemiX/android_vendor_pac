@@ -12,7 +12,7 @@ ifeq (cmremix_trltetmo,$(TARGET_PRODUCT))
   LOCAL_STRICT_ALIASING := true
   ENABLE_GCC_DEFAULTS := true
   O3_OPTIMIZATIONS := true
-  USE_ARM_MODE := true
+  USE_ARM_MODE := false
   DISABLE_DTC_OPTS := false
   ENABLE_PTHREAD := true
   GCC_ONLY_OPTIMIZATION := true
@@ -33,7 +33,10 @@ LOCAL_BLUETOOTH_BLUEDROID := \
   libosi \
   ositests \
   libbt-vendor \
-  libbluetooth_jni
+  libbluetooth_jni \
+  bluetooth.mapsapi \
+  android.bluetooth.client.pbap \
+  android.bluetooth.client.map
 
 ifndef NO_OPTIMIZATIONS
   NO_OPTIMIZATIONS := $(LOCAL_BLUETOOTH_BLUEDROID) libadbd
