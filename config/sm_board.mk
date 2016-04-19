@@ -119,8 +119,8 @@ ifeq ($,$(TARGET_DRAGONTC_VERSION))
    OPT6 := (polly)
 endif
 
-ifeq (true,$(USE_ARM_MODE))
-   OPT7 := (arm-mode)
+ifeq (true,$(ENABLE_DTC_LTO))
+   OPT7 := (LTO)
 endif
 
 ifeq ($(ENABLE_PTHREAD),true)
