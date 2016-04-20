@@ -16,6 +16,10 @@ ifeq (cmremix_trltetmo,$(TARGET_PRODUCT))
   ENABLE_PTHREAD := true
   GCC_ONLY_OPTIMIZATION := true
   ENABLE_DTC_LTO := false
+  USE_ARM_MODE := true
+  IPA_OPTIMIZATIONS := false
+  OPENMP_OPTIMIZATIONS := false
+  MEMORY_LEAK_OPTIMIZATIONS := false
 
 # No Optimization Bluetooth modules
 LOCAL_BLUETOOTH_BLUEDROID := libbluetooth_jni bluetooth.mapsapi bluetooth.default bluetooth.mapsapi libbt-brcm_stack audio.a2dp.default libbt-brcm_gki libbt-utils libbt-qcom_sbc_decoder libbt-brcm_bta libbt-brcm_stack libbt-vendor libbtprofile libbtdevice libbtcore bdt bdtest libbt-hci libosi ositests libbluetooth_jni net_test_osi net_test_device net_test_btcore net_bdtool net_hci bdAddrLoader libadbd
