@@ -22,12 +22,26 @@ ifeq (cmremix_trltevzw,$(TARGET_PRODUCT))
   MEMORY_LEAK_OPTIMIZATIONS := true
 
 # No Optimization Bluetooth modules
-LOCAL_BLUETOOTH_BLUEDROID := libbluetooth_jni bluetooth.default bluetooth.mapsapi libbt-brcm_stack audio.a2dp.default libbt-brcm_gki libbt-utils libbt-qcom_sbc_decoder libbt-brcm_bta libbt-vendor libbtprofile libbtdevice libbtcore bdt bdtest libbt-hci libosi ositests net_test_osi net_test_device net_test_btcore net_bdtool net_hci bdAddrLoader android.bluetooth.client.map android.bluetooth.client.pbap libadbd
+LOCAL_BLUETOOTH_BLUEDROID := \
+  bluetooth.default \
+  libbt-brcm_stack \
+  audio.a2dp.default \
+  libbt-brcm_gki \
+  libbt-utils \
+  libbt-qcom_sbc_decoder \
+  libbt-brcm_bta \
+  bdt \
+  bdtest \
+  libbt-hci \
+  libosi \
+  ositests \
+  libbt-vendor \
+  libbluetooth_jni
 
 ifndef NO_OPTIMIZATIONS
-  NO_OPTIMIZATIONS := $(LOCAL_BLUETOOTH_BLUEDROID)
+  NO_OPTIMIZATIONS := $(LOCAL_BLUETOOTH_BLUEDROID) libadbd
 else
-  NO_OPTIMIZATIONS += $(LOCAL_BLUETOOTH_BLUEDROID)
+  NO_OPTIMIZATIONS += $(LOCAL_BLUETOOTH_BLUEDROID) libadbd
 endif
 
 # Dalvik/Art
