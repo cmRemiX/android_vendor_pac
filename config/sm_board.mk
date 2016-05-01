@@ -119,35 +119,35 @@ ifeq ($,$(TARGET_DRAGONTC_VERSION))
    OPT6 := (polly)
 endif
 
-ifeq (true,$(USE_ARM_MODE))
-   OPT7 := (arm-mode)
+ifeq (true,$(ENABLE_DTC_LTO))
+   OPT7 := (LTO)
 endif
 
 ifeq ($(ENABLE_PTHREAD),true)
    OPT8 := (pthread)
 endif
 
-ifeq ($(ENABLE_GOMP),true)
+ifeq ($(OPENMP_OPTIMIZATIONS),true)
    OPT9 := (openmp)
 endif
 
-ifeq (true,$(ENABLE_GOLD_LINKER))
-   OPT10 := (gold-linker)
+ifeq (true,$(IPA_OPTIMIZATIONS))
+   OPT10 := (analyzer)
 endif
 
 ifeq (true,$(GCC_ONLY_OPTIMIZATION))
    OPT11 := (gcconly)
 endif
 
-ifeq (true,$(ENABLE_SANITIZE))
+ifeq (true,$(MEMORY_LEAK_OPTIMIZATIONS))
    OPT12 := (mem-sanitize)
 endif
 
-ifeq ($(FORCE_DISABLE_DEBUGGING),true)
-   OPT13 := (no-debug)
+ifeq ($(USE_ARM_MODE),true)
+   OPT13 := (arm-mode)
 endif
 
-  GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)$(OPT7)$(OPT8)$(OPT9)$(OPT10)$(OPT11)
+  GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)$(OPT5)$(OPT6)$(OPT7)$(OPT8)$(OPT9)$(OPT10)$(OPT11)$(OPT12)$(OPT13)
 
   ifneq ($(GCC_OPTIMIZATION_LEVELS),)
     PRODUCT_PROPERTY_OVERRIDES += \
