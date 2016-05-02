@@ -34,6 +34,17 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     org.dirtyunicorns.utils
 
+# Exchange support
+PRODUCT_PACKAGES += \
+   OpenWeatherMapProvider
+
+# CMRemix Utils Library
+PRODUCT_PACKAGES += \
+    org.cmremix.utils
+
+PRODUCT_BOOT_JARS += \
+    org.cmremix.utils
+
 # Viper4Android
 ifeq ($(CMREMIX_INCLUDE_VIPER4ANDROID),true)
 PRODUCT_COPY_FILES += \
