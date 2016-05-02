@@ -156,11 +156,14 @@ export $(DTC_VER)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.dtc.version=$(DTC_VER)
 
-# Disable ADB authentication and set root access to Apps and ADB
+# Disable ADB authentication and set root access to Apps and ADB, Debuggable by default
 ifeq ($(DISABLE_ADB_AUTH),true)
     ADDITIONAL_DEFAULT_PROPERTIES += \
         ro.adb.secure=0 \
-        persist.sys.root_access=3
+        persist.sys.root_access=3 \
+        persist.service.adb.enable=1 \
+        persist.service.debuggable=1 \
+        persist.sys.usb.config=mtp,adb
 endif
 
 # TWRP Recovery
