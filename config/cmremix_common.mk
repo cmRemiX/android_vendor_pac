@@ -100,15 +100,6 @@ vendor/cmremix/prebuilt/common/etc/init.local.rc:root/init.cmremix.rc
 PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/common/etc/supersu.zip:supersu/supersu.zip
 
-# Assertive Disaply
-PRODUCT_COPY_FILES += \
-    vendor/cmremix/prebuilt/common/etc/ad_calib.cfg:system/etc/ad_calib.cfg
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qcom.ad=1 \
-    ro.qcom.ad.calib.data=/system/etc/ad_calib.cfg \
-    persist.radio.add_power_save=1 \
-    persist.radio.data_no_toggle=1
-
 # CMRemix Rom
 PRODUCT_COPY_FILES += \
     vendor/cmremix/config/permissions/org.cmremixrom.android.xml:system/etc/permissions/org.cmremixrom.android.xml
