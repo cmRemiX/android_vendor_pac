@@ -107,8 +107,8 @@ ifeq (true,$(LOCAL_STRICT_ALIASING))
    OPT3 := (strict)
 endif
 
-ifeq ($(KRAIT_TUNINGS),true)
-   OPT4 := (krait)
+ifeq ($(FLOOP_NEST_OPTIMIZE),true)
+   OPT4 := (floop-nest)
 endif
 
 ifeq (true,$(ENABLE_GCC_DEFAULTS))

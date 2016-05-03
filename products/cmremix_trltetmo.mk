@@ -9,6 +9,7 @@ ifeq (cmremix_trltetmo,$(TARGET_PRODUCT))
 
   # CMRemix-MM Optimization
   GRAPHITE_OPTIMIZATION := true
+  FLOOP_NEST_OPTIMIZE := true
   LOCAL_STRICT_ALIASING := true
   ENABLE_GCC_DEFAULTS := true
   O3_OPTIMIZATIONS := true
