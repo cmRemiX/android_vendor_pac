@@ -1,14 +1,15 @@
 # Check for target product
 ifeq (cmremix_trltetmo,$(TARGET_PRODUCT))
 
- # Custom Toolchain
-  TARGET_NDK_VERSION := 5.2
+  # Custom Toolchain
+  TARGET_NDK_VERSION := 5.3
   TARGET_SM_AND := 5.3
   TARGET_SM_KERNEL := 7.0
   DRAGONTC_VERSION := 3.9
 
   # CMRemix-MM Optimization
   GRAPHITE_OPTIMIZATION := true
+  FLOOP_NEST_OPTIMIZE := true
   LOCAL_STRICT_ALIASING := true
   ENABLE_GCC_DEFAULTS := true
   O3_OPTIMIZATIONS := true
@@ -20,9 +21,9 @@ ifeq (cmremix_trltetmo,$(TARGET_PRODUCT))
   IPA_OPTIMIZATIONS := true
   OPENMP_OPTIMIZATIONS := false
   MEMORY_LEAK_OPTIMIZATIONS := true
+  ARCHIDROID_OPTIMIZATIONS := true
 
-# No Optimization
-# Bluetooth modules
+# No Optimization Bluetooth modules
 LOCAL_BLUETOOTH_BLUEDROID := \
   bluetooth.default \
   libbt-brcm_stack \
