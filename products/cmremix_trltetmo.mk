@@ -2,7 +2,7 @@
 ifeq (cmremix_trltetmo,$(TARGET_PRODUCT))
 
   # Custom Toolchain
-  TARGET_NDK_VERSION := 5.2
+  TARGET_NDK_VERSION := 5.3
   TARGET_SM_AND := 5.3
   TARGET_SM_KERNEL := 7.0
   DRAGONTC_VERSION := 3.9
@@ -21,6 +21,7 @@ ifeq (cmremix_trltetmo,$(TARGET_PRODUCT))
   IPA_OPTIMIZATIONS := true
   OPENMP_OPTIMIZATIONS := false
   MEMORY_LEAK_OPTIMIZATIONS := true
+  ARCHIDROID_OPTIMIZATIONS := true
 
 # No Optimization Bluetooth modules
 LOCAL_BLUETOOTH_BLUEDROID := \
