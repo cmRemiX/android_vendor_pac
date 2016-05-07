@@ -78,6 +78,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cmremix/prebuilt/common/apk/AdvancedDisplay/AdvancedDisplay.apk:system/app/AdvancedDisplay/AdvancedDisplay.apk
 
+# Yahoo Weather Provider
+PRODUCT_COPY_FILES += \
+    vendor/cmremix/prebuilt/common/apk/YahooWeather/YahooWeather.apk:system/app/YahooWeather/YahooWeather.apk
+
 # CM-Remix Overlays
 PRODUCT_PACKAGE_OVERLAYS += vendor/cmremix/overlay/common
 
