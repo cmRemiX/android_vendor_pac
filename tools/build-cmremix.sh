@@ -82,7 +82,7 @@ export BUILD_CMREMIX_CHANGELOG=true
 
 # Maintenance logic
 if [ -s ~/CMREMIXname ]; then
-    export CMREMIX_MAINTENANCE=$(cat ~/CMREMIXSTABLEname)
+    export CMREMIX_MAINTENANCE=$(cat ~/CMREMIX_STABLEname)
 else
     export CMREMIX_MAINTENANCE="$CMREMIX_VERSION_MAINTENANCE"
 fi
