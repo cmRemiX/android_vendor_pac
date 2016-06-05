@@ -1,0 +1,32 @@
+[
+  {
+    "account":      "RakeshBatra",
+    "repository":   "android_device_yu_tomato",
+    "target_path":  "device/yu/tomato",
+    "revision":     "cm-13.0"
+  },
+  {
+    "account":      "RakeshBatra",
+    "repository":   "android_device_cyanogen_msm8939-common",
+    "target_path":  "device/cyanogen/msm8939-common",
+    "revision":     "cm-13.0"
+  },
+  {
+    "account":      "RakeshBatra",
+    "repository":   "android_kernel_cyanogen_msm8916",
+    "target_path":  "kernel/cyanogen/msm8916",
+    "revision":     "cm-13.0"
+  },
+  {
+    "account":      "CyanogenMod",
+    "repository":   "android_device_qcom_common",
+    "target_path":  "device/qcom/common",
+    "revision":     "cm-13.0"
+  },
+  {
+    "account":      "RakeshBatra",
+    "repository":   "proprietary_vendor_yu-1",
+    "target_path":  "vendor/yu",
+    "revision":     "cm-13.0"
+  }
+]
