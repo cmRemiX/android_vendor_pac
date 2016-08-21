@@ -1,5 +1,5 @@
 #!/bin/bash
-# NUCLEARMISTAKE 2015
+# NUCLEARMISTAKE 2016
 #    STEP YOUR BASH UP, SON
 [ ! $ANDROID_BUILD_TOP ] && echo "ANDROID_BUILD_TOP not defined. source build/envsetup.sh before running $0" && exit 1
 mkdir -p $ANDROID_BUILD_TOP/CHANGELOGS/
@@ -13,7 +13,9 @@ else
   export d=`date +"%y%m%d"`
   logd=`date +"%m%d%y"`
 fi
-export CHANGELOGOUT=$ANDROID_BUILD_TOP/CHANGELOGS/cmremix_$logd
+export CHANGELOGOUT="$ANDROID_BUILD_TOP/CHANGELOGS/cmremix_${logd}.log"
+[ ! $PINNED_MANIFEST_LOCATION ] && export PINNED_MANIFEST_LOCATION="$ANDROID_BUILD_TOP/PINNED_MANIFESTS"
+mkdir -p $PINNED_MANIFEST_LOCATION
 echo "" > $CHANGELOGOUT
 ln -sf $CHANGELOGOUT $ANDROID_BUILD_TOP/CHANGES.LOG
 getbranch()
@@ -24,7 +26,7 @@ export version=`getbranch`
 export newversion=HEAD
 if [ $1 ]; then export lastversion=$1; fi
 if [ $2 ]; then export newversion=$2; fi
-repo forall -c 'bash <<'\''EOF'\''
+repo --no-pager forall -c 'bash <<'\''EOF'\''
   remote=$REPO_REMOTE
 
   if [ ! $lastversion ]; then
@@ -59,5 +61,7 @@ repo forall -c 'bash <<'\''EOF'\''
   git tag $d
 EOF
 '
+repo --no-pager manifest -r -o "$PINNED_MANIFEST_LOCATION/cmremix_${logd}.xml"
+
 cp $ANDROID_BUILD_TOP/CHANGELOGS/cmremix_$logd $OUT/system/etc/changelog.txt
 cp $ANDROID_BUILD_TOP/CHANGELOGS/cmremix_$logd $OUT/Changelog.txt
