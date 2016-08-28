@@ -63,5 +63,5 @@ EOF
 '
 repo --no-pager manifest -r -o "$PINNED_MANIFEST_LOCATION/cmremix_${logd}.xml"
 
-cp $ANDROID_BUILD_TOP/CHANGELOGS/cmremix_$logd $OUT/system/etc/changelog.txt
-cp $ANDROID_BUILD_TOP/CHANGELOGS/cmremix_$logd $OUT/Changelog.txt
+cp $ANDROID_BUILD_TOP/CHANGELOGS/cmremix_$logd.log $OUT/system/etc/changelog.txt
+cp $ANDROID_BUILD_TOP/CHANGELOGS/cmremix_$logd.log $OUT/Changelog.txt
