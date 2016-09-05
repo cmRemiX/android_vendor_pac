@@ -101,7 +101,7 @@ def add_to_manifest(repositories):
         try:
             repo_revision = repository['revision']
         except:
-            repo_revision = "cm-13.0"
+            repo_revision = "cm-14.0"
 
         try:
             repo_account = repository['account']
