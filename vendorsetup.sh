@@ -22,6 +22,8 @@ add_lunch_combo cmremix_sprout8-userdebug
 add_lunch_combo cmremix_bacon-userdebug
 # LGE G3
 add_lunch_combo cmremix_ls990-userdebug
+# LGE G5
+add_lunch_combo cmremix_h830-userdebug
 # YU Yureka
 add_lunch_combo cmremix_yu_tomato-userdebug
 
